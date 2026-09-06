@@ -73,4 +73,12 @@ export class AuthService {
 
     return userWithoutPassword;
   }
+
+  async logout(sessionId: string) {
+    await this.prisma.session.deleteMany({
+      where: {
+        id: sessionId,
+      },
+    });
+  }
 }

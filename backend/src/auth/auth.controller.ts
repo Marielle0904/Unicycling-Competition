@@ -5,7 +5,7 @@ import {
   Post,
   Req,
   Res,
-  UnauthorizedException
+  UnauthorizedException,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AuthService } from './auth.service';
@@ -47,5 +47,27 @@ export class AuthController {
     }
 
     return this.authService.getUserFromSession(sessionId);
+  }
+
+  @Post('logout')
+  async logout(
+    @Req() request: Request,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const sessionId = request.cookies?.session;
+
+    if (sessionId) {
+      await this.authService.logout(sessionId);
+    }
+
+    response.clearCookie('session', {
+      httpOnly: true,
+      secure: false,
+      sameSite: 'lax',
+    });
+
+    return {
+      message: 'Erfolgreich ausgeloggt',
+    };
   }
 }
