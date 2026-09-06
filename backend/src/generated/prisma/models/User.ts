@@ -244,6 +244,7 @@ export type UserWhereInput = {
   trainer?: Prisma.XOR<Prisma.TrainerNullableScalarRelationFilter, Prisma.TrainerWhereInput> | null
   juror?: Prisma.XOR<Prisma.JurorNullableScalarRelationFilter, Prisma.JurorWhereInput> | null
   juryleitung?: Prisma.XOR<Prisma.JuryleitungNullableScalarRelationFilter, Prisma.JuryleitungWhereInput> | null
+  sessions?: Prisma.SessionListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -259,6 +260,7 @@ export type UserOrderByWithRelationInput = {
   trainer?: Prisma.TrainerOrderByWithRelationInput
   juror?: Prisma.JurorOrderByWithRelationInput
   juryleitung?: Prisma.JuryleitungOrderByWithRelationInput
+  sessions?: Prisma.SessionOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -277,6 +279,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   trainer?: Prisma.XOR<Prisma.TrainerNullableScalarRelationFilter, Prisma.TrainerWhereInput> | null
   juror?: Prisma.XOR<Prisma.JurorNullableScalarRelationFilter, Prisma.JurorWhereInput> | null
   juryleitung?: Prisma.XOR<Prisma.JuryleitungNullableScalarRelationFilter, Prisma.JuryleitungWhereInput> | null
+  sessions?: Prisma.SessionListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -321,6 +324,7 @@ export type UserCreateInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -336,6 +340,7 @@ export type UserUncheckedCreateInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -350,6 +355,7 @@ export type UserUpdateInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -365,6 +371,7 @@ export type UserUncheckedUpdateInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -517,6 +524,20 @@ export type UserUpdateOneRequiredWithoutJuryleitungNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutJuryleitungInput, Prisma.UserUpdateWithoutJuryleitungInput>, Prisma.UserUncheckedUpdateWithoutJuryleitungInput>
 }
 
+export type UserCreateNestedOneWithoutSessionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSessionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput
+  upsert?: Prisma.UserUpsertWithoutSessionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSessionsInput, Prisma.UserUpdateWithoutSessionsInput>, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+}
+
 export type UserCreateWithoutVereineInput = {
   email: string
   password: string
@@ -528,6 +549,7 @@ export type UserCreateWithoutVereineInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutVereineInput = {
@@ -542,6 +564,7 @@ export type UserUncheckedCreateWithoutVereineInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutVereineInput = {
@@ -571,6 +594,7 @@ export type UserUpdateWithoutVereineInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutVereineInput = {
@@ -585,6 +609,7 @@ export type UserUncheckedUpdateWithoutVereineInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutTrainerInput = {
@@ -598,6 +623,7 @@ export type UserCreateWithoutTrainerInput = {
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTrainerInput = {
@@ -612,6 +638,7 @@ export type UserUncheckedCreateWithoutTrainerInput = {
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTrainerInput = {
@@ -641,6 +668,7 @@ export type UserUpdateWithoutTrainerInput = {
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTrainerInput = {
@@ -655,6 +683,7 @@ export type UserUncheckedUpdateWithoutTrainerInput = {
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutJurorInput = {
@@ -668,6 +697,7 @@ export type UserCreateWithoutJurorInput = {
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutJurorInput = {
@@ -682,6 +712,7 @@ export type UserUncheckedCreateWithoutJurorInput = {
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutJurorInput = {
@@ -711,6 +742,7 @@ export type UserUpdateWithoutJurorInput = {
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutJurorInput = {
@@ -725,6 +757,7 @@ export type UserUncheckedUpdateWithoutJurorInput = {
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutJuryleitungInput = {
@@ -738,6 +771,7 @@ export type UserCreateWithoutJuryleitungInput = {
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutJuryleitungInput = {
@@ -752,6 +786,7 @@ export type UserUncheckedCreateWithoutJuryleitungInput = {
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutJuryleitungInput = {
@@ -781,6 +816,7 @@ export type UserUpdateWithoutJuryleitungInput = {
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutJuryleitungInput = {
@@ -795,6 +831,81 @@ export type UserUncheckedUpdateWithoutJuryleitungInput = {
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSessionsInput = {
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  birthDate: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
+  trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
+  juror?: Prisma.JurorCreateNestedOneWithoutUserInput
+  juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSessionsInput = {
+  id?: number
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  birthDate: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
+  trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
+  juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
+  juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSessionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+}
+
+export type UserUpsertWithoutSessionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSessionsInput, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSessionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSessionsInput, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+}
+
+export type UserUpdateWithoutSessionsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
+  trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
+  juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
+  juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSessionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
+  trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
+  juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
+  juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
 }
 
 
@@ -804,10 +915,12 @@ export type UserUncheckedUpdateWithoutJuryleitungInput = {
 
 export type UserCountOutputType = {
   vereine: number
+  sessions: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vereine?: boolean | UserCountOutputTypeCountVereineArgs
+  sessions?: boolean | UserCountOutputTypeCountSessionsArgs
 }
 
 /**
@@ -827,6 +940,13 @@ export type UserCountOutputTypeCountVereineArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.UserIsInVereinWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SessionWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -841,6 +961,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   trainer?: boolean | Prisma.User$trainerArgs<ExtArgs>
   juror?: boolean | Prisma.User$jurorArgs<ExtArgs>
   juryleitung?: boolean | Prisma.User$juryleitungArgs<ExtArgs>
+  sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -883,6 +1004,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   trainer?: boolean | Prisma.User$trainerArgs<ExtArgs>
   juror?: boolean | Prisma.User$jurorArgs<ExtArgs>
   juryleitung?: boolean | Prisma.User$juryleitungArgs<ExtArgs>
+  sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -895,6 +1017,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     trainer: Prisma.$TrainerPayload<ExtArgs> | null
     juror: Prisma.$JurorPayload<ExtArgs> | null
     juryleitung: Prisma.$JuryleitungPayload<ExtArgs> | null
+    sessions: Prisma.$SessionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1303,6 +1426,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   trainer<T extends Prisma.User$trainerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$trainerArgs<ExtArgs>>): Prisma.Prisma__TrainerClient<runtime.Types.Result.GetResult<Prisma.$TrainerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   juror<T extends Prisma.User$jurorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$jurorArgs<ExtArgs>>): Prisma.Prisma__JurorClient<runtime.Types.Result.GetResult<Prisma.$JurorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   juryleitung<T extends Prisma.User$juryleitungArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$juryleitungArgs<ExtArgs>>): Prisma.Prisma__JuryleitungClient<runtime.Types.Result.GetResult<Prisma.$JuryleitungPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1811,6 +1935,30 @@ export type User$juryleitungArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   include?: Prisma.JuryleitungInclude<ExtArgs> | null
   where?: Prisma.JuryleitungWhereInput
+}
+
+/**
+ * User.sessions
+ */
+export type User$sessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Session
+   */
+  select?: Prisma.SessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Session
+   */
+  omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  where?: Prisma.SessionWhereInput
+  orderBy?: Prisma.SessionOrderByWithRelationInput | Prisma.SessionOrderByWithRelationInput[]
+  cursor?: Prisma.SessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[]
 }
 
 /**

@@ -52,3 +52,8 @@ export type Juror = Prisma.JurorModel
  * 
  */
 export type Juryleitung = Prisma.JuryleitungModel
+/**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel

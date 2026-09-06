@@ -57,7 +57,8 @@ export const ModelName = {
   Trainer: 'Trainer',
   Competition: 'Competition',
   Juror: 'Juror',
-  Juryleitung: 'Juryleitung'
+  Juryleitung: 'Juryleitung',
+  Session: 'Session'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -146,6 +147,16 @@ export const JuryleitungScalarFieldEnum = {
 } as const
 
 export type JuryleitungScalarFieldEnum = (typeof JuryleitungScalarFieldEnum)[keyof typeof JuryleitungScalarFieldEnum]
+
+
+export const SessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
 
 
 export const SortOrder = {
