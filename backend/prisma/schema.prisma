@@ -5,3 +5,81 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+
+  firstName String
+  lastName  String
+  birthDate DateTime
+
+  vereine     UserIsInVerein[]
+  trainer     Trainer?
+  juror       Juror?
+  juryleitung Juryleitung?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Verein {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String
+
+  users   UserIsInVerein[]
+  juroren Juror[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserIsInVerein {
+  user_id   Int
+  verein_id Int
+
+  user   User   @relation(fields: [user_id], references: [id])
+  verein Verein @relation(fields: [verein_id], references: [id])
+
+  @@id([user_id, verein_id])
+}
+
+model Trainer {
+  user_id Int @id
+
+  user User @relation(fields: [user_id], references: [id])
+}
+
+model Competition {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+
+  startDate DateTime
+  endDate   DateTime
+
+  location String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Juror {
+  user_id    Int @id
+  vereins_id Int
+
+  t Boolean @default(false)
+  p Boolean @default(false)
+  a Boolean @default(true)
+
+  user   User   @relation(fields: [user_id], references: [id])
+  verein Verein @relation(fields: [vereins_id], references: [id])
+}
+
+model Juryleitung {
+  user_id Int @id
+
+  user User @relation(fields: [user_id], references: [id])
+}
