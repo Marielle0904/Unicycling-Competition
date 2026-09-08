@@ -1,17 +1,58 @@
 <h1>Login</h1>
 
-<form (ngSubmit)="login()">
+@if (loginError()) {
+  <p>E-Mail oder Passwort ist falsch.</p>
+}
+
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+
   <div>
     <label for="email">E-Mail</label>
-    <input id="email" name="email" type="email" [(ngModel)]="email" required />
+
+    <input
+      id="email"
+      name="email"
+      type="email"
+      [(ngModel)]="email"
+      required
+      email
+      #emailField="ngModel"
+    />
+
+    @if (emailField.invalid && (emailField.touched || loginForm.submitted)) {
+      <div>
+        @if (emailField.errors?.['required']) {
+          <p>E-Mail ist erforderlich.</p>
+        }
+
+        @if (emailField.errors?.['email']) {
+          <p>Bitte gib eine gültige E-Mail-Adresse ein.</p>
+        }
+      </div>
+    }
   </div>
 
   <div>
     <label for="password">Passwort</label>
-    <input id="password" name="password" type="password" [(ngModel)]="password" required />
+
+    <input
+      id="password"
+      name="password"
+      type="password"
+      [(ngModel)]="password"
+      required
+      #passwordField="ngModel"
+    />
+
+    @if (passwordField.invalid && (passwordField.touched || loginForm.submitted)) {
+      @if (passwordField.errors?.['required']) {
+        <p>Passwort ist erforderlich.</p>
+      }
+    }
   </div>
 
   <button type="submit">
     Einloggen
   </button>
+
 </form>

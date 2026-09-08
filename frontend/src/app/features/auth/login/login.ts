@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, signal } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -11,10 +11,17 @@ import { AuthService } from '../../../core/services/auth.service';
 export class Login {
   email = '';
   password = '';
+  loginError = signal('');
 
   constructor(private readonly authService: AuthService) { }
 
-  login() {
+  login(form: NgForm) {
+    this.loginError.set('');
+
+    if (form.invalid) {
+      return;
+    }
+
     this.authService
       .login(this.email, this.password)
       .subscribe({
@@ -23,8 +30,9 @@ export class Login {
         },
         error: (error) => {
           console.error('Login fehlgeschlagen:', error);
+
+          this.loginError.set('E-Mail oder Passwort ist falsch.');
         },
       });
   }
 }
-
