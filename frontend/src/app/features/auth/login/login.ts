@@ -31,6 +31,7 @@ export class Login {
       .subscribe({
         next: (user) => {
           console.log('Login erfolgreich:', user);
+          this.authService.currentUser.set(user);
           this.router.navigate(['/']);
         },
         error: (error) => {

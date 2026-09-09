@@ -2,13 +2,14 @@
 
 <p>Willkommen bei Unicycle Competition!</p>
 
-@if (user()) {
+@if (authService.currentUser()) {
   <p>
     Eingeloggt als:
-    {{ user()?.firstName }} {{ user()?.lastName }}
+    {{ authService.currentUser()?.firstName }}
+    {{ authService.currentUser()?.lastName }}
   </p>
 
   <p>
-    E-Mail: {{ user()?.email }}
+    E-Mail: {{ authService.currentUser()?.email }}
   </p>
 }
