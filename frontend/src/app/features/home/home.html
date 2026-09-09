@@ -12,4 +12,8 @@
   <p>
     E-Mail: {{ authService.currentUser()?.email }}
   </p>
+
+  <button type="button" (click)="logout()">
+    Ausloggen
+  </button>
 }
