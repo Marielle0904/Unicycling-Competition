@@ -1,2 +1,14 @@
 <h1>Home</h1>
+
 <p>Willkommen bei Unicycle Competition!</p>
+
+@if (user()) {
+  <p>
+    Eingeloggt als:
+    {{ user()?.firstName }} {{ user()?.lastName }}
+  </p>
+
+  <p>
+    E-Mail: {{ user()?.email }}
+  </p>
+}
