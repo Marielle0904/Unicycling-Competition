@@ -1,1 +1,68 @@
-<p>register works!</p>
+<h1>Registrieren</h1>
+
+@if (registerError()) {
+<p>{{ registerError() }}</p>
+}
+
+@if (registerSuccess()) {
+<p>Registrierung erfolgreich!</p>
+}
+
+<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+
+  <div>
+    <label for="firstName">Vorname</label>
+    <input id="firstName" name="firstName" type="text" [(ngModel)]="firstName" required />
+
+    @if (registerForm.submitted && !firstName) {
+    <p>Vorname ist erforderlich.</p>
+    }
+  </div>
+
+  <div>
+    <label for="lastName">Nachname</label>
+    <input id="lastName" name="lastName" type="text" [(ngModel)]="lastName" required />
+
+    @if (registerForm.submitted && !lastName) {
+    <p>Nachname ist erforderlich.</p>
+    }
+  </div>
+
+  <div>
+    <label for="email">E-Mail</label>
+    <input id="email" name="email" type="email" [(ngModel)]="email" required email #emailField="ngModel" />
+
+    @if (emailField.invalid && (emailField.touched || registerForm.submitted)) {
+    @if (emailField.errors?.['required']) {
+    <p>E-Mail ist erforderlich.</p>
+    }
+
+    @if (emailField.errors?.['email']) {
+    <p>Bitte gib eine gültige E-Mail-Adresse ein.</p>
+    }
+    }
+  </div>
+
+  <div>
+    <label for="password">Passwort</label>
+    <input id="password" name="password" type="password" [(ngModel)]="password" required />
+
+    @if (registerForm.submitted && !password) {
+    <p>Passwort ist erforderlich.</p>
+    }
+  </div>
+
+  <div>
+    <label for="birthDate">Geburtsdatum</label>
+    <input id="birthDate" name="birthDate" type="date" [(ngModel)]="birthDate" required />
+
+    @if (registerForm.submitted && !birthDate) {
+    <p>Geburtsdatum ist erforderlich.</p>
+    }
+  </div>
+
+  <button type="submit">
+    Registrieren
+  </button>
+
+</form>

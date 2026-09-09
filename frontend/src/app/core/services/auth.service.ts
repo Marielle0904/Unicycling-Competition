@@ -12,6 +12,14 @@ export interface User {
   updatedAt: string;
 }
 
+export interface RegisterData {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -32,6 +40,13 @@ export class AuthService {
       {
         withCredentials: true,
       },
+    );
+  }
+
+  register(data: RegisterData): Observable<User> {
+    return this.http.post<User>(
+      `${this.apiUrl}/users/register`,
+      data,
     );
   }
 
