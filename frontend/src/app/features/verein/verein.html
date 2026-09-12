@@ -1,1 +1,118 @@
-<p>verein works!</p>
+<div class="verein-page">
+
+  <h1>Verein</h1>
+
+  @if (errorMessage()) {
+  <p class="message error">{{ errorMessage() }}</p>
+  }
+
+  @if (successMessage()) {
+  <p class="message success">{{ successMessage() }}</p>
+  }
+
+  <section>
+    <h2>Meine Vereine</h2>
+
+    @if (meineVereine().length === 0) {
+    <p>Du bist momentan keinem Verein beigetreten.</p>
+    } @else {
+    <div class="vereine-list">
+      @for (verein of meineVereine(); track verein.id) {
+      <div class="verein-card">
+        <h3>{{ verein.name }}</h3>
+        <p>{{ verein.email }}</p>
+      </div>
+      }
+    </div>
+    }
+  </section>
+
+  <section class="actions">
+
+    <button type="button" (click)="openJoin()">
+      Weiterem Verein beitreten
+    </button>
+
+    <button type="button" (click)="openCreate()">
+      Verein erstellen
+    </button>
+
+  </section>
+
+  @if (showJoin()) {
+  <div class="modal-backdrop">
+    <div class="modal">
+
+      <h2>Verein beitreten</h2>
+
+      <label for="verein">
+        Verein auswählen
+      </label>
+
+      <select id="verein" [(ngModel)]="selectedVereinId">
+        <option [ngValue]="null">
+          -- Verein auswählen --
+        </option>
+
+        @for (verein of alleVereine(); track verein.id) {
+        <option [ngValue]="verein.id">
+          {{ verein.name }}
+        </option>
+        }
+      </select>
+
+      <div class="modal-actions">
+        <button type="button" (click)="closeJoin()">
+          Abbrechen
+        </button>
+
+        <button type="button" (click)="joinVerein()">
+          Beitreten
+        </button>
+      </div>
+
+    </div>
+  </div>
+  }
+
+  @if (showCreate()) {
+  <div class="modal-backdrop">
+    <div class="modal">
+
+      <h2>Verein erstellen</h2>
+
+      <form (ngSubmit)="createVerein()">
+
+        <div>
+          <label for="name">
+            Vereinsname
+          </label>
+
+          <input id="name" type="text" name="name" [(ngModel)]="neuerVereinName" required />
+        </div>
+
+        <div>
+          <label for="email">
+            Vereins-E-Mail
+          </label>
+
+          <input id="email" type="email" name="email" [(ngModel)]="neuerVereinEmail" required />
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" (click)="closeCreate()">
+            Abbrechen
+          </button>
+
+          <button type="submit">
+            Erstellen
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  }
+
+</div>
