@@ -21,6 +21,7 @@ model User {
   trainer     Trainer?
   juror       Juror?
   juryleitung Juryleitung?
+  isAdmin     Boolean @default(false)
 
   sessions Session[]
 

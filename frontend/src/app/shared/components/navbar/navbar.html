@@ -4,6 +4,59 @@
   </div>
 
   <div class="navbar-links">
+
+    @if (authService.currentUser(); as user) {
+
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Home
+    </a>
+
+    <a routerLink="/competitions" routerLinkActive="active">
+      Wettkämpfe
+    </a>
+
+    <a routerLink="/verein" routerLinkActive="active">
+      Verein
+    </a>
+
+    @if (user.roles.trainer) {
+    <a routerLink="/members" routerLinkActive="active">
+      Mitglieder
+    </a>
+
+    <a routerLink="/registrations" routerLinkActive="active">
+      Anmeldungen
+    </a>
+    }
+
+    <a routerLink="/profile" routerLinkActive="active">
+      Mein Profil
+    </a>
+
+    @if (user.roles.juror) {
+    <a routerLink="/jury" routerLinkActive="active">
+      Jury
+    </a>
+    }
+
+    @if (user.roles.juryleitung) {
+    <a routerLink="/auswertung" routerLinkActive="active">
+      Auswertung
+    </a>
+    }
+
+    @if (user.roles.admin) {
+    <a routerLink="/wettkampfverwaltung" routerLinkActive="active">
+      Wettkampfverwaltung
+    </a>
+    }
+
+   <button type="button" (click)="logout()">
+      Logout
+    </button>
+
+    } @else {
+
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       Home
     </a>
@@ -15,5 +68,8 @@
     <a routerLink="/register" routerLinkActive="active">
       Registrieren
     </a>
+
+    }
+
   </div>
 </nav>

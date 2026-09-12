@@ -448,10 +448,6 @@ export type JurorUncheckedUpdateManyWithoutVereinNestedInput = {
   deleteMany?: Prisma.JurorScalarWhereInput | Prisma.JurorScalarWhereInput[]
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type JurorCreateWithoutUserInput = {
   t?: boolean
   p?: boolean

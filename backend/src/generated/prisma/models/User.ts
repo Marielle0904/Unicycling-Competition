@@ -41,6 +41,7 @@ export type UserMinAggregateOutputType = {
   firstName: string | null
   lastName: string | null
   birthDate: Date | null
+  isAdmin: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -52,6 +53,7 @@ export type UserMaxAggregateOutputType = {
   firstName: string | null
   lastName: string | null
   birthDate: Date | null
+  isAdmin: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -63,6 +65,7 @@ export type UserCountAggregateOutputType = {
   firstName: number
   lastName: number
   birthDate: number
+  isAdmin: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -84,6 +87,7 @@ export type UserMinAggregateInputType = {
   firstName?: true
   lastName?: true
   birthDate?: true
+  isAdmin?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -95,6 +99,7 @@ export type UserMaxAggregateInputType = {
   firstName?: true
   lastName?: true
   birthDate?: true
+  isAdmin?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -106,6 +111,7 @@ export type UserCountAggregateInputType = {
   firstName?: true
   lastName?: true
   birthDate?: true
+  isAdmin?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -204,6 +210,7 @@ export type UserGroupByOutputType = {
   firstName: string
   lastName: string
   birthDate: Date
+  isAdmin: boolean
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -238,6 +245,7 @@ export type UserWhereInput = {
   firstName?: Prisma.StringFilter<"User"> | string
   lastName?: Prisma.StringFilter<"User"> | string
   birthDate?: Prisma.DateTimeFilter<"User"> | Date | string
+  isAdmin?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   vereine?: Prisma.UserIsInVereinListRelationFilter
@@ -254,6 +262,7 @@ export type UserOrderByWithRelationInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   birthDate?: Prisma.SortOrder
+  isAdmin?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   vereine?: Prisma.UserIsInVereinOrderByRelationAggregateInput
@@ -273,6 +282,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   firstName?: Prisma.StringFilter<"User"> | string
   lastName?: Prisma.StringFilter<"User"> | string
   birthDate?: Prisma.DateTimeFilter<"User"> | Date | string
+  isAdmin?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   vereine?: Prisma.UserIsInVereinListRelationFilter
@@ -289,6 +299,7 @@ export type UserOrderByWithAggregationInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   birthDate?: Prisma.SortOrder
+  isAdmin?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -308,6 +319,7 @@ export type UserScalarWhereWithAggregatesInput = {
   firstName?: Prisma.StringWithAggregatesFilter<"User"> | string
   lastName?: Prisma.StringWithAggregatesFilter<"User"> | string
   birthDate?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  isAdmin?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -318,6 +330,7 @@ export type UserCreateInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
@@ -334,6 +347,7 @@ export type UserUncheckedCreateInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
@@ -349,6 +363,7 @@ export type UserUpdateInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
@@ -365,6 +380,7 @@ export type UserUncheckedUpdateInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
@@ -381,6 +397,7 @@ export type UserCreateManyInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -391,6 +408,7 @@ export type UserUpdateManyMutationInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -402,6 +420,7 @@ export type UserUncheckedUpdateManyInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -413,6 +432,7 @@ export type UserCountOrderByAggregateInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   birthDate?: Prisma.SortOrder
+  isAdmin?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -428,6 +448,7 @@ export type UserMaxOrderByAggregateInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   birthDate?: Prisma.SortOrder
+  isAdmin?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -439,6 +460,7 @@ export type UserMinOrderByAggregateInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   birthDate?: Prisma.SortOrder
+  isAdmin?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -458,6 +480,10 @@ export type StringFieldUpdateOperationsInput = {
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -544,6 +570,7 @@ export type UserCreateWithoutVereineInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
@@ -559,6 +586,7 @@ export type UserUncheckedCreateWithoutVereineInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
@@ -589,6 +617,7 @@ export type UserUpdateWithoutVereineInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
@@ -604,6 +633,7 @@ export type UserUncheckedUpdateWithoutVereineInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
@@ -618,6 +648,7 @@ export type UserCreateWithoutTrainerInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
@@ -633,6 +664,7 @@ export type UserUncheckedCreateWithoutTrainerInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
@@ -663,6 +695,7 @@ export type UserUpdateWithoutTrainerInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
@@ -678,6 +711,7 @@ export type UserUncheckedUpdateWithoutTrainerInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
@@ -692,6 +726,7 @@ export type UserCreateWithoutJurorInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
@@ -707,6 +742,7 @@ export type UserUncheckedCreateWithoutJurorInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
@@ -737,6 +773,7 @@ export type UserUpdateWithoutJurorInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
@@ -752,6 +789,7 @@ export type UserUncheckedUpdateWithoutJurorInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
@@ -766,6 +804,7 @@ export type UserCreateWithoutJuryleitungInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
@@ -781,6 +820,7 @@ export type UserUncheckedCreateWithoutJuryleitungInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
@@ -811,6 +851,7 @@ export type UserUpdateWithoutJuryleitungInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
@@ -826,6 +867,7 @@ export type UserUncheckedUpdateWithoutJuryleitungInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
@@ -840,6 +882,7 @@ export type UserCreateWithoutSessionsInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
@@ -855,6 +898,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   firstName: string
   lastName: string
   birthDate: Date | string
+  isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
@@ -885,6 +929,7 @@ export type UserUpdateWithoutSessionsInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
@@ -900,6 +945,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
@@ -955,6 +1001,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   firstName?: boolean
   lastName?: boolean
   birthDate?: boolean
+  isAdmin?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   vereine?: boolean | Prisma.User$vereineArgs<ExtArgs>
@@ -972,6 +1019,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   firstName?: boolean
   lastName?: boolean
   birthDate?: boolean
+  isAdmin?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -983,6 +1031,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   firstName?: boolean
   lastName?: boolean
   birthDate?: boolean
+  isAdmin?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -994,11 +1043,12 @@ export type UserSelectScalar = {
   firstName?: boolean
   lastName?: boolean
   birthDate?: boolean
+  isAdmin?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "birthDate" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "firstName" | "lastName" | "birthDate" | "isAdmin" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vereine?: boolean | Prisma.User$vereineArgs<ExtArgs>
   trainer?: boolean | Prisma.User$trainerArgs<ExtArgs>
@@ -1026,6 +1076,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     firstName: string
     lastName: string
     birthDate: Date
+    isAdmin: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -1462,6 +1513,7 @@ export interface UserFieldRefs {
   readonly firstName: Prisma.FieldRef<"User", 'String'>
   readonly lastName: Prisma.FieldRef<"User", 'String'>
   readonly birthDate: Prisma.FieldRef<"User", 'DateTime'>
+  readonly isAdmin: Prisma.FieldRef<"User", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }

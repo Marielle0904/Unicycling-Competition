@@ -10,6 +10,28 @@ export interface User {
   birthDate: string;
   createdAt: string;
   updatedAt: string;
+
+  roles: {
+    trainer: boolean;
+    juror: boolean;
+    juryleitung: boolean;
+    admin: boolean;
+  };
+}export interface User {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+  createdAt: string;
+  updatedAt: string;
+
+  roles: {
+    trainer: boolean;
+    juror: boolean;
+    juryleitung: boolean;
+    admin: boolean;
+  };
 }
 
 export interface RegisterData {

@@ -11,6 +11,11 @@ export class AuthService {
       where: {
         email,
       },
+      include: {
+        trainer: true,
+        juror: true,
+        juryleitung: true,
+      },
     });
 
     if (!user) {
@@ -40,6 +45,14 @@ export class AuthService {
         firstName: user.firstName,
         lastName: user.lastName,
         birthDate: user.birthDate,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+        roles: {
+          trainer: !!user.trainer,
+          juror: !!user.juror,
+          juryleitung: !!user.juryleitung,
+          admin: user.isAdmin,
+        },
       },
       sessionId: session.id,
     };
@@ -51,7 +64,13 @@ export class AuthService {
         id: sessionId,
       },
       include: {
-        user: true,
+        user: {
+          include: {
+            trainer: true,
+            juror: true,
+            juryleitung: true,
+          },
+        },
       },
     });
 
@@ -69,11 +88,18 @@ export class AuthService {
       throw new UnauthorizedException('Session abgelaufen');
     }
 
-    const { password, ...userWithoutPassword } = session.user;
+    const { password, trainer, juror, juryleitung, ...user } = session.user;
 
-    return userWithoutPassword;
+    return {
+      ...user,
+      roles: {
+        trainer: !!trainer,
+        juror: !!juror,
+        juryleitung: !!juryleitung,
+        admin: user.isAdmin,
+      },
+    };
   }
-
   async logout(sessionId: string) {
     await this.prisma.session.deleteMany({
       where: {
