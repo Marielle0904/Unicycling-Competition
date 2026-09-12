@@ -43,6 +43,56 @@ export type Trainer = Prisma.TrainerModel
  */
 export type Competition = Prisma.CompetitionModel
 /**
+ * Model Einzelkuer
+ * 
+ */
+export type Einzelkuer = Prisma.EinzelkuerModel
+/**
+ * Model EinzelkuerFahrer
+ * 
+ */
+export type EinzelkuerFahrer = Prisma.EinzelkuerFahrerModel
+/**
+ * Model Paarkuer
+ * 
+ */
+export type Paarkuer = Prisma.PaarkuerModel
+/**
+ * Model PaarkuerFahrer
+ * 
+ */
+export type PaarkuerFahrer = Prisma.PaarkuerFahrerModel
+/**
+ * Model Kleingruppenkuer
+ * 
+ */
+export type Kleingruppenkuer = Prisma.KleingruppenkuerModel
+/**
+ * Model KleingruppenkuerFahrer
+ * 
+ */
+export type KleingruppenkuerFahrer = Prisma.KleingruppenkuerFahrerModel
+/**
+ * Model KleingruppenkuerErsatzfahrer
+ * 
+ */
+export type KleingruppenkuerErsatzfahrer = Prisma.KleingruppenkuerErsatzfahrerModel
+/**
+ * Model Grossgruppenkuer
+ * 
+ */
+export type Grossgruppenkuer = Prisma.GrossgruppenkuerModel
+/**
+ * Model GrossgruppenkuerFahrer
+ * 
+ */
+export type GrossgruppenkuerFahrer = Prisma.GrossgruppenkuerFahrerModel
+/**
+ * Model GrossgruppenkuerErsatzfahrer
+ * 
+ */
+export type GrossgruppenkuerErsatzfahrer = Prisma.GrossgruppenkuerErsatzfahrerModel
+/**
  * Model Juror
  * 
  */

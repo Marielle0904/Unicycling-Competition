@@ -56,6 +56,16 @@ export const ModelName = {
   UserIsInVerein: 'UserIsInVerein',
   Trainer: 'Trainer',
   Competition: 'Competition',
+  Einzelkuer: 'Einzelkuer',
+  EinzelkuerFahrer: 'EinzelkuerFahrer',
+  Paarkuer: 'Paarkuer',
+  PaarkuerFahrer: 'PaarkuerFahrer',
+  Kleingruppenkuer: 'Kleingruppenkuer',
+  KleingruppenkuerFahrer: 'KleingruppenkuerFahrer',
+  KleingruppenkuerErsatzfahrer: 'KleingruppenkuerErsatzfahrer',
+  Grossgruppenkuer: 'Grossgruppenkuer',
+  GrossgruppenkuerFahrer: 'GrossgruppenkuerFahrer',
+  GrossgruppenkuerErsatzfahrer: 'GrossgruppenkuerErsatzfahrer',
   Juror: 'Juror',
   Juryleitung: 'Juryleitung',
   Session: 'Session'
@@ -131,6 +141,110 @@ export const CompetitionScalarFieldEnum = {
 } as const
 
 export type CompetitionScalarFieldEnum = (typeof CompetitionScalarFieldEnum)[keyof typeof CompetitionScalarFieldEnum]
+
+
+export const EinzelkuerScalarFieldEnum = {
+  id: 'id',
+  competition_id: 'competition_id',
+  verein_id: 'verein_id',
+  titel: 'titel',
+  platzierung: 'platzierung',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EinzelkuerScalarFieldEnum = (typeof EinzelkuerScalarFieldEnum)[keyof typeof EinzelkuerScalarFieldEnum]
+
+
+export const EinzelkuerFahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type EinzelkuerFahrerScalarFieldEnum = (typeof EinzelkuerFahrerScalarFieldEnum)[keyof typeof EinzelkuerFahrerScalarFieldEnum]
+
+
+export const PaarkuerScalarFieldEnum = {
+  id: 'id',
+  competition_id: 'competition_id',
+  verein_id: 'verein_id',
+  titel: 'titel',
+  platzierung: 'platzierung',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PaarkuerScalarFieldEnum = (typeof PaarkuerScalarFieldEnum)[keyof typeof PaarkuerScalarFieldEnum]
+
+
+export const PaarkuerFahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type PaarkuerFahrerScalarFieldEnum = (typeof PaarkuerFahrerScalarFieldEnum)[keyof typeof PaarkuerFahrerScalarFieldEnum]
+
+
+export const KleingruppenkuerScalarFieldEnum = {
+  id: 'id',
+  competition_id: 'competition_id',
+  verein_id: 'verein_id',
+  titel: 'titel',
+  fahrer_anzahl: 'fahrer_anzahl',
+  ersatzfahrer_anzahl: 'ersatzfahrer_anzahl',
+  platzierung: 'platzierung',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type KleingruppenkuerScalarFieldEnum = (typeof KleingruppenkuerScalarFieldEnum)[keyof typeof KleingruppenkuerScalarFieldEnum]
+
+
+export const KleingruppenkuerFahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type KleingruppenkuerFahrerScalarFieldEnum = (typeof KleingruppenkuerFahrerScalarFieldEnum)[keyof typeof KleingruppenkuerFahrerScalarFieldEnum]
+
+
+export const KleingruppenkuerErsatzfahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type KleingruppenkuerErsatzfahrerScalarFieldEnum = (typeof KleingruppenkuerErsatzfahrerScalarFieldEnum)[keyof typeof KleingruppenkuerErsatzfahrerScalarFieldEnum]
+
+
+export const GrossgruppenkuerScalarFieldEnum = {
+  id: 'id',
+  competition_id: 'competition_id',
+  verein_id: 'verein_id',
+  titel: 'titel',
+  fahrer_anzahl: 'fahrer_anzahl',
+  ersatzfahrer_anzahl: 'ersatzfahrer_anzahl',
+  platzierung: 'platzierung',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GrossgruppenkuerScalarFieldEnum = (typeof GrossgruppenkuerScalarFieldEnum)[keyof typeof GrossgruppenkuerScalarFieldEnum]
+
+
+export const GrossgruppenkuerFahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type GrossgruppenkuerFahrerScalarFieldEnum = (typeof GrossgruppenkuerFahrerScalarFieldEnum)[keyof typeof GrossgruppenkuerFahrerScalarFieldEnum]
+
+
+export const GrossgruppenkuerErsatzfahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type GrossgruppenkuerErsatzfahrerScalarFieldEnum = (typeof GrossgruppenkuerErsatzfahrerScalarFieldEnum)[keyof typeof GrossgruppenkuerErsatzfahrerScalarFieldEnum]
 
 
 export const JurorScalarFieldEnum = {

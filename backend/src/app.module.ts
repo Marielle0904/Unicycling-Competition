@@ -7,6 +7,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { VereineModule } from './vereine/vereine.module';
 import { CompetitionsModule } from './competitions/competitions.module';
+import { RegistrationsModule } from './registrations/registrations.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CompetitionsModule } from './competitions/competitions.module';
     AuthModule,
     VereineModule,
     CompetitionsModule,
+    RegistrationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

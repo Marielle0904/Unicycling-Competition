@@ -402,6 +402,16 @@ export const ModelName = {
   UserIsInVerein: 'UserIsInVerein',
   Trainer: 'Trainer',
   Competition: 'Competition',
+  Einzelkuer: 'Einzelkuer',
+  EinzelkuerFahrer: 'EinzelkuerFahrer',
+  Paarkuer: 'Paarkuer',
+  PaarkuerFahrer: 'PaarkuerFahrer',
+  Kleingruppenkuer: 'Kleingruppenkuer',
+  KleingruppenkuerFahrer: 'KleingruppenkuerFahrer',
+  KleingruppenkuerErsatzfahrer: 'KleingruppenkuerErsatzfahrer',
+  Grossgruppenkuer: 'Grossgruppenkuer',
+  GrossgruppenkuerFahrer: 'GrossgruppenkuerFahrer',
+  GrossgruppenkuerErsatzfahrer: 'GrossgruppenkuerErsatzfahrer',
   Juror: 'Juror',
   Juryleitung: 'Juryleitung',
   Session: 'Session'
@@ -420,7 +430,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "verein" | "userIsInVerein" | "trainer" | "competition" | "juror" | "juryleitung" | "session"
+    modelProps: "user" | "verein" | "userIsInVerein" | "trainer" | "competition" | "einzelkuer" | "einzelkuerFahrer" | "paarkuer" | "paarkuerFahrer" | "kleingruppenkuer" | "kleingruppenkuerFahrer" | "kleingruppenkuerErsatzfahrer" | "grossgruppenkuer" | "grossgruppenkuerFahrer" | "grossgruppenkuerErsatzfahrer" | "juror" | "juryleitung" | "session"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -794,6 +804,746 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Einzelkuer: {
+      payload: Prisma.$EinzelkuerPayload<ExtArgs>
+      fields: Prisma.EinzelkuerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EinzelkuerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EinzelkuerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload>
+        }
+        findFirst: {
+          args: Prisma.EinzelkuerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EinzelkuerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload>
+        }
+        findMany: {
+          args: Prisma.EinzelkuerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload>[]
+        }
+        create: {
+          args: Prisma.EinzelkuerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload>
+        }
+        createMany: {
+          args: Prisma.EinzelkuerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EinzelkuerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload>[]
+        }
+        delete: {
+          args: Prisma.EinzelkuerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload>
+        }
+        update: {
+          args: Prisma.EinzelkuerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload>
+        }
+        deleteMany: {
+          args: Prisma.EinzelkuerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EinzelkuerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EinzelkuerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload>[]
+        }
+        upsert: {
+          args: Prisma.EinzelkuerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerPayload>
+        }
+        aggregate: {
+          args: Prisma.EinzelkuerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEinzelkuer>
+        }
+        groupBy: {
+          args: Prisma.EinzelkuerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EinzelkuerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EinzelkuerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EinzelkuerCountAggregateOutputType> | number
+        }
+      }
+    }
+    EinzelkuerFahrer: {
+      payload: Prisma.$EinzelkuerFahrerPayload<ExtArgs>
+      fields: Prisma.EinzelkuerFahrerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EinzelkuerFahrerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EinzelkuerFahrerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload>
+        }
+        findFirst: {
+          args: Prisma.EinzelkuerFahrerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EinzelkuerFahrerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload>
+        }
+        findMany: {
+          args: Prisma.EinzelkuerFahrerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload>[]
+        }
+        create: {
+          args: Prisma.EinzelkuerFahrerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload>
+        }
+        createMany: {
+          args: Prisma.EinzelkuerFahrerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EinzelkuerFahrerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload>[]
+        }
+        delete: {
+          args: Prisma.EinzelkuerFahrerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload>
+        }
+        update: {
+          args: Prisma.EinzelkuerFahrerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload>
+        }
+        deleteMany: {
+          args: Prisma.EinzelkuerFahrerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EinzelkuerFahrerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EinzelkuerFahrerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload>[]
+        }
+        upsert: {
+          args: Prisma.EinzelkuerFahrerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EinzelkuerFahrerPayload>
+        }
+        aggregate: {
+          args: Prisma.EinzelkuerFahrerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEinzelkuerFahrer>
+        }
+        groupBy: {
+          args: Prisma.EinzelkuerFahrerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EinzelkuerFahrerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EinzelkuerFahrerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EinzelkuerFahrerCountAggregateOutputType> | number
+        }
+      }
+    }
+    Paarkuer: {
+      payload: Prisma.$PaarkuerPayload<ExtArgs>
+      fields: Prisma.PaarkuerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PaarkuerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PaarkuerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload>
+        }
+        findFirst: {
+          args: Prisma.PaarkuerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PaarkuerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload>
+        }
+        findMany: {
+          args: Prisma.PaarkuerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload>[]
+        }
+        create: {
+          args: Prisma.PaarkuerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload>
+        }
+        createMany: {
+          args: Prisma.PaarkuerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PaarkuerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload>[]
+        }
+        delete: {
+          args: Prisma.PaarkuerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload>
+        }
+        update: {
+          args: Prisma.PaarkuerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload>
+        }
+        deleteMany: {
+          args: Prisma.PaarkuerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PaarkuerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PaarkuerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload>[]
+        }
+        upsert: {
+          args: Prisma.PaarkuerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerPayload>
+        }
+        aggregate: {
+          args: Prisma.PaarkuerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePaarkuer>
+        }
+        groupBy: {
+          args: Prisma.PaarkuerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PaarkuerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PaarkuerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PaarkuerCountAggregateOutputType> | number
+        }
+      }
+    }
+    PaarkuerFahrer: {
+      payload: Prisma.$PaarkuerFahrerPayload<ExtArgs>
+      fields: Prisma.PaarkuerFahrerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PaarkuerFahrerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PaarkuerFahrerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload>
+        }
+        findFirst: {
+          args: Prisma.PaarkuerFahrerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PaarkuerFahrerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload>
+        }
+        findMany: {
+          args: Prisma.PaarkuerFahrerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload>[]
+        }
+        create: {
+          args: Prisma.PaarkuerFahrerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload>
+        }
+        createMany: {
+          args: Prisma.PaarkuerFahrerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PaarkuerFahrerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload>[]
+        }
+        delete: {
+          args: Prisma.PaarkuerFahrerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload>
+        }
+        update: {
+          args: Prisma.PaarkuerFahrerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload>
+        }
+        deleteMany: {
+          args: Prisma.PaarkuerFahrerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PaarkuerFahrerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PaarkuerFahrerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload>[]
+        }
+        upsert: {
+          args: Prisma.PaarkuerFahrerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaarkuerFahrerPayload>
+        }
+        aggregate: {
+          args: Prisma.PaarkuerFahrerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePaarkuerFahrer>
+        }
+        groupBy: {
+          args: Prisma.PaarkuerFahrerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PaarkuerFahrerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PaarkuerFahrerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PaarkuerFahrerCountAggregateOutputType> | number
+        }
+      }
+    }
+    Kleingruppenkuer: {
+      payload: Prisma.$KleingruppenkuerPayload<ExtArgs>
+      fields: Prisma.KleingruppenkuerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.KleingruppenkuerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.KleingruppenkuerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload>
+        }
+        findFirst: {
+          args: Prisma.KleingruppenkuerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.KleingruppenkuerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload>
+        }
+        findMany: {
+          args: Prisma.KleingruppenkuerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload>[]
+        }
+        create: {
+          args: Prisma.KleingruppenkuerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload>
+        }
+        createMany: {
+          args: Prisma.KleingruppenkuerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.KleingruppenkuerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload>[]
+        }
+        delete: {
+          args: Prisma.KleingruppenkuerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload>
+        }
+        update: {
+          args: Prisma.KleingruppenkuerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload>
+        }
+        deleteMany: {
+          args: Prisma.KleingruppenkuerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.KleingruppenkuerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.KleingruppenkuerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload>[]
+        }
+        upsert: {
+          args: Prisma.KleingruppenkuerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerPayload>
+        }
+        aggregate: {
+          args: Prisma.KleingruppenkuerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateKleingruppenkuer>
+        }
+        groupBy: {
+          args: Prisma.KleingruppenkuerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.KleingruppenkuerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.KleingruppenkuerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.KleingruppenkuerCountAggregateOutputType> | number
+        }
+      }
+    }
+    KleingruppenkuerFahrer: {
+      payload: Prisma.$KleingruppenkuerFahrerPayload<ExtArgs>
+      fields: Prisma.KleingruppenkuerFahrerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.KleingruppenkuerFahrerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.KleingruppenkuerFahrerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload>
+        }
+        findFirst: {
+          args: Prisma.KleingruppenkuerFahrerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.KleingruppenkuerFahrerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload>
+        }
+        findMany: {
+          args: Prisma.KleingruppenkuerFahrerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload>[]
+        }
+        create: {
+          args: Prisma.KleingruppenkuerFahrerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload>
+        }
+        createMany: {
+          args: Prisma.KleingruppenkuerFahrerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.KleingruppenkuerFahrerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload>[]
+        }
+        delete: {
+          args: Prisma.KleingruppenkuerFahrerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload>
+        }
+        update: {
+          args: Prisma.KleingruppenkuerFahrerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload>
+        }
+        deleteMany: {
+          args: Prisma.KleingruppenkuerFahrerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.KleingruppenkuerFahrerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.KleingruppenkuerFahrerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload>[]
+        }
+        upsert: {
+          args: Prisma.KleingruppenkuerFahrerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerFahrerPayload>
+        }
+        aggregate: {
+          args: Prisma.KleingruppenkuerFahrerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateKleingruppenkuerFahrer>
+        }
+        groupBy: {
+          args: Prisma.KleingruppenkuerFahrerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.KleingruppenkuerFahrerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.KleingruppenkuerFahrerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.KleingruppenkuerFahrerCountAggregateOutputType> | number
+        }
+      }
+    }
+    KleingruppenkuerErsatzfahrer: {
+      payload: Prisma.$KleingruppenkuerErsatzfahrerPayload<ExtArgs>
+      fields: Prisma.KleingruppenkuerErsatzfahrerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.KleingruppenkuerErsatzfahrerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.KleingruppenkuerErsatzfahrerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload>
+        }
+        findFirst: {
+          args: Prisma.KleingruppenkuerErsatzfahrerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.KleingruppenkuerErsatzfahrerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload>
+        }
+        findMany: {
+          args: Prisma.KleingruppenkuerErsatzfahrerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload>[]
+        }
+        create: {
+          args: Prisma.KleingruppenkuerErsatzfahrerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload>
+        }
+        createMany: {
+          args: Prisma.KleingruppenkuerErsatzfahrerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.KleingruppenkuerErsatzfahrerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload>[]
+        }
+        delete: {
+          args: Prisma.KleingruppenkuerErsatzfahrerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload>
+        }
+        update: {
+          args: Prisma.KleingruppenkuerErsatzfahrerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload>
+        }
+        deleteMany: {
+          args: Prisma.KleingruppenkuerErsatzfahrerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.KleingruppenkuerErsatzfahrerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.KleingruppenkuerErsatzfahrerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload>[]
+        }
+        upsert: {
+          args: Prisma.KleingruppenkuerErsatzfahrerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KleingruppenkuerErsatzfahrerPayload>
+        }
+        aggregate: {
+          args: Prisma.KleingruppenkuerErsatzfahrerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateKleingruppenkuerErsatzfahrer>
+        }
+        groupBy: {
+          args: Prisma.KleingruppenkuerErsatzfahrerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.KleingruppenkuerErsatzfahrerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.KleingruppenkuerErsatzfahrerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.KleingruppenkuerErsatzfahrerCountAggregateOutputType> | number
+        }
+      }
+    }
+    Grossgruppenkuer: {
+      payload: Prisma.$GrossgruppenkuerPayload<ExtArgs>
+      fields: Prisma.GrossgruppenkuerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GrossgruppenkuerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GrossgruppenkuerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload>
+        }
+        findFirst: {
+          args: Prisma.GrossgruppenkuerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GrossgruppenkuerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload>
+        }
+        findMany: {
+          args: Prisma.GrossgruppenkuerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload>[]
+        }
+        create: {
+          args: Prisma.GrossgruppenkuerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload>
+        }
+        createMany: {
+          args: Prisma.GrossgruppenkuerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GrossgruppenkuerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload>[]
+        }
+        delete: {
+          args: Prisma.GrossgruppenkuerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload>
+        }
+        update: {
+          args: Prisma.GrossgruppenkuerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload>
+        }
+        deleteMany: {
+          args: Prisma.GrossgruppenkuerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GrossgruppenkuerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GrossgruppenkuerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload>[]
+        }
+        upsert: {
+          args: Prisma.GrossgruppenkuerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerPayload>
+        }
+        aggregate: {
+          args: Prisma.GrossgruppenkuerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGrossgruppenkuer>
+        }
+        groupBy: {
+          args: Prisma.GrossgruppenkuerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrossgruppenkuerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GrossgruppenkuerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrossgruppenkuerCountAggregateOutputType> | number
+        }
+      }
+    }
+    GrossgruppenkuerFahrer: {
+      payload: Prisma.$GrossgruppenkuerFahrerPayload<ExtArgs>
+      fields: Prisma.GrossgruppenkuerFahrerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GrossgruppenkuerFahrerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GrossgruppenkuerFahrerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload>
+        }
+        findFirst: {
+          args: Prisma.GrossgruppenkuerFahrerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GrossgruppenkuerFahrerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload>
+        }
+        findMany: {
+          args: Prisma.GrossgruppenkuerFahrerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload>[]
+        }
+        create: {
+          args: Prisma.GrossgruppenkuerFahrerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload>
+        }
+        createMany: {
+          args: Prisma.GrossgruppenkuerFahrerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GrossgruppenkuerFahrerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload>[]
+        }
+        delete: {
+          args: Prisma.GrossgruppenkuerFahrerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload>
+        }
+        update: {
+          args: Prisma.GrossgruppenkuerFahrerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload>
+        }
+        deleteMany: {
+          args: Prisma.GrossgruppenkuerFahrerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GrossgruppenkuerFahrerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GrossgruppenkuerFahrerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload>[]
+        }
+        upsert: {
+          args: Prisma.GrossgruppenkuerFahrerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerFahrerPayload>
+        }
+        aggregate: {
+          args: Prisma.GrossgruppenkuerFahrerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGrossgruppenkuerFahrer>
+        }
+        groupBy: {
+          args: Prisma.GrossgruppenkuerFahrerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrossgruppenkuerFahrerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GrossgruppenkuerFahrerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrossgruppenkuerFahrerCountAggregateOutputType> | number
+        }
+      }
+    }
+    GrossgruppenkuerErsatzfahrer: {
+      payload: Prisma.$GrossgruppenkuerErsatzfahrerPayload<ExtArgs>
+      fields: Prisma.GrossgruppenkuerErsatzfahrerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload>
+        }
+        findFirst: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload>
+        }
+        findMany: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload>[]
+        }
+        create: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload>
+        }
+        createMany: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload>[]
+        }
+        delete: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload>
+        }
+        update: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload>
+        }
+        deleteMany: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload>[]
+        }
+        upsert: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GrossgruppenkuerErsatzfahrerPayload>
+        }
+        aggregate: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGrossgruppenkuerErsatzfahrer>
+        }
+        groupBy: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrossgruppenkuerErsatzfahrerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GrossgruppenkuerErsatzfahrerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GrossgruppenkuerErsatzfahrerCountAggregateOutputType> | number
+        }
+      }
+    }
     Juror: {
       payload: Prisma.$JurorPayload<ExtArgs>
       fields: Prisma.JurorFieldRefs
@@ -1111,6 +1861,110 @@ export const CompetitionScalarFieldEnum = {
 export type CompetitionScalarFieldEnum = (typeof CompetitionScalarFieldEnum)[keyof typeof CompetitionScalarFieldEnum]
 
 
+export const EinzelkuerScalarFieldEnum = {
+  id: 'id',
+  competition_id: 'competition_id',
+  verein_id: 'verein_id',
+  titel: 'titel',
+  platzierung: 'platzierung',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EinzelkuerScalarFieldEnum = (typeof EinzelkuerScalarFieldEnum)[keyof typeof EinzelkuerScalarFieldEnum]
+
+
+export const EinzelkuerFahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type EinzelkuerFahrerScalarFieldEnum = (typeof EinzelkuerFahrerScalarFieldEnum)[keyof typeof EinzelkuerFahrerScalarFieldEnum]
+
+
+export const PaarkuerScalarFieldEnum = {
+  id: 'id',
+  competition_id: 'competition_id',
+  verein_id: 'verein_id',
+  titel: 'titel',
+  platzierung: 'platzierung',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PaarkuerScalarFieldEnum = (typeof PaarkuerScalarFieldEnum)[keyof typeof PaarkuerScalarFieldEnum]
+
+
+export const PaarkuerFahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type PaarkuerFahrerScalarFieldEnum = (typeof PaarkuerFahrerScalarFieldEnum)[keyof typeof PaarkuerFahrerScalarFieldEnum]
+
+
+export const KleingruppenkuerScalarFieldEnum = {
+  id: 'id',
+  competition_id: 'competition_id',
+  verein_id: 'verein_id',
+  titel: 'titel',
+  fahrer_anzahl: 'fahrer_anzahl',
+  ersatzfahrer_anzahl: 'ersatzfahrer_anzahl',
+  platzierung: 'platzierung',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type KleingruppenkuerScalarFieldEnum = (typeof KleingruppenkuerScalarFieldEnum)[keyof typeof KleingruppenkuerScalarFieldEnum]
+
+
+export const KleingruppenkuerFahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type KleingruppenkuerFahrerScalarFieldEnum = (typeof KleingruppenkuerFahrerScalarFieldEnum)[keyof typeof KleingruppenkuerFahrerScalarFieldEnum]
+
+
+export const KleingruppenkuerErsatzfahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type KleingruppenkuerErsatzfahrerScalarFieldEnum = (typeof KleingruppenkuerErsatzfahrerScalarFieldEnum)[keyof typeof KleingruppenkuerErsatzfahrerScalarFieldEnum]
+
+
+export const GrossgruppenkuerScalarFieldEnum = {
+  id: 'id',
+  competition_id: 'competition_id',
+  verein_id: 'verein_id',
+  titel: 'titel',
+  fahrer_anzahl: 'fahrer_anzahl',
+  ersatzfahrer_anzahl: 'ersatzfahrer_anzahl',
+  platzierung: 'platzierung',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GrossgruppenkuerScalarFieldEnum = (typeof GrossgruppenkuerScalarFieldEnum)[keyof typeof GrossgruppenkuerScalarFieldEnum]
+
+
+export const GrossgruppenkuerFahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type GrossgruppenkuerFahrerScalarFieldEnum = (typeof GrossgruppenkuerFahrerScalarFieldEnum)[keyof typeof GrossgruppenkuerFahrerScalarFieldEnum]
+
+
+export const GrossgruppenkuerErsatzfahrerScalarFieldEnum = {
+  kuer_id: 'kuer_id',
+  user_id: 'user_id'
+} as const
+
+export type GrossgruppenkuerErsatzfahrerScalarFieldEnum = (typeof GrossgruppenkuerErsatzfahrerScalarFieldEnum)[keyof typeof GrossgruppenkuerErsatzfahrerScalarFieldEnum]
+
+
 export const JurorScalarFieldEnum = {
   user_id: 'user_id',
   vereins_id: 'vereins_id',
@@ -1387,6 +2241,16 @@ export type GlobalOmitConfig = {
   userIsInVerein?: Prisma.UserIsInVereinOmit
   trainer?: Prisma.TrainerOmit
   competition?: Prisma.CompetitionOmit
+  einzelkuer?: Prisma.EinzelkuerOmit
+  einzelkuerFahrer?: Prisma.EinzelkuerFahrerOmit
+  paarkuer?: Prisma.PaarkuerOmit
+  paarkuerFahrer?: Prisma.PaarkuerFahrerOmit
+  kleingruppenkuer?: Prisma.KleingruppenkuerOmit
+  kleingruppenkuerFahrer?: Prisma.KleingruppenkuerFahrerOmit
+  kleingruppenkuerErsatzfahrer?: Prisma.KleingruppenkuerErsatzfahrerOmit
+  grossgruppenkuer?: Prisma.GrossgruppenkuerOmit
+  grossgruppenkuerFahrer?: Prisma.GrossgruppenkuerFahrerOmit
+  grossgruppenkuerErsatzfahrer?: Prisma.GrossgruppenkuerErsatzfahrerOmit
   juror?: Prisma.JurorOmit
   juryleitung?: Prisma.JuryleitungOmit
   session?: Prisma.SessionOmit

@@ -23,7 +23,9 @@
     <a routerLink="/members" routerLinkActive="active">
       Mitglieder
     </a>
+    }
 
+    @if (user.roles.trainer || user.roles.admin) {
     <a routerLink="/registrations" routerLinkActive="active">
       Anmeldungen
     </a>

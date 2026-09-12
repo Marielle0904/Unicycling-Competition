@@ -21,7 +21,14 @@ model User {
   trainer     Trainer?
   juror       Juror?
   juryleitung Juryleitung?
-  isAdmin     Boolean @default(false)
+  isAdmin     Boolean          @default(false)
+
+  einzelkueren             EinzelkuerFahrer[]
+  paarkueren               PaarkuerFahrer[]
+  kleingruppenkueren       KleingruppenkuerFahrer[]
+  kleingruppenErsatzkueren KleingruppenkuerErsatzfahrer[]
+  grossgruppenkueren       GrossgruppenkuerFahrer[]
+  grossgruppenErsatzkueren GrossgruppenkuerErsatzfahrer[]
 
   sessions Session[]
 
@@ -34,9 +41,14 @@ model Verein {
   name  String
   email String
 
-  users   UserIsInVerein[]
-  juroren Juror[]
+  users        UserIsInVerein[]
+  juroren      Juror[]
   competitions Competition[]
+
+  einzelkueren       Einzelkuer[]
+  paarkueren         Paarkuer[]
+  kleingruppenkueren Kleingruppenkuer[]
+  grossgruppenkueren Grossgruppenkuer[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -68,11 +80,154 @@ model Competition {
 
   location String
 
-  verein_id Int 
+  verein_id Int
   verein    Verein @relation(fields: [verein_id], references: [id])
+
+  einzelkueren       Einzelkuer[]
+  paarkueren         Paarkuer[]
+  kleingruppenkueren Kleingruppenkuer[]
+  grossgruppenkueren Grossgruppenkuer[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Einzelkuer {
+  id Int @id @default(autoincrement())
+
+  competition_id Int
+  verein_id      Int
+
+  titel       String
+  platzierung Int?
+
+  competition Competition @relation(fields: [competition_id], references: [id], onDelete: Cascade)
+  verein      Verein      @relation(fields: [verein_id], references: [id])
+
+  fahrer EinzelkuerFahrer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model EinzelkuerFahrer {
+  kuer_id Int
+  user_id Int
+
+  kuer Einzelkuer @relation(fields: [kuer_id], references: [id], onDelete: Cascade)
+  user User       @relation(fields: [user_id], references: [id])
+
+  @@id([kuer_id, user_id])
+}
+
+model Paarkuer {
+  id Int @id @default(autoincrement())
+
+  competition_id Int
+  verein_id      Int
+
+  titel       String
+  platzierung Int?
+
+  competition Competition @relation(fields: [competition_id], references: [id], onDelete: Cascade)
+  verein      Verein      @relation(fields: [verein_id], references: [id])
+
+  fahrer PaarkuerFahrer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PaarkuerFahrer {
+  kuer_id Int
+  user_id Int
+
+  kuer Paarkuer @relation(fields: [kuer_id], references: [id], onDelete: Cascade)
+  user User     @relation(fields: [user_id], references: [id])
+
+  @@id([kuer_id, user_id])
+}
+
+model Kleingruppenkuer {
+  id Int @id @default(autoincrement())
+
+  competition_id Int
+  verein_id      Int
+
+  titel               String
+  fahrer_anzahl       Int
+  ersatzfahrer_anzahl Int
+  platzierung         Int?
+
+  competition Competition @relation(fields: [competition_id], references: [id], onDelete: Cascade)
+  verein      Verein      @relation(fields: [verein_id], references: [id])
+
+  fahrer       KleingruppenkuerFahrer[]
+  ersatzfahrer KleingruppenkuerErsatzfahrer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model KleingruppenkuerFahrer {
+  kuer_id Int
+  user_id Int
+
+  kuer Kleingruppenkuer @relation(fields: [kuer_id], references: [id], onDelete: Cascade)
+  user User             @relation(fields: [user_id], references: [id])
+
+  @@id([kuer_id, user_id])
+}
+
+model KleingruppenkuerErsatzfahrer {
+  kuer_id Int
+  user_id Int
+
+  kuer Kleingruppenkuer @relation(fields: [kuer_id], references: [id], onDelete: Cascade)
+  user User             @relation(fields: [user_id], references: [id])
+
+  @@id([kuer_id, user_id])
+}
+
+model Grossgruppenkuer {
+  id Int @id @default(autoincrement())
+
+  competition_id Int
+  verein_id      Int
+
+  titel               String
+  fahrer_anzahl       Int
+  ersatzfahrer_anzahl Int
+  platzierung         Int?
+
+  competition Competition @relation(fields: [competition_id], references: [id], onDelete: Cascade)
+  verein      Verein      @relation(fields: [verein_id], references: [id])
+
+  fahrer       GrossgruppenkuerFahrer[]
+  ersatzfahrer GrossgruppenkuerErsatzfahrer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GrossgruppenkuerFahrer {
+  kuer_id Int
+  user_id Int
+
+  kuer Grossgruppenkuer @relation(fields: [kuer_id], references: [id], onDelete: Cascade)
+  user User             @relation(fields: [user_id], references: [id])
+
+  @@id([kuer_id, user_id])
+}
+
+model GrossgruppenkuerErsatzfahrer {
+  kuer_id Int
+  user_id Int
+
+  kuer Grossgruppenkuer @relation(fields: [kuer_id], references: [id], onDelete: Cascade)
+  user User             @relation(fields: [user_id], references: [id])
+
+  @@id([kuer_id, user_id])
 }
 
 model Juror {

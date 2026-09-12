@@ -1,0 +1,190 @@
+<h1>Anmeldungen</h1>
+
+@if (errorMessage()) {
+
+<p class="message error">{{ errorMessage() }}</p>
+}
+
+@if (successMessage()) {
+
+<p class="message success">{{ successMessage() }}</p>
+}
+
+<div class="selection-card">
+  <div class="selection-group">
+    <label for="competition">Wettkampf</label>
+
+    <select id="competition" [(ngModel)]="selectedCompetitionId" (ngModelChange)="loadRegistrations()">
+      <option [ngValue]="null">
+        Wettkampf auswählen
+      </option>
+
+      @for (competition of competitions(); track competition.id) {
+      <option [ngValue]="competition.id">
+        {{ competition.name }}
+      </option>
+      }
+    </select>
+
+  </div>
+
+  <div class="selection-group">
+    <label for="verein">Verein</label>
+
+    <select id="verein" [(ngModel)]="selectedVereinId" (ngModelChange)="selectVerein()">
+      <option [ngValue]="null">
+        Verein auswählen
+      </option>
+
+      @for (verein of vereine(); track verein.id) {
+      <option [ngValue]="verein.id">
+        {{ verein.name }}
+      </option>
+      }
+    </select>
+
+  </div>
+</div>
+
+@if (
+selectedCompetitionId !== null &&
+selectedVereinId !== null
+) {
+
+<div class="tabs">
+
+  <button type="button" [class.active]="activeDiscipline() === 'einzel'" (click)="setDiscipline('einzel')">
+    Einzelkür
+  </button>
+
+  <button type="button" [class.active]="activeDiscipline() === 'paar'" (click)="setDiscipline('paar')">
+    Paarkür
+  </button>
+
+  <button type="button" [class.active]="activeDiscipline() === 'kleingruppe'" (click)="setDiscipline('kleingruppe')">
+    Kleingruppe
+  </button>
+
+  <button type="button" [class.active]="activeDiscipline() === 'grossgruppe'" (click)="setDiscipline('grossgruppe')">
+    Großgruppe
+  </button>
+
+</div>
+
+<div class="discipline-content">
+
+  @if (activeDiscipline() === 'einzel') {
+  <div class="discipline-header">
+    <div>
+      <h2>Einzelküren</h2>
+      <p>
+        Einzelne Fahrer können hier für eine Kür
+        angemeldet werden.
+      </p>
+    </div>
+
+    <button type="button" class="add-button" (click)="openForm()">
+      + Kür hinzufügen
+    </button>
+  </div>
+
+  @if (registrations().einzel.length === 0) {
+  <div class="empty-state">
+    <p>Noch keine Einzelkür hinzugefügt.</p>
+  </div>
+  } @else {
+  <div class="registration-list">
+
+    @for (
+    kuer of registrations().einzel;
+    track kuer.id
+    ) {
+    <div class="registration-card">
+
+      <div class="registration-card-header">
+        <h3>{{ kuer.titel }}</h3>
+      </div>
+
+      <div class="registration-drivers">
+        @for (
+        fahrer of kuer.fahrer;
+        track fahrer.user.id
+        ) {
+        <span>
+          {{ fahrer.user.firstName }}
+          {{ fahrer.user.lastName }}
+        </span>
+        }
+      </div>
+
+    </div>
+    }
+
+  </div>
+  }
+  }
+
+
+  @if (activeDiscipline() === 'paar') {
+  <div class="discipline-header">
+    <div>
+      <h2>Paarküren</h2>
+      <p>
+        Zwei Fahrer bilden gemeinsam eine Paarkür.
+      </p>
+    </div>
+
+    <button type="button" class="add-button" (click)="openForm()">
+      + Kür hinzufügen
+    </button>
+  </div>
+
+  @if (registrations().paar.length === 0) {
+  <div class="empty-state">
+    <p>Noch keine Paarkür hinzugefügt.</p>
+  </div>
+  } @else {
+  <div class="registration-list">
+
+    @for (
+    kuer of registrations().paar;
+    track kuer.id
+    ) {
+    <div class="registration-card">
+
+      <div class="registration-card-header">
+        <h3>{{ kuer.titel }}</h3>
+      </div>
+
+      <div class="registration-drivers">
+        @for (
+        fahrer of kuer.fahrer;
+        track fahrer.user.id
+        ) {
+        <span>
+          {{ fahrer.user.firstName }}
+          {{ fahrer.user.lastName }}
+        </span>
+        }
+      </div>
+
+    </div>
+    }
+
+  </div>
+  }
+  }
+
+
+  @if (activeDiscipline() === 'kleingruppe') {
+  <div class="discipline-header">
+    <div>
+      <h2>Kleingruppenküren</h2>
+      <p>
+        3 bis 8 Fahrer, zusätzlich bis zu 2 Ersatzfahrer.
+      </p>
+    </div>
+
+    <button type="button" class="add-button" (click)="openForm()">
+      + Kür hinzufügen
+    </button>
