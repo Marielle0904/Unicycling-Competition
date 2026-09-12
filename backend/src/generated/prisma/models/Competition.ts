@@ -28,10 +28,12 @@ export type AggregateCompetition = {
 
 export type CompetitionAvgAggregateOutputType = {
   id: number | null
+  verein_id: number | null
 }
 
 export type CompetitionSumAggregateOutputType = {
   id: number | null
+  verein_id: number | null
 }
 
 export type CompetitionMinAggregateOutputType = {
@@ -41,6 +43,7 @@ export type CompetitionMinAggregateOutputType = {
   startDate: Date | null
   endDate: Date | null
   location: string | null
+  verein_id: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -52,6 +55,7 @@ export type CompetitionMaxAggregateOutputType = {
   startDate: Date | null
   endDate: Date | null
   location: string | null
+  verein_id: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -63,6 +67,7 @@ export type CompetitionCountAggregateOutputType = {
   startDate: number
   endDate: number
   location: number
+  verein_id: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -71,10 +76,12 @@ export type CompetitionCountAggregateOutputType = {
 
 export type CompetitionAvgAggregateInputType = {
   id?: true
+  verein_id?: true
 }
 
 export type CompetitionSumAggregateInputType = {
   id?: true
+  verein_id?: true
 }
 
 export type CompetitionMinAggregateInputType = {
@@ -84,6 +91,7 @@ export type CompetitionMinAggregateInputType = {
   startDate?: true
   endDate?: true
   location?: true
+  verein_id?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -95,6 +103,7 @@ export type CompetitionMaxAggregateInputType = {
   startDate?: true
   endDate?: true
   location?: true
+  verein_id?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -106,6 +115,7 @@ export type CompetitionCountAggregateInputType = {
   startDate?: true
   endDate?: true
   location?: true
+  verein_id?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -204,6 +214,7 @@ export type CompetitionGroupByOutputType = {
   startDate: Date
   endDate: Date
   location: string
+  verein_id: number
   createdAt: Date
   updatedAt: Date
   _count: CompetitionCountAggregateOutputType | null
@@ -238,8 +249,10 @@ export type CompetitionWhereInput = {
   startDate?: Prisma.DateTimeFilter<"Competition"> | Date | string
   endDate?: Prisma.DateTimeFilter<"Competition"> | Date | string
   location?: Prisma.StringFilter<"Competition"> | string
+  verein_id?: Prisma.IntFilter<"Competition"> | number
   createdAt?: Prisma.DateTimeFilter<"Competition"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Competition"> | Date | string
+  verein?: Prisma.XOR<Prisma.VereinScalarRelationFilter, Prisma.VereinWhereInput>
 }
 
 export type CompetitionOrderByWithRelationInput = {
@@ -249,8 +262,10 @@ export type CompetitionOrderByWithRelationInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  verein_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  verein?: Prisma.VereinOrderByWithRelationInput
 }
 
 export type CompetitionWhereUniqueInput = Prisma.AtLeast<{
@@ -263,8 +278,10 @@ export type CompetitionWhereUniqueInput = Prisma.AtLeast<{
   startDate?: Prisma.DateTimeFilter<"Competition"> | Date | string
   endDate?: Prisma.DateTimeFilter<"Competition"> | Date | string
   location?: Prisma.StringFilter<"Competition"> | string
+  verein_id?: Prisma.IntFilter<"Competition"> | number
   createdAt?: Prisma.DateTimeFilter<"Competition"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Competition"> | Date | string
+  verein?: Prisma.XOR<Prisma.VereinScalarRelationFilter, Prisma.VereinWhereInput>
 }, "id">
 
 export type CompetitionOrderByWithAggregationInput = {
@@ -274,6 +291,7 @@ export type CompetitionOrderByWithAggregationInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  verein_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.CompetitionCountOrderByAggregateInput
@@ -293,6 +311,7 @@ export type CompetitionScalarWhereWithAggregatesInput = {
   startDate?: Prisma.DateTimeWithAggregatesFilter<"Competition"> | Date | string
   endDate?: Prisma.DateTimeWithAggregatesFilter<"Competition"> | Date | string
   location?: Prisma.StringWithAggregatesFilter<"Competition"> | string
+  verein_id?: Prisma.IntWithAggregatesFilter<"Competition"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Competition"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Competition"> | Date | string
 }
@@ -305,6 +324,7 @@ export type CompetitionCreateInput = {
   location: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  verein: Prisma.VereinCreateNestedOneWithoutCompetitionsInput
 }
 
 export type CompetitionUncheckedCreateInput = {
@@ -314,6 +334,7 @@ export type CompetitionUncheckedCreateInput = {
   startDate: Date | string
   endDate: Date | string
   location: string
+  verein_id: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -326,6 +347,7 @@ export type CompetitionUpdateInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  verein?: Prisma.VereinUpdateOneRequiredWithoutCompetitionsNestedInput
 }
 
 export type CompetitionUncheckedUpdateInput = {
@@ -335,6 +357,7 @@ export type CompetitionUncheckedUpdateInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
+  verein_id?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -346,6 +369,7 @@ export type CompetitionCreateManyInput = {
   startDate: Date | string
   endDate: Date | string
   location: string
+  verein_id: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -367,8 +391,19 @@ export type CompetitionUncheckedUpdateManyInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
+  verein_id?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CompetitionListRelationFilter = {
+  every?: Prisma.CompetitionWhereInput
+  some?: Prisma.CompetitionWhereInput
+  none?: Prisma.CompetitionWhereInput
+}
+
+export type CompetitionOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type CompetitionCountOrderByAggregateInput = {
@@ -378,12 +413,14 @@ export type CompetitionCountOrderByAggregateInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  verein_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type CompetitionAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  verein_id?: Prisma.SortOrder
 }
 
 export type CompetitionMaxOrderByAggregateInput = {
@@ -393,6 +430,7 @@ export type CompetitionMaxOrderByAggregateInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  verein_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -404,16 +442,165 @@ export type CompetitionMinOrderByAggregateInput = {
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  verein_id?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type CompetitionSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  verein_id?: Prisma.SortOrder
+}
+
+export type CompetitionCreateNestedManyWithoutVereinInput = {
+  create?: Prisma.XOR<Prisma.CompetitionCreateWithoutVereinInput, Prisma.CompetitionUncheckedCreateWithoutVereinInput> | Prisma.CompetitionCreateWithoutVereinInput[] | Prisma.CompetitionUncheckedCreateWithoutVereinInput[]
+  connectOrCreate?: Prisma.CompetitionCreateOrConnectWithoutVereinInput | Prisma.CompetitionCreateOrConnectWithoutVereinInput[]
+  createMany?: Prisma.CompetitionCreateManyVereinInputEnvelope
+  connect?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+}
+
+export type CompetitionUncheckedCreateNestedManyWithoutVereinInput = {
+  create?: Prisma.XOR<Prisma.CompetitionCreateWithoutVereinInput, Prisma.CompetitionUncheckedCreateWithoutVereinInput> | Prisma.CompetitionCreateWithoutVereinInput[] | Prisma.CompetitionUncheckedCreateWithoutVereinInput[]
+  connectOrCreate?: Prisma.CompetitionCreateOrConnectWithoutVereinInput | Prisma.CompetitionCreateOrConnectWithoutVereinInput[]
+  createMany?: Prisma.CompetitionCreateManyVereinInputEnvelope
+  connect?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+}
+
+export type CompetitionUpdateManyWithoutVereinNestedInput = {
+  create?: Prisma.XOR<Prisma.CompetitionCreateWithoutVereinInput, Prisma.CompetitionUncheckedCreateWithoutVereinInput> | Prisma.CompetitionCreateWithoutVereinInput[] | Prisma.CompetitionUncheckedCreateWithoutVereinInput[]
+  connectOrCreate?: Prisma.CompetitionCreateOrConnectWithoutVereinInput | Prisma.CompetitionCreateOrConnectWithoutVereinInput[]
+  upsert?: Prisma.CompetitionUpsertWithWhereUniqueWithoutVereinInput | Prisma.CompetitionUpsertWithWhereUniqueWithoutVereinInput[]
+  createMany?: Prisma.CompetitionCreateManyVereinInputEnvelope
+  set?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+  disconnect?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+  delete?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+  connect?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+  update?: Prisma.CompetitionUpdateWithWhereUniqueWithoutVereinInput | Prisma.CompetitionUpdateWithWhereUniqueWithoutVereinInput[]
+  updateMany?: Prisma.CompetitionUpdateManyWithWhereWithoutVereinInput | Prisma.CompetitionUpdateManyWithWhereWithoutVereinInput[]
+  deleteMany?: Prisma.CompetitionScalarWhereInput | Prisma.CompetitionScalarWhereInput[]
+}
+
+export type CompetitionUncheckedUpdateManyWithoutVereinNestedInput = {
+  create?: Prisma.XOR<Prisma.CompetitionCreateWithoutVereinInput, Prisma.CompetitionUncheckedCreateWithoutVereinInput> | Prisma.CompetitionCreateWithoutVereinInput[] | Prisma.CompetitionUncheckedCreateWithoutVereinInput[]
+  connectOrCreate?: Prisma.CompetitionCreateOrConnectWithoutVereinInput | Prisma.CompetitionCreateOrConnectWithoutVereinInput[]
+  upsert?: Prisma.CompetitionUpsertWithWhereUniqueWithoutVereinInput | Prisma.CompetitionUpsertWithWhereUniqueWithoutVereinInput[]
+  createMany?: Prisma.CompetitionCreateManyVereinInputEnvelope
+  set?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+  disconnect?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+  delete?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+  connect?: Prisma.CompetitionWhereUniqueInput | Prisma.CompetitionWhereUniqueInput[]
+  update?: Prisma.CompetitionUpdateWithWhereUniqueWithoutVereinInput | Prisma.CompetitionUpdateWithWhereUniqueWithoutVereinInput[]
+  updateMany?: Prisma.CompetitionUpdateManyWithWhereWithoutVereinInput | Prisma.CompetitionUpdateManyWithWhereWithoutVereinInput[]
+  deleteMany?: Prisma.CompetitionScalarWhereInput | Prisma.CompetitionScalarWhereInput[]
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
+}
+
+export type CompetitionCreateWithoutVereinInput = {
+  name: string
+  description?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  location: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CompetitionUncheckedCreateWithoutVereinInput = {
+  id?: number
+  name: string
+  description?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  location: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CompetitionCreateOrConnectWithoutVereinInput = {
+  where: Prisma.CompetitionWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompetitionCreateWithoutVereinInput, Prisma.CompetitionUncheckedCreateWithoutVereinInput>
+}
+
+export type CompetitionCreateManyVereinInputEnvelope = {
+  data: Prisma.CompetitionCreateManyVereinInput | Prisma.CompetitionCreateManyVereinInput[]
+  skipDuplicates?: boolean
+}
+
+export type CompetitionUpsertWithWhereUniqueWithoutVereinInput = {
+  where: Prisma.CompetitionWhereUniqueInput
+  update: Prisma.XOR<Prisma.CompetitionUpdateWithoutVereinInput, Prisma.CompetitionUncheckedUpdateWithoutVereinInput>
+  create: Prisma.XOR<Prisma.CompetitionCreateWithoutVereinInput, Prisma.CompetitionUncheckedCreateWithoutVereinInput>
+}
+
+export type CompetitionUpdateWithWhereUniqueWithoutVereinInput = {
+  where: Prisma.CompetitionWhereUniqueInput
+  data: Prisma.XOR<Prisma.CompetitionUpdateWithoutVereinInput, Prisma.CompetitionUncheckedUpdateWithoutVereinInput>
+}
+
+export type CompetitionUpdateManyWithWhereWithoutVereinInput = {
+  where: Prisma.CompetitionScalarWhereInput
+  data: Prisma.XOR<Prisma.CompetitionUpdateManyMutationInput, Prisma.CompetitionUncheckedUpdateManyWithoutVereinInput>
+}
+
+export type CompetitionScalarWhereInput = {
+  AND?: Prisma.CompetitionScalarWhereInput | Prisma.CompetitionScalarWhereInput[]
+  OR?: Prisma.CompetitionScalarWhereInput[]
+  NOT?: Prisma.CompetitionScalarWhereInput | Prisma.CompetitionScalarWhereInput[]
+  id?: Prisma.IntFilter<"Competition"> | number
+  name?: Prisma.StringFilter<"Competition"> | string
+  description?: Prisma.StringNullableFilter<"Competition"> | string | null
+  startDate?: Prisma.DateTimeFilter<"Competition"> | Date | string
+  endDate?: Prisma.DateTimeFilter<"Competition"> | Date | string
+  location?: Prisma.StringFilter<"Competition"> | string
+  verein_id?: Prisma.IntFilter<"Competition"> | number
+  createdAt?: Prisma.DateTimeFilter<"Competition"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Competition"> | Date | string
+}
+
+export type CompetitionCreateManyVereinInput = {
+  id?: number
+  name: string
+  description?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  location: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CompetitionUpdateWithoutVereinInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CompetitionUncheckedUpdateWithoutVereinInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CompetitionUncheckedUpdateManyWithoutVereinInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -425,8 +612,10 @@ export type CompetitionSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   startDate?: boolean
   endDate?: boolean
   location?: boolean
+  verein_id?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  verein?: boolean | Prisma.VereinDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["competition"]>
 
 export type CompetitionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -436,8 +625,10 @@ export type CompetitionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   startDate?: boolean
   endDate?: boolean
   location?: boolean
+  verein_id?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  verein?: boolean | Prisma.VereinDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["competition"]>
 
 export type CompetitionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -447,8 +638,10 @@ export type CompetitionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   startDate?: boolean
   endDate?: boolean
   location?: boolean
+  verein_id?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  verein?: boolean | Prisma.VereinDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["competition"]>
 
 export type CompetitionSelectScalar = {
@@ -458,15 +651,27 @@ export type CompetitionSelectScalar = {
   startDate?: boolean
   endDate?: boolean
   location?: boolean
+  verein_id?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CompetitionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "startDate" | "endDate" | "location" | "createdAt" | "updatedAt", ExtArgs["result"]["competition"]>
+export type CompetitionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "startDate" | "endDate" | "location" | "verein_id" | "createdAt" | "updatedAt", ExtArgs["result"]["competition"]>
+export type CompetitionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  verein?: boolean | Prisma.VereinDefaultArgs<ExtArgs>
+}
+export type CompetitionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  verein?: boolean | Prisma.VereinDefaultArgs<ExtArgs>
+}
+export type CompetitionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  verein?: boolean | Prisma.VereinDefaultArgs<ExtArgs>
+}
 
 export type $CompetitionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Competition"
-  objects: {}
+  objects: {
+    verein: Prisma.$VereinPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name: string
@@ -474,6 +679,7 @@ export type $CompetitionPayload<ExtArgs extends runtime.Types.Extensions.Interna
     startDate: Date
     endDate: Date
     location: string
+    verein_id: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["competition"]>
@@ -870,6 +1076,7 @@ readonly fields: CompetitionFieldRefs;
  */
 export interface Prisma__CompetitionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  verein<T extends Prisma.VereinDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VereinDefaultArgs<ExtArgs>>): Prisma.Prisma__VereinClient<runtime.Types.Result.GetResult<Prisma.$VereinPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -905,6 +1112,7 @@ export interface CompetitionFieldRefs {
   readonly startDate: Prisma.FieldRef<"Competition", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"Competition", 'DateTime'>
   readonly location: Prisma.FieldRef<"Competition", 'String'>
+  readonly verein_id: Prisma.FieldRef<"Competition", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Competition", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Competition", 'DateTime'>
 }
@@ -924,6 +1132,10 @@ export type CompetitionFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
+  /**
    * Filter, which Competition to fetch.
    */
   where: Prisma.CompetitionWhereUniqueInput
@@ -942,6 +1154,10 @@ export type CompetitionFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Exten
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
+  /**
    * Filter, which Competition to fetch.
    */
   where: Prisma.CompetitionWhereUniqueInput
@@ -959,6 +1175,10 @@ export type CompetitionFindFirstArgs<ExtArgs extends runtime.Types.Extensions.In
    * Omit specific fields from the Competition
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
   /**
    * Filter, which Competition to fetch.
    */
@@ -1008,6 +1228,10 @@ export type CompetitionFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extens
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
+  /**
    * Filter, which Competition to fetch.
    */
   where?: Prisma.CompetitionWhereInput
@@ -1055,6 +1279,10 @@ export type CompetitionFindManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Omit specific fields from the Competition
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
   /**
    * Filter, which Competitions to fetch.
    */
@@ -1104,6 +1332,10 @@ export type CompetitionCreateArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
+  /**
    * The data needed to create a Competition.
    */
   data: Prisma.XOR<Prisma.CompetitionCreateInput, Prisma.CompetitionUncheckedCreateInput>
@@ -1137,6 +1369,10 @@ export type CompetitionCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    */
   data: Prisma.CompetitionCreateManyInput | Prisma.CompetitionCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1151,6 +1387,10 @@ export type CompetitionUpdateArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Competition
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
   /**
    * The data needed to update a Competition.
    */
@@ -1203,6 +1443,10 @@ export type CompetitionUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    * Limit how many Competitions to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1217,6 +1461,10 @@ export type CompetitionUpsertArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Competition
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
   /**
    * The filter to search for the Competition to update in case it exists.
    */
@@ -1243,6 +1491,10 @@ export type CompetitionDeleteArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Competition
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
   /**
    * Filter which Competition to delete.
    */
@@ -1275,4 +1527,8 @@ export type CompetitionDefaultArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the Competition
    */
   omit?: Prisma.CompetitionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
 }

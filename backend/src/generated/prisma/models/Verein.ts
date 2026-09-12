@@ -218,6 +218,7 @@ export type VereinWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Verein"> | Date | string
   users?: Prisma.UserIsInVereinListRelationFilter
   juroren?: Prisma.JurorListRelationFilter
+  competitions?: Prisma.CompetitionListRelationFilter
 }
 
 export type VereinOrderByWithRelationInput = {
@@ -228,6 +229,7 @@ export type VereinOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   users?: Prisma.UserIsInVereinOrderByRelationAggregateInput
   juroren?: Prisma.JurorOrderByRelationAggregateInput
+  competitions?: Prisma.CompetitionOrderByRelationAggregateInput
 }
 
 export type VereinWhereUniqueInput = Prisma.AtLeast<{
@@ -241,6 +243,7 @@ export type VereinWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Verein"> | Date | string
   users?: Prisma.UserIsInVereinListRelationFilter
   juroren?: Prisma.JurorListRelationFilter
+  competitions?: Prisma.CompetitionListRelationFilter
 }, "id">
 
 export type VereinOrderByWithAggregationInput = {
@@ -274,6 +277,7 @@ export type VereinCreateInput = {
   updatedAt?: Date | string
   users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
+  competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
 }
 
 export type VereinUncheckedCreateInput = {
@@ -284,6 +288,7 @@ export type VereinUncheckedCreateInput = {
   updatedAt?: Date | string
   users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
+  competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
 }
 
 export type VereinUpdateInput = {
@@ -293,6 +298,7 @@ export type VereinUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
+  competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
 }
 
 export type VereinUncheckedUpdateInput = {
@@ -303,6 +309,7 @@ export type VereinUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
+  competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
 }
 
 export type VereinCreateManyInput = {
@@ -379,6 +386,20 @@ export type VereinUpdateOneRequiredWithoutUsersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.VereinUpdateToOneWithWhereWithoutUsersInput, Prisma.VereinUpdateWithoutUsersInput>, Prisma.VereinUncheckedUpdateWithoutUsersInput>
 }
 
+export type VereinCreateNestedOneWithoutCompetitionsInput = {
+  create?: Prisma.XOR<Prisma.VereinCreateWithoutCompetitionsInput, Prisma.VereinUncheckedCreateWithoutCompetitionsInput>
+  connectOrCreate?: Prisma.VereinCreateOrConnectWithoutCompetitionsInput
+  connect?: Prisma.VereinWhereUniqueInput
+}
+
+export type VereinUpdateOneRequiredWithoutCompetitionsNestedInput = {
+  create?: Prisma.XOR<Prisma.VereinCreateWithoutCompetitionsInput, Prisma.VereinUncheckedCreateWithoutCompetitionsInput>
+  connectOrCreate?: Prisma.VereinCreateOrConnectWithoutCompetitionsInput
+  upsert?: Prisma.VereinUpsertWithoutCompetitionsInput
+  connect?: Prisma.VereinWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VereinUpdateToOneWithWhereWithoutCompetitionsInput, Prisma.VereinUpdateWithoutCompetitionsInput>, Prisma.VereinUncheckedUpdateWithoutCompetitionsInput>
+}
+
 export type VereinCreateNestedOneWithoutJurorenInput = {
   create?: Prisma.XOR<Prisma.VereinCreateWithoutJurorenInput, Prisma.VereinUncheckedCreateWithoutJurorenInput>
   connectOrCreate?: Prisma.VereinCreateOrConnectWithoutJurorenInput
@@ -399,6 +420,7 @@ export type VereinCreateWithoutUsersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
+  competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
 }
 
 export type VereinUncheckedCreateWithoutUsersInput = {
@@ -408,6 +430,7 @@ export type VereinUncheckedCreateWithoutUsersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
+  competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
 }
 
 export type VereinCreateOrConnectWithoutUsersInput = {
@@ -432,6 +455,7 @@ export type VereinUpdateWithoutUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
+  competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
 }
 
 export type VereinUncheckedUpdateWithoutUsersInput = {
@@ -441,6 +465,61 @@ export type VereinUncheckedUpdateWithoutUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
+  competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
+}
+
+export type VereinCreateWithoutCompetitionsInput = {
+  name: string
+  email: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
+  juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
+}
+
+export type VereinUncheckedCreateWithoutCompetitionsInput = {
+  id?: number
+  name: string
+  email: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
+  juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
+}
+
+export type VereinCreateOrConnectWithoutCompetitionsInput = {
+  where: Prisma.VereinWhereUniqueInput
+  create: Prisma.XOR<Prisma.VereinCreateWithoutCompetitionsInput, Prisma.VereinUncheckedCreateWithoutCompetitionsInput>
+}
+
+export type VereinUpsertWithoutCompetitionsInput = {
+  update: Prisma.XOR<Prisma.VereinUpdateWithoutCompetitionsInput, Prisma.VereinUncheckedUpdateWithoutCompetitionsInput>
+  create: Prisma.XOR<Prisma.VereinCreateWithoutCompetitionsInput, Prisma.VereinUncheckedCreateWithoutCompetitionsInput>
+  where?: Prisma.VereinWhereInput
+}
+
+export type VereinUpdateToOneWithWhereWithoutCompetitionsInput = {
+  where?: Prisma.VereinWhereInput
+  data: Prisma.XOR<Prisma.VereinUpdateWithoutCompetitionsInput, Prisma.VereinUncheckedUpdateWithoutCompetitionsInput>
+}
+
+export type VereinUpdateWithoutCompetitionsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
+  juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
+}
+
+export type VereinUncheckedUpdateWithoutCompetitionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
+  juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
 }
 
 export type VereinCreateWithoutJurorenInput = {
@@ -449,6 +528,7 @@ export type VereinCreateWithoutJurorenInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
+  competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
 }
 
 export type VereinUncheckedCreateWithoutJurorenInput = {
@@ -458,6 +538,7 @@ export type VereinUncheckedCreateWithoutJurorenInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
+  competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
 }
 
 export type VereinCreateOrConnectWithoutJurorenInput = {
@@ -482,6 +563,7 @@ export type VereinUpdateWithoutJurorenInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
+  competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
 }
 
 export type VereinUncheckedUpdateWithoutJurorenInput = {
@@ -491,6 +573,7 @@ export type VereinUncheckedUpdateWithoutJurorenInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
+  competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
 }
 
 
@@ -501,11 +584,13 @@ export type VereinUncheckedUpdateWithoutJurorenInput = {
 export type VereinCountOutputType = {
   users: number
   juroren: number
+  competitions: number
 }
 
 export type VereinCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   users?: boolean | VereinCountOutputTypeCountUsersArgs
   juroren?: boolean | VereinCountOutputTypeCountJurorenArgs
+  competitions?: boolean | VereinCountOutputTypeCountCompetitionsArgs
 }
 
 /**
@@ -532,6 +617,13 @@ export type VereinCountOutputTypeCountJurorenArgs<ExtArgs extends runtime.Types.
   where?: Prisma.JurorWhereInput
 }
 
+/**
+ * VereinCountOutputType without action
+ */
+export type VereinCountOutputTypeCountCompetitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CompetitionWhereInput
+}
+
 
 export type VereinSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -541,6 +633,7 @@ export type VereinSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   updatedAt?: boolean
   users?: boolean | Prisma.Verein$usersArgs<ExtArgs>
   juroren?: boolean | Prisma.Verein$jurorenArgs<ExtArgs>
+  competitions?: boolean | Prisma.Verein$competitionsArgs<ExtArgs>
   _count?: boolean | Prisma.VereinCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["verein"]>
 
@@ -572,6 +665,7 @@ export type VereinOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 export type VereinInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   users?: boolean | Prisma.Verein$usersArgs<ExtArgs>
   juroren?: boolean | Prisma.Verein$jurorenArgs<ExtArgs>
+  competitions?: boolean | Prisma.Verein$competitionsArgs<ExtArgs>
   _count?: boolean | Prisma.VereinCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type VereinIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -582,6 +676,7 @@ export type $VereinPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   objects: {
     users: Prisma.$UserIsInVereinPayload<ExtArgs>[]
     juroren: Prisma.$JurorPayload<ExtArgs>[]
+    competitions: Prisma.$CompetitionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -985,6 +1080,7 @@ export interface Prisma__VereinClient<T, Null = never, ExtArgs extends runtime.T
   readonly [Symbol.toStringTag]: "PrismaPromise"
   users<T extends Prisma.Verein$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserIsInVereinPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   juroren<T extends Prisma.Verein$jurorenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$jurorenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JurorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  competitions<T extends Prisma.Verein$competitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$competitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompetitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1457,6 +1553,30 @@ export type Verein$jurorenArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.JurorScalarFieldEnum | Prisma.JurorScalarFieldEnum[]
+}
+
+/**
+ * Verein.competitions
+ */
+export type Verein$competitionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Competition
+   */
+  select?: Prisma.CompetitionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Competition
+   */
+  omit?: Prisma.CompetitionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompetitionInclude<ExtArgs> | null
+  where?: Prisma.CompetitionWhereInput
+  orderBy?: Prisma.CompetitionOrderByWithRelationInput | Prisma.CompetitionOrderByWithRelationInput[]
+  cursor?: Prisma.CompetitionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CompetitionScalarFieldEnum | Prisma.CompetitionScalarFieldEnum[]
 }
 
 /**

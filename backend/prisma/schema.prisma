@@ -36,6 +36,7 @@ model Verein {
 
   users   UserIsInVerein[]
   juroren Juror[]
+  competitions Competition[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -66,6 +67,9 @@ model Competition {
   endDate   DateTime
 
   location String
+
+  verein_id Int 
+  verein    Verein @relation(fields: [verein_id], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
