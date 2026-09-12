@@ -1,12 +1,16 @@
-<h1>Login</h1>
+<div class="auth-page">
+  <div class="auth-card">
+
+<h1>Einloggen</h1>
+<p class="auth-subtitle">Willkommen zurück!</p>
 
 @if (loginError()) {
-  <p>E-Mail oder Passwort ist falsch.</p>
+  <p class="error-message">E-Mail oder Passwort ist falsch.</p>
 }
 
 <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
 
-  <div>
+  <div class="form-group">
     <label for="email">E-Mail</label>
 
     <input
@@ -20,19 +24,17 @@
     />
 
     @if (emailField.invalid && (emailField.touched || loginForm.submitted)) {
-      <div>
-        @if (emailField.errors?.['required']) {
-          <p>E-Mail ist erforderlich.</p>
-        }
+      @if (emailField.errors?.['required']) {
+        <p class="field-error">E-Mail ist erforderlich.</p>
+      }
 
-        @if (emailField.errors?.['email']) {
-          <p>Bitte gib eine gültige E-Mail-Adresse ein.</p>
-        }
-      </div>
+      @if (emailField.errors?.['email']) {
+        <p class="field-error">Bitte gib eine gültige E-Mail-Adresse ein.</p>
+      }
     }
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="password">Passwort</label>
 
     <input
@@ -46,7 +48,7 @@
 
     @if (passwordField.invalid && (passwordField.touched || loginForm.submitted)) {
       @if (passwordField.errors?.['required']) {
-        <p>Passwort ist erforderlich.</p>
+        <p class="field-error">Passwort ist erforderlich.</p>
       }
     }
   </div>
@@ -56,3 +58,12 @@
   </button>
 
 </form>
+
+<p class="auth-footer">
+  Noch kein Konto?
+  <a routerLink="/register">Registrieren</a>
+</p>
+
+  </div>
+</div>
+
