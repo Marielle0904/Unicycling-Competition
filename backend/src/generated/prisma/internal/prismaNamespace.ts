@@ -401,6 +401,7 @@ export const ModelName = {
   Verein: 'Verein',
   UserIsInVerein: 'UserIsInVerein',
   Trainer: 'Trainer',
+  RoleApplication: 'RoleApplication',
   Competition: 'Competition',
   Einzelkuer: 'Einzelkuer',
   EinzelkuerFahrer: 'EinzelkuerFahrer',
@@ -430,7 +431,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "verein" | "userIsInVerein" | "trainer" | "competition" | "einzelkuer" | "einzelkuerFahrer" | "paarkuer" | "paarkuerFahrer" | "kleingruppenkuer" | "kleingruppenkuerFahrer" | "kleingruppenkuerErsatzfahrer" | "grossgruppenkuer" | "grossgruppenkuerFahrer" | "grossgruppenkuerErsatzfahrer" | "juror" | "juryleitung" | "session"
+    modelProps: "user" | "verein" | "userIsInVerein" | "trainer" | "roleApplication" | "competition" | "einzelkuer" | "einzelkuerFahrer" | "paarkuer" | "paarkuerFahrer" | "kleingruppenkuer" | "kleingruppenkuerFahrer" | "kleingruppenkuerErsatzfahrer" | "grossgruppenkuer" | "grossgruppenkuerFahrer" | "grossgruppenkuerErsatzfahrer" | "juror" | "juryleitung" | "session"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -727,6 +728,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.TrainerCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.TrainerCountAggregateOutputType> | number
+        }
+      }
+    }
+    RoleApplication: {
+      payload: Prisma.$RoleApplicationPayload<ExtArgs>
+      fields: Prisma.RoleApplicationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RoleApplicationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RoleApplicationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload>
+        }
+        findFirst: {
+          args: Prisma.RoleApplicationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RoleApplicationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload>
+        }
+        findMany: {
+          args: Prisma.RoleApplicationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload>[]
+        }
+        create: {
+          args: Prisma.RoleApplicationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload>
+        }
+        createMany: {
+          args: Prisma.RoleApplicationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RoleApplicationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload>[]
+        }
+        delete: {
+          args: Prisma.RoleApplicationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload>
+        }
+        update: {
+          args: Prisma.RoleApplicationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload>
+        }
+        deleteMany: {
+          args: Prisma.RoleApplicationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RoleApplicationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RoleApplicationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload>[]
+        }
+        upsert: {
+          args: Prisma.RoleApplicationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RoleApplicationPayload>
+        }
+        aggregate: {
+          args: Prisma.RoleApplicationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRoleApplication>
+        }
+        groupBy: {
+          args: Prisma.RoleApplicationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RoleApplicationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RoleApplicationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RoleApplicationCountAggregateOutputType> | number
         }
       }
     }
@@ -1846,6 +1921,21 @@ export const TrainerScalarFieldEnum = {
 export type TrainerScalarFieldEnum = (typeof TrainerScalarFieldEnum)[keyof typeof TrainerScalarFieldEnum]
 
 
+export const RoleApplicationScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  role: 'role',
+  status: 'status',
+  verein_id: 'verein_id',
+  reason: 'reason',
+  createdAt: 'createdAt',
+  reviewedAt: 'reviewedAt',
+  reviewedBy: 'reviewedBy'
+} as const
+
+export type RoleApplicationScalarFieldEnum = (typeof RoleApplicationScalarFieldEnum)[keyof typeof RoleApplicationScalarFieldEnum]
+
+
 export const CompetitionScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -2073,6 +2163,34 @@ export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
+ * Reference to a field of type 'RoleType'
+ */
+export type EnumRoleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleType'>
+    
+
+
+/**
+ * Reference to a field of type 'RoleType[]'
+ */
+export type ListEnumRoleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'RoleApplicationStatus'
+ */
+export type EnumRoleApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleApplicationStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'RoleApplicationStatus[]'
+ */
+export type ListEnumRoleApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleApplicationStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -2240,6 +2358,7 @@ export type GlobalOmitConfig = {
   verein?: Prisma.VereinOmit
   userIsInVerein?: Prisma.UserIsInVereinOmit
   trainer?: Prisma.TrainerOmit
+  roleApplication?: Prisma.RoleApplicationOmit
   competition?: Prisma.CompetitionOmit
   einzelkuer?: Prisma.EinzelkuerOmit
   einzelkuerFahrer?: Prisma.EinzelkuerFahrerOmit

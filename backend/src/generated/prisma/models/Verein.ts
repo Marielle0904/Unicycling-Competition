@@ -219,6 +219,7 @@ export type VereinWhereInput = {
   users?: Prisma.UserIsInVereinListRelationFilter
   juroren?: Prisma.JurorListRelationFilter
   competitions?: Prisma.CompetitionListRelationFilter
+  roleApplications?: Prisma.RoleApplicationListRelationFilter
   einzelkueren?: Prisma.EinzelkuerListRelationFilter
   paarkueren?: Prisma.PaarkuerListRelationFilter
   kleingruppenkueren?: Prisma.KleingruppenkuerListRelationFilter
@@ -234,6 +235,7 @@ export type VereinOrderByWithRelationInput = {
   users?: Prisma.UserIsInVereinOrderByRelationAggregateInput
   juroren?: Prisma.JurorOrderByRelationAggregateInput
   competitions?: Prisma.CompetitionOrderByRelationAggregateInput
+  roleApplications?: Prisma.RoleApplicationOrderByRelationAggregateInput
   einzelkueren?: Prisma.EinzelkuerOrderByRelationAggregateInput
   paarkueren?: Prisma.PaarkuerOrderByRelationAggregateInput
   kleingruppenkueren?: Prisma.KleingruppenkuerOrderByRelationAggregateInput
@@ -252,6 +254,7 @@ export type VereinWhereUniqueInput = Prisma.AtLeast<{
   users?: Prisma.UserIsInVereinListRelationFilter
   juroren?: Prisma.JurorListRelationFilter
   competitions?: Prisma.CompetitionListRelationFilter
+  roleApplications?: Prisma.RoleApplicationListRelationFilter
   einzelkueren?: Prisma.EinzelkuerListRelationFilter
   paarkueren?: Prisma.PaarkuerListRelationFilter
   kleingruppenkueren?: Prisma.KleingruppenkuerListRelationFilter
@@ -290,6 +293,7 @@ export type VereinCreateInput = {
   users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerCreateNestedManyWithoutVereinInput
@@ -305,6 +309,7 @@ export type VereinUncheckedCreateInput = {
   users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerUncheckedCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerUncheckedCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedCreateNestedManyWithoutVereinInput
@@ -319,6 +324,7 @@ export type VereinUpdateInput = {
   users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUpdateManyWithoutVereinNestedInput
@@ -334,6 +340,7 @@ export type VereinUncheckedUpdateInput = {
   users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUncheckedUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUncheckedUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
@@ -400,6 +407,11 @@ export type VereinScalarRelationFilter = {
   isNot?: Prisma.VereinWhereInput
 }
 
+export type VereinNullableScalarRelationFilter = {
+  is?: Prisma.VereinWhereInput | null
+  isNot?: Prisma.VereinWhereInput | null
+}
+
 export type VereinCreateNestedOneWithoutUsersInput = {
   create?: Prisma.XOR<Prisma.VereinCreateWithoutUsersInput, Prisma.VereinUncheckedCreateWithoutUsersInput>
   connectOrCreate?: Prisma.VereinCreateOrConnectWithoutUsersInput
@@ -412,6 +424,22 @@ export type VereinUpdateOneRequiredWithoutUsersNestedInput = {
   upsert?: Prisma.VereinUpsertWithoutUsersInput
   connect?: Prisma.VereinWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.VereinUpdateToOneWithWhereWithoutUsersInput, Prisma.VereinUpdateWithoutUsersInput>, Prisma.VereinUncheckedUpdateWithoutUsersInput>
+}
+
+export type VereinCreateNestedOneWithoutRoleApplicationsInput = {
+  create?: Prisma.XOR<Prisma.VereinCreateWithoutRoleApplicationsInput, Prisma.VereinUncheckedCreateWithoutRoleApplicationsInput>
+  connectOrCreate?: Prisma.VereinCreateOrConnectWithoutRoleApplicationsInput
+  connect?: Prisma.VereinWhereUniqueInput
+}
+
+export type VereinUpdateOneWithoutRoleApplicationsNestedInput = {
+  create?: Prisma.XOR<Prisma.VereinCreateWithoutRoleApplicationsInput, Prisma.VereinUncheckedCreateWithoutRoleApplicationsInput>
+  connectOrCreate?: Prisma.VereinCreateOrConnectWithoutRoleApplicationsInput
+  upsert?: Prisma.VereinUpsertWithoutRoleApplicationsInput
+  disconnect?: Prisma.VereinWhereInput | boolean
+  delete?: Prisma.VereinWhereInput | boolean
+  connect?: Prisma.VereinWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VereinUpdateToOneWithWhereWithoutRoleApplicationsInput, Prisma.VereinUpdateWithoutRoleApplicationsInput>, Prisma.VereinUncheckedUpdateWithoutRoleApplicationsInput>
 }
 
 export type VereinCreateNestedOneWithoutCompetitionsInput = {
@@ -505,6 +533,7 @@ export type VereinCreateWithoutUsersInput = {
   updatedAt?: Date | string
   juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerCreateNestedManyWithoutVereinInput
@@ -519,6 +548,7 @@ export type VereinUncheckedCreateWithoutUsersInput = {
   updatedAt?: Date | string
   juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerUncheckedCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerUncheckedCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedCreateNestedManyWithoutVereinInput
@@ -548,6 +578,7 @@ export type VereinUpdateWithoutUsersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUpdateManyWithoutVereinNestedInput
@@ -560,6 +591,81 @@ export type VereinUncheckedUpdateWithoutUsersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
+  competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutVereinNestedInput
+  einzelkueren?: Prisma.EinzelkuerUncheckedUpdateManyWithoutVereinNestedInput
+  paarkueren?: Prisma.PaarkuerUncheckedUpdateManyWithoutVereinNestedInput
+  kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
+  grossgruppenkueren?: Prisma.GrossgruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
+}
+
+export type VereinCreateWithoutRoleApplicationsInput = {
+  name: string
+  email: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
+  juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
+  competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
+  einzelkueren?: Prisma.EinzelkuerCreateNestedManyWithoutVereinInput
+  paarkueren?: Prisma.PaarkuerCreateNestedManyWithoutVereinInput
+  kleingruppenkueren?: Prisma.KleingruppenkuerCreateNestedManyWithoutVereinInput
+  grossgruppenkueren?: Prisma.GrossgruppenkuerCreateNestedManyWithoutVereinInput
+}
+
+export type VereinUncheckedCreateWithoutRoleApplicationsInput = {
+  id?: number
+  name: string
+  email: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
+  juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
+  competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
+  einzelkueren?: Prisma.EinzelkuerUncheckedCreateNestedManyWithoutVereinInput
+  paarkueren?: Prisma.PaarkuerUncheckedCreateNestedManyWithoutVereinInput
+  kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedCreateNestedManyWithoutVereinInput
+  grossgruppenkueren?: Prisma.GrossgruppenkuerUncheckedCreateNestedManyWithoutVereinInput
+}
+
+export type VereinCreateOrConnectWithoutRoleApplicationsInput = {
+  where: Prisma.VereinWhereUniqueInput
+  create: Prisma.XOR<Prisma.VereinCreateWithoutRoleApplicationsInput, Prisma.VereinUncheckedCreateWithoutRoleApplicationsInput>
+}
+
+export type VereinUpsertWithoutRoleApplicationsInput = {
+  update: Prisma.XOR<Prisma.VereinUpdateWithoutRoleApplicationsInput, Prisma.VereinUncheckedUpdateWithoutRoleApplicationsInput>
+  create: Prisma.XOR<Prisma.VereinCreateWithoutRoleApplicationsInput, Prisma.VereinUncheckedCreateWithoutRoleApplicationsInput>
+  where?: Prisma.VereinWhereInput
+}
+
+export type VereinUpdateToOneWithWhereWithoutRoleApplicationsInput = {
+  where?: Prisma.VereinWhereInput
+  data: Prisma.XOR<Prisma.VereinUpdateWithoutRoleApplicationsInput, Prisma.VereinUncheckedUpdateWithoutRoleApplicationsInput>
+}
+
+export type VereinUpdateWithoutRoleApplicationsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
+  juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
+  competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
+  einzelkueren?: Prisma.EinzelkuerUpdateManyWithoutVereinNestedInput
+  paarkueren?: Prisma.PaarkuerUpdateManyWithoutVereinNestedInput
+  kleingruppenkueren?: Prisma.KleingruppenkuerUpdateManyWithoutVereinNestedInput
+  grossgruppenkueren?: Prisma.GrossgruppenkuerUpdateManyWithoutVereinNestedInput
+}
+
+export type VereinUncheckedUpdateWithoutRoleApplicationsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUncheckedUpdateManyWithoutVereinNestedInput
@@ -575,6 +681,7 @@ export type VereinCreateWithoutCompetitionsInput = {
   updatedAt?: Date | string
   users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerCreateNestedManyWithoutVereinInput
@@ -589,6 +696,7 @@ export type VereinUncheckedCreateWithoutCompetitionsInput = {
   updatedAt?: Date | string
   users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerUncheckedCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerUncheckedCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedCreateNestedManyWithoutVereinInput
@@ -618,6 +726,7 @@ export type VereinUpdateWithoutCompetitionsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUpdateManyWithoutVereinNestedInput
@@ -632,6 +741,7 @@ export type VereinUncheckedUpdateWithoutCompetitionsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUncheckedUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUncheckedUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
@@ -646,6 +756,7 @@ export type VereinCreateWithoutEinzelkuerenInput = {
   users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerCreateNestedManyWithoutVereinInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerCreateNestedManyWithoutVereinInput
@@ -660,6 +771,7 @@ export type VereinUncheckedCreateWithoutEinzelkuerenInput = {
   users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerUncheckedCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedCreateNestedManyWithoutVereinInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerUncheckedCreateNestedManyWithoutVereinInput
@@ -689,6 +801,7 @@ export type VereinUpdateWithoutEinzelkuerenInput = {
   users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUpdateManyWithoutVereinNestedInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerUpdateManyWithoutVereinNestedInput
@@ -703,6 +816,7 @@ export type VereinUncheckedUpdateWithoutEinzelkuerenInput = {
   users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUncheckedUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
@@ -716,6 +830,7 @@ export type VereinCreateWithoutPaarkuerenInput = {
   users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerCreateNestedManyWithoutVereinInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerCreateNestedManyWithoutVereinInput
@@ -730,6 +845,7 @@ export type VereinUncheckedCreateWithoutPaarkuerenInput = {
   users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerUncheckedCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedCreateNestedManyWithoutVereinInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerUncheckedCreateNestedManyWithoutVereinInput
@@ -759,6 +875,7 @@ export type VereinUpdateWithoutPaarkuerenInput = {
   users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUpdateManyWithoutVereinNestedInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerUpdateManyWithoutVereinNestedInput
@@ -773,6 +890,7 @@ export type VereinUncheckedUpdateWithoutPaarkuerenInput = {
   users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUncheckedUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
@@ -786,6 +904,7 @@ export type VereinCreateWithoutKleingruppenkuerenInput = {
   users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerCreateNestedManyWithoutVereinInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerCreateNestedManyWithoutVereinInput
@@ -800,6 +919,7 @@ export type VereinUncheckedCreateWithoutKleingruppenkuerenInput = {
   users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerUncheckedCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerUncheckedCreateNestedManyWithoutVereinInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerUncheckedCreateNestedManyWithoutVereinInput
@@ -829,6 +949,7 @@ export type VereinUpdateWithoutKleingruppenkuerenInput = {
   users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUpdateManyWithoutVereinNestedInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerUpdateManyWithoutVereinNestedInput
@@ -843,6 +964,7 @@ export type VereinUncheckedUpdateWithoutKleingruppenkuerenInput = {
   users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUncheckedUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUncheckedUpdateManyWithoutVereinNestedInput
   grossgruppenkueren?: Prisma.GrossgruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
@@ -856,6 +978,7 @@ export type VereinCreateWithoutGrossgruppenkuerenInput = {
   users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerCreateNestedManyWithoutVereinInput
@@ -870,6 +993,7 @@ export type VereinUncheckedCreateWithoutGrossgruppenkuerenInput = {
   users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
   juroren?: Prisma.JurorUncheckedCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerUncheckedCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerUncheckedCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedCreateNestedManyWithoutVereinInput
@@ -899,6 +1023,7 @@ export type VereinUpdateWithoutGrossgruppenkuerenInput = {
   users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUpdateManyWithoutVereinNestedInput
@@ -913,6 +1038,7 @@ export type VereinUncheckedUpdateWithoutGrossgruppenkuerenInput = {
   users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
   juroren?: Prisma.JurorUncheckedUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUncheckedUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUncheckedUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
@@ -925,6 +1051,7 @@ export type VereinCreateWithoutJurorenInput = {
   updatedAt?: Date | string
   users?: Prisma.UserIsInVereinCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerCreateNestedManyWithoutVereinInput
@@ -939,6 +1066,7 @@ export type VereinUncheckedCreateWithoutJurorenInput = {
   updatedAt?: Date | string
   users?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutVereinInput
   competitions?: Prisma.CompetitionUncheckedCreateNestedManyWithoutVereinInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutVereinInput
   einzelkueren?: Prisma.EinzelkuerUncheckedCreateNestedManyWithoutVereinInput
   paarkueren?: Prisma.PaarkuerUncheckedCreateNestedManyWithoutVereinInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedCreateNestedManyWithoutVereinInput
@@ -968,6 +1096,7 @@ export type VereinUpdateWithoutJurorenInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserIsInVereinUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUpdateManyWithoutVereinNestedInput
@@ -982,6 +1111,7 @@ export type VereinUncheckedUpdateWithoutJurorenInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutVereinNestedInput
   competitions?: Prisma.CompetitionUncheckedUpdateManyWithoutVereinNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutVereinNestedInput
   einzelkueren?: Prisma.EinzelkuerUncheckedUpdateManyWithoutVereinNestedInput
   paarkueren?: Prisma.PaarkuerUncheckedUpdateManyWithoutVereinNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerUncheckedUpdateManyWithoutVereinNestedInput
@@ -997,6 +1127,7 @@ export type VereinCountOutputType = {
   users: number
   juroren: number
   competitions: number
+  roleApplications: number
   einzelkueren: number
   paarkueren: number
   kleingruppenkueren: number
@@ -1007,6 +1138,7 @@ export type VereinCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   users?: boolean | VereinCountOutputTypeCountUsersArgs
   juroren?: boolean | VereinCountOutputTypeCountJurorenArgs
   competitions?: boolean | VereinCountOutputTypeCountCompetitionsArgs
+  roleApplications?: boolean | VereinCountOutputTypeCountRoleApplicationsArgs
   einzelkueren?: boolean | VereinCountOutputTypeCountEinzelkuerenArgs
   paarkueren?: boolean | VereinCountOutputTypeCountPaarkuerenArgs
   kleingruppenkueren?: boolean | VereinCountOutputTypeCountKleingruppenkuerenArgs
@@ -1047,6 +1179,13 @@ export type VereinCountOutputTypeCountCompetitionsArgs<ExtArgs extends runtime.T
 /**
  * VereinCountOutputType without action
  */
+export type VereinCountOutputTypeCountRoleApplicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RoleApplicationWhereInput
+}
+
+/**
+ * VereinCountOutputType without action
+ */
 export type VereinCountOutputTypeCountEinzelkuerenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.EinzelkuerWhereInput
 }
@@ -1082,6 +1221,7 @@ export type VereinSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   users?: boolean | Prisma.Verein$usersArgs<ExtArgs>
   juroren?: boolean | Prisma.Verein$jurorenArgs<ExtArgs>
   competitions?: boolean | Prisma.Verein$competitionsArgs<ExtArgs>
+  roleApplications?: boolean | Prisma.Verein$roleApplicationsArgs<ExtArgs>
   einzelkueren?: boolean | Prisma.Verein$einzelkuerenArgs<ExtArgs>
   paarkueren?: boolean | Prisma.Verein$paarkuerenArgs<ExtArgs>
   kleingruppenkueren?: boolean | Prisma.Verein$kleingruppenkuerenArgs<ExtArgs>
@@ -1118,6 +1258,7 @@ export type VereinInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   users?: boolean | Prisma.Verein$usersArgs<ExtArgs>
   juroren?: boolean | Prisma.Verein$jurorenArgs<ExtArgs>
   competitions?: boolean | Prisma.Verein$competitionsArgs<ExtArgs>
+  roleApplications?: boolean | Prisma.Verein$roleApplicationsArgs<ExtArgs>
   einzelkueren?: boolean | Prisma.Verein$einzelkuerenArgs<ExtArgs>
   paarkueren?: boolean | Prisma.Verein$paarkuerenArgs<ExtArgs>
   kleingruppenkueren?: boolean | Prisma.Verein$kleingruppenkuerenArgs<ExtArgs>
@@ -1133,6 +1274,7 @@ export type $VereinPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     users: Prisma.$UserIsInVereinPayload<ExtArgs>[]
     juroren: Prisma.$JurorPayload<ExtArgs>[]
     competitions: Prisma.$CompetitionPayload<ExtArgs>[]
+    roleApplications: Prisma.$RoleApplicationPayload<ExtArgs>[]
     einzelkueren: Prisma.$EinzelkuerPayload<ExtArgs>[]
     paarkueren: Prisma.$PaarkuerPayload<ExtArgs>[]
     kleingruppenkueren: Prisma.$KleingruppenkuerPayload<ExtArgs>[]
@@ -1541,6 +1683,7 @@ export interface Prisma__VereinClient<T, Null = never, ExtArgs extends runtime.T
   users<T extends Prisma.Verein$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserIsInVereinPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   juroren<T extends Prisma.Verein$jurorenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$jurorenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$JurorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   competitions<T extends Prisma.Verein$competitionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$competitionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompetitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  roleApplications<T extends Prisma.Verein$roleApplicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$roleApplicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RoleApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   einzelkueren<T extends Prisma.Verein$einzelkuerenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$einzelkuerenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EinzelkuerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   paarkueren<T extends Prisma.Verein$paarkuerenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$paarkuerenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaarkuerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   kleingruppenkueren<T extends Prisma.Verein$kleingruppenkuerenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Verein$kleingruppenkuerenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$KleingruppenkuerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2041,6 +2184,30 @@ export type Verein$competitionsArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.CompetitionScalarFieldEnum | Prisma.CompetitionScalarFieldEnum[]
+}
+
+/**
+ * Verein.roleApplications
+ */
+export type Verein$roleApplicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RoleApplication
+   */
+  select?: Prisma.RoleApplicationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RoleApplication
+   */
+  omit?: Prisma.RoleApplicationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RoleApplicationInclude<ExtArgs> | null
+  where?: Prisma.RoleApplicationWhereInput
+  orderBy?: Prisma.RoleApplicationOrderByWithRelationInput | Prisma.RoleApplicationOrderByWithRelationInput[]
+  cursor?: Prisma.RoleApplicationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RoleApplicationScalarFieldEnum | Prisma.RoleApplicationScalarFieldEnum[]
 }
 
 /**

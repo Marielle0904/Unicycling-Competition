@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { VereineModule } from './vereine/vereine.module';
 import { CompetitionsModule } from './competitions/competitions.module';
 import { RegistrationsModule } from './registrations/registrations.module';
+import { RoleApplicationsModule } from './role-applications/role-applications.module'
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { RegistrationsModule } from './registrations/registrations.module';
     VereineModule,
     CompetitionsModule,
     RegistrationsModule,
+    RoleApplicationsModule
   ],
   controllers: [AppController],
   providers: [AppService],

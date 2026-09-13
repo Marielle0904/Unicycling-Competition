@@ -8,6 +8,18 @@ datasource db {
   provider = "postgresql"
 }
 
+enum RoleType {
+  TRAINER
+  JUROR
+  JURYLEITUNG
+}
+
+enum RoleApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model User {
   id       Int    @id @default(autoincrement())
   email    String @unique
@@ -22,6 +34,8 @@ model User {
   juror       Juror?
   juryleitung Juryleitung?
   isAdmin     Boolean          @default(false)
+
+  roleApplications RoleApplication[]
 
   einzelkueren             EinzelkuerFahrer[]
   paarkueren               PaarkuerFahrer[]
@@ -41,9 +55,10 @@ model Verein {
   name  String
   email String
 
-  users        UserIsInVerein[]
-  juroren      Juror[]
-  competitions Competition[]
+  users            UserIsInVerein[]
+  juroren          Juror[]
+  competitions     Competition[]
+  roleApplications RoleApplication[]
 
   einzelkueren       Einzelkuer[]
   paarkueren         Paarkuer[]
@@ -68,6 +83,27 @@ model Trainer {
   user_id Int @id
 
   user User @relation(fields: [user_id], references: [id])
+}
+
+model RoleApplication {
+  id Int @id @default(autoincrement())
+
+  user_id Int
+  role    RoleType
+  status  RoleApplicationStatus @default(PENDING)
+
+  verein_id Int?
+  reason    String?
+
+  createdAt  DateTime  @default(now())
+  reviewedAt DateTime?
+  reviewedBy Int?
+
+  user   User    @relation(fields: [user_id], references: [id])
+  verein Verein? @relation(fields: [verein_id], references: [id])
+
+  @@index([user_id])
+  @@index([status])
 }
 
 model Competition {

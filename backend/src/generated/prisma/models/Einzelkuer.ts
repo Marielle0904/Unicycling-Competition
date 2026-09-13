@@ -518,14 +518,6 @@ export type EinzelkuerUncheckedUpdateManyWithoutCompetitionNestedInput = {
   deleteMany?: Prisma.EinzelkuerScalarWhereInput | Prisma.EinzelkuerScalarWhereInput[]
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type EinzelkuerCreateNestedOneWithoutFahrerInput = {
   create?: Prisma.XOR<Prisma.EinzelkuerCreateWithoutFahrerInput, Prisma.EinzelkuerUncheckedCreateWithoutFahrerInput>
   connectOrCreate?: Prisma.EinzelkuerCreateOrConnectWithoutFahrerInput

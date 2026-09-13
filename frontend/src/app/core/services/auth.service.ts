@@ -90,4 +90,23 @@ export class AuthService {
       },
     );
   }
+
+  getMyRoleApplications(): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.apiUrl}/role-applications/me`,
+      { withCredentials: true }
+    );
+  }
+
+  createRoleApplication(data: {
+    role: 'TRAINER' | 'JUROR' | 'JURYLEITUNG';
+    vereinId?: number;
+    reason?: string;
+  }) {
+    return this.http.post(
+      `${this.apiUrl}/role-applications`,
+      data,
+      { withCredentials: true }
+    );
+  }
 }

@@ -55,6 +55,7 @@ export const ModelName = {
   Verein: 'Verein',
   UserIsInVerein: 'UserIsInVerein',
   Trainer: 'Trainer',
+  RoleApplication: 'RoleApplication',
   Competition: 'Competition',
   Einzelkuer: 'Einzelkuer',
   EinzelkuerFahrer: 'EinzelkuerFahrer',
@@ -126,6 +127,21 @@ export const TrainerScalarFieldEnum = {
 } as const
 
 export type TrainerScalarFieldEnum = (typeof TrainerScalarFieldEnum)[keyof typeof TrainerScalarFieldEnum]
+
+
+export const RoleApplicationScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  role: 'role',
+  status: 'status',
+  verein_id: 'verein_id',
+  reason: 'reason',
+  createdAt: 'createdAt',
+  reviewedAt: 'reviewedAt',
+  reviewedBy: 'reviewedBy'
+} as const
+
+export type RoleApplicationScalarFieldEnum = (typeof RoleApplicationScalarFieldEnum)[keyof typeof RoleApplicationScalarFieldEnum]
 
 
 export const CompetitionScalarFieldEnum = {

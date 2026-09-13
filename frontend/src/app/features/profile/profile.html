@@ -1,1 +1,440 @@
-<p>profile works!</p>
+<div class="profile-page">
+
+  <div class="profile-header">
+    <div>
+      <span class="eyebrow">Persönlicher Bereich</span>
+      <h1>Mein Profil</h1>
+
+      @if (currentUser(); as user) {
+      <p>Schön, dass du da bist, {{ user.firstName }}! 👋</p>
+      }
+    </div>
+
+  </div>
+
+  <!-- Persönliche Daten -->
+
+  <section class="profile-section">
+
+    <div class="section-heading">
+      <div>
+        <h2>Persönliche Daten</h2>
+        <p>Deine hinterlegten Kontaktdaten</p>
+      </div>
+
+      <button class="secondary-button">
+        Bearbeiten
+      </button>
+    </div>
+
+    @if (currentUser(); as user) {
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <span class="info-label">Vorname</span>
+        <strong>{{ user.firstName }}</strong>
+      </div>
+
+      <div class="info-card">
+        <span class="info-label">Nachname</span>
+        <strong>{{ user.lastName }}</strong>
+      </div>
+
+      <div class="info-card">
+        <span class="info-label">E-Mail</span>
+        <strong>{{ user.email }}</strong>
+      </div>
+
+      <div class="info-card">
+        <span class="info-label">Geburtsdatum</span>
+        <strong>{{ user.birthDate | date:'dd.MM.yyyy' }}</strong>
+      </div>
+
+    </div>
+    }
+
+  </section>
+
+  <!-- Meine Rollen -->
+
+  <section class="profile-section">
+
+    <div class="section-heading">
+      <div>
+        <h2>Meine Rollen</h2>
+        <p>Deine aktuell freigeschalteten Berechtigungen</p>
+      </div>
+    </div>
+
+    @if (currentUser(); as user) {
+
+    <div class="roles-grid">
+
+      <div class="role-card" [class.active]="user.roles?.trainer">
+        <div class="role-icon">🏃</div>
+
+        <div class="role-content">
+          <h3>Trainer</h3>
+
+          @if (user.roles?.trainer) {
+          <span class="status active-status">Aktiv</span>
+          <p>Du kannst Vereinsmitglieder betreuen und Fahrer anmelden.</p>
+          } @else {
+          <span class="status inactive-status">Nicht freigeschaltet</span>
+          <p>Du hast aktuell keine Trainerberechtigung.</p>
+          }
+        </div>
+      </div>
+
+
+      <div class="role-card" [class.active]="user.roles?.juror">
+        <div class="role-icon">⚖️</div>
+
+        <div class="role-content">
+          <h3>Juror</h3>
+
+          @if (user.roles?.juror) {
+          <span class="status active-status">Aktiv</span>
+          <p>Du kannst als Juror bei Wettkämpfen eingesetzt werden.</p>
+          } @else {
+          <span class="status inactive-status">Nicht freigeschaltet</span>
+          <p>Du hast aktuell keine Jurorenberechtigung.</p>
+          }
+        </div>
+      </div>
+
+
+      <div class="role-card" [class.active]="user.roles?.juryleitung">
+        <div class="role-icon">👑</div>
+
+        <div class="role-content">
+          <h3>Juryleitung</h3>
+
+          @if (user.roles?.juryleitung) {
+          <span class="status active-status">Aktiv</span>
+          <p>Du kannst Jurys koordinieren und Einsätze verwalten.</p>
+          } @else {
+          <span class="status inactive-status">Nicht freigeschaltet</span>
+          <p>Du hast aktuell keine Juryleitungsberechtigung.</p>
+          }
+        </div>
+      </div>
+
+
+      @if (user.roles?.admin) {
+      <div class="role-card admin-card active">
+        <div class="role-icon">🛡️</div>
+
+        <div class="role-content">
+          <h3>Administrator</h3>
+
+          <span class="status active-status">Aktiv</span>
+
+          <p>
+            Du hast Zugriff auf die Administrationsbereiche.
+          </p>
+        </div>
+      </div>
+      }
+
+    </div>
+    }
+
+  </section>
+
+  <!-- Rollenbewerbungen -->
+
+  <section class="profile-section">
+
+    <div class="section-heading">
+      <div>
+        <h2>Rollenbewerbungen</h2>
+        <p>Hier findest du deine bisherigen Bewerbungen.</p>
+      </div>
+
+      <button type="button" class="primary-button" (click)="openRoleModal()">
+         + Rolle beantragen
+      </button>
+    </div>
+
+
+    @if (loadingApplications) {
+
+    <div class="loading-state">
+      Bewerbungen werden geladen ...
+    </div>
+
+    } @else if (roleApplications.length === 0) {
+
+    <div class="empty-state">
+
+      <div class="empty-icon">📋</div>
+
+      <h3>Noch keine Bewerbungen</h3>
+
+      <p>
+        Du hast bisher keine zusätzliche Rolle beantragt.
+      </p>
+
+     <button type="button" class="primary-button" (click)="openRoleModal()">
+        + Rolle beantragen
+      </button>
+    </div>
+
+    } @else {
+
+    <div class="applications-list">
+
+      @for (application of roleApplications; track application.id) {
+
+      <div class="application-card">
+
+        <div class="application-icon">
+          @switch (application.role) {
+          @case ('TRAINER') {
+          🏃
+          }
+          @case ('JUROR') {
+          ⚖️
+          }
+          @case ('JURYLEITUNG') {
+          👑
+          }
+          }
+        </div>
+
+        <div class="application-content">
+
+          <h3>
+            @switch (application.role) {
+            @case ('TRAINER') {
+            Trainer
+            }
+            @case ('JUROR') {
+            Juror
+            }
+            @case ('JURYLEITUNG') {
+            Juryleitung
+            }
+            }
+          </h3>
+
+          <p>
+            Beantragt am
+            {{ application.createdAt | date:'dd.MM.yyyy' }}
+          </p>
+
+          @if (application.verein) {
+          <p class="application-verein">
+            Verein: {{ application.verein.name }}
+          </p>
+          }
+
+        </div>
+
+        <div class="application-status">
+
+          @switch (application.status) {
+
+          @case ('PENDING') {
+          <span class="status pending-status">
+            Ausstehend
+          </span>
+          }
+
+          @case ('APPROVED') {
+          <span class="status active-status">
+            Genehmigt
+          </span>
+          }
+
+          @case ('REJECTED') {
+          <span class="status rejected-status">
+            Abgelehnt
+          </span>
+          }
+
+          }
+
+        </div>
+
+      </div>
+
+      }
+
+    </div>
+
+    }
+
+  </section>
+
+  @if (showRoleModal) {
+
+  <div class="modal-backdrop" (click)="closeRoleModal()">
+
+    <div class="role-modal" (click)="$event.stopPropagation()">
+
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Bewerbung</span>
+          <h2>Rolle beantragen</h2>
+          <p>
+            Wähle die Rolle aus, für die du dich bewerben möchtest.
+          </p>
+        </div>
+
+        <button
+          class="close-button"
+          type="button"
+          (click)="closeRoleModal()">
+          ×
+        </button>
+      </div>
+
+
+      <div class="role-selection">
+
+        <button
+          type="button"
+          class="role-option"
+          [class.selected]="selectedRole === 'TRAINER'"
+          (click)="selectRole('TRAINER')">
+
+          <span class="role-option-icon">🏃</span>
+
+          <span>
+            <strong>Trainer</strong>
+            <small>
+              Vereinsmitglieder betreuen und Fahrer anmelden.
+            </small>
+          </span>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="role-option"
+          [class.selected]="selectedRole === 'JUROR'"
+          (click)="selectRole('JUROR')">
+
+          <span class="role-option-icon">⚖️</span>
+
+          <span>
+            <strong>Juror</strong>
+            <small>
+              Wettkämpfe bewerten und Jury-Einsätze übernehmen.
+            </small>
+          </span>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="role-option"
+          [class.selected]="selectedRole === 'JURYLEITUNG'"
+          (click)="selectRole('JURYLEITUNG')">
+
+          <span class="role-option-icon">👑</span>
+
+          <span>
+            <strong>Juryleitung</strong>
+            <small>
+              Jurys koordinieren und Einsätze verwalten.
+            </small>
+          </span>
+
+        </button>
+
+      </div>
+
+
+      @if (selectedRole === 'JUROR') {
+
+        <div class="form-group">
+
+          <label for="verein">
+            Verein
+          </label>
+
+          <select
+            id="verein"
+            [(ngModel)]="selectedVereinId">
+
+            <option [ngValue]="null">
+              Verein auswählen
+            </option>
+
+            <!-- Kommt im nächsten Schritt -->
+          </select>
+
+        </div>
+
+      }
+
+
+      <div class="form-group">
+
+        <label for="reason">
+          Begründung
+          <span>(optional)</span>
+        </label>
+
+        <textarea
+          id="reason"
+          [(ngModel)]="applicationReason"
+          placeholder="Warum möchtest du diese Rolle übernehmen?"
+          rows="4">
+        </textarea>
+
+      </div>
+
+
+      @if (applicationError) {
+        <div class="application-message error">
+          {{ applicationError }}
+        </div>
+      }
+
+
+      @if (applicationSuccess) {
+        <div class="application-message success">
+          {{ applicationSuccess }}
+        </div>
+      }
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="secondary-button"
+          (click)="closeRoleModal()">
+          Abbrechen
+        </button>
+
+        <button
+          type="button"
+          class="primary-button"
+          [disabled]="submittingApplication"
+          (click)="submitRoleApplication()">
+
+          @if (submittingApplication) {
+            Wird gesendet ...
+          } @else {
+            Bewerbung absenden
+          }
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}
+
+</div>

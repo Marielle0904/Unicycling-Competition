@@ -252,6 +252,7 @@ export type UserWhereInput = {
   trainer?: Prisma.XOR<Prisma.TrainerNullableScalarRelationFilter, Prisma.TrainerWhereInput> | null
   juror?: Prisma.XOR<Prisma.JurorNullableScalarRelationFilter, Prisma.JurorWhereInput> | null
   juryleitung?: Prisma.XOR<Prisma.JuryleitungNullableScalarRelationFilter, Prisma.JuryleitungWhereInput> | null
+  roleApplications?: Prisma.RoleApplicationListRelationFilter
   einzelkueren?: Prisma.EinzelkuerFahrerListRelationFilter
   paarkueren?: Prisma.PaarkuerFahrerListRelationFilter
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerListRelationFilter
@@ -275,6 +276,7 @@ export type UserOrderByWithRelationInput = {
   trainer?: Prisma.TrainerOrderByWithRelationInput
   juror?: Prisma.JurorOrderByWithRelationInput
   juryleitung?: Prisma.JuryleitungOrderByWithRelationInput
+  roleApplications?: Prisma.RoleApplicationOrderByRelationAggregateInput
   einzelkueren?: Prisma.EinzelkuerFahrerOrderByRelationAggregateInput
   paarkueren?: Prisma.PaarkuerFahrerOrderByRelationAggregateInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerOrderByRelationAggregateInput
@@ -301,6 +303,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   trainer?: Prisma.XOR<Prisma.TrainerNullableScalarRelationFilter, Prisma.TrainerWhereInput> | null
   juror?: Prisma.XOR<Prisma.JurorNullableScalarRelationFilter, Prisma.JurorWhereInput> | null
   juryleitung?: Prisma.XOR<Prisma.JuryleitungNullableScalarRelationFilter, Prisma.JuryleitungWhereInput> | null
+  roleApplications?: Prisma.RoleApplicationListRelationFilter
   einzelkueren?: Prisma.EinzelkuerFahrerListRelationFilter
   paarkueren?: Prisma.PaarkuerFahrerListRelationFilter
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerListRelationFilter
@@ -355,6 +358,7 @@ export type UserCreateInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
@@ -378,6 +382,7 @@ export type UserUncheckedCreateInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
@@ -400,6 +405,7 @@ export type UserUpdateInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
@@ -423,6 +429,7 @@ export type UserUncheckedUpdateInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -564,6 +571,20 @@ export type UserUpdateOneRequiredWithoutTrainerNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTrainerInput, Prisma.UserUpdateWithoutTrainerInput>, Prisma.UserUncheckedUpdateWithoutTrainerInput>
 }
 
+export type UserCreateNestedOneWithoutRoleApplicationsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleApplicationsInput, Prisma.UserUncheckedCreateWithoutRoleApplicationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleApplicationsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRoleApplicationsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleApplicationsInput, Prisma.UserUncheckedCreateWithoutRoleApplicationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleApplicationsInput
+  upsert?: Prisma.UserUpsertWithoutRoleApplicationsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRoleApplicationsInput, Prisma.UserUpdateWithoutRoleApplicationsInput>, Prisma.UserUncheckedUpdateWithoutRoleApplicationsInput>
+}
+
 export type UserCreateNestedOneWithoutEinzelkuerenInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutEinzelkuerenInput, Prisma.UserUncheckedCreateWithoutEinzelkuerenInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutEinzelkuerenInput
@@ -702,6 +723,7 @@ export type UserCreateWithoutVereineInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
@@ -724,6 +746,7 @@ export type UserUncheckedCreateWithoutVereineInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
@@ -761,6 +784,7 @@ export type UserUpdateWithoutVereineInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
@@ -783,6 +807,7 @@ export type UserUncheckedUpdateWithoutVereineInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -804,6 +829,7 @@ export type UserCreateWithoutTrainerInput = {
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
@@ -826,6 +852,7 @@ export type UserUncheckedCreateWithoutTrainerInput = {
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
@@ -863,6 +890,7 @@ export type UserUpdateWithoutTrainerInput = {
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
@@ -883,6 +911,113 @@ export type UserUncheckedUpdateWithoutTrainerInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
+  juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
+  juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
+  einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
+  paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
+  kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
+  kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUncheckedUpdateManyWithoutUserNestedInput
+  grossgruppenkueren?: Prisma.GrossgruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
+  grossgruppenErsatzkueren?: Prisma.GrossgruppenkuerErsatzfahrerUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRoleApplicationsInput = {
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  birthDate: Date | string
+  isAdmin?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
+  trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
+  juror?: Prisma.JurorCreateNestedOneWithoutUserInput
+  juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
+  paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
+  kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
+  kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerCreateNestedManyWithoutUserInput
+  grossgruppenkueren?: Prisma.GrossgruppenkuerFahrerCreateNestedManyWithoutUserInput
+  grossgruppenErsatzkueren?: Prisma.GrossgruppenkuerErsatzfahrerCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRoleApplicationsInput = {
+  id?: number
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+  birthDate: Date | string
+  isAdmin?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
+  trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
+  juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
+  juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
+  paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
+  kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
+  kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUncheckedCreateNestedManyWithoutUserInput
+  grossgruppenkueren?: Prisma.GrossgruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
+  grossgruppenErsatzkueren?: Prisma.GrossgruppenkuerErsatzfahrerUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRoleApplicationsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRoleApplicationsInput, Prisma.UserUncheckedCreateWithoutRoleApplicationsInput>
+}
+
+export type UserUpsertWithoutRoleApplicationsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRoleApplicationsInput, Prisma.UserUncheckedUpdateWithoutRoleApplicationsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRoleApplicationsInput, Prisma.UserUncheckedCreateWithoutRoleApplicationsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRoleApplicationsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRoleApplicationsInput, Prisma.UserUncheckedUpdateWithoutRoleApplicationsInput>
+}
+
+export type UserUpdateWithoutRoleApplicationsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
+  trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
+  juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
+  juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
+  paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
+  kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
+  kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUpdateManyWithoutUserNestedInput
+  grossgruppenkueren?: Prisma.GrossgruppenkuerFahrerUpdateManyWithoutUserNestedInput
+  grossgruppenErsatzkueren?: Prisma.GrossgruppenkuerErsatzfahrerUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRoleApplicationsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  birthDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
+  trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -907,6 +1042,7 @@ export type UserCreateWithoutEinzelkuerenInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerCreateNestedManyWithoutUserInput
@@ -929,6 +1065,7 @@ export type UserUncheckedCreateWithoutEinzelkuerenInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUncheckedCreateNestedManyWithoutUserInput
@@ -966,6 +1103,7 @@ export type UserUpdateWithoutEinzelkuerenInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUpdateManyWithoutUserNestedInput
@@ -988,6 +1126,7 @@ export type UserUncheckedUpdateWithoutEinzelkuerenInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -1009,6 +1148,7 @@ export type UserCreateWithoutPaarkuerenInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerCreateNestedManyWithoutUserInput
@@ -1031,6 +1171,7 @@ export type UserUncheckedCreateWithoutPaarkuerenInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUncheckedCreateNestedManyWithoutUserInput
@@ -1068,6 +1209,7 @@ export type UserUpdateWithoutPaarkuerenInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUpdateManyWithoutUserNestedInput
@@ -1090,6 +1232,7 @@ export type UserUncheckedUpdateWithoutPaarkuerenInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -1111,6 +1254,7 @@ export type UserCreateWithoutKleingruppenkuerenInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerCreateNestedManyWithoutUserInput
@@ -1133,6 +1277,7 @@ export type UserUncheckedCreateWithoutKleingruppenkuerenInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUncheckedCreateNestedManyWithoutUserInput
@@ -1170,6 +1315,7 @@ export type UserUpdateWithoutKleingruppenkuerenInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUpdateManyWithoutUserNestedInput
@@ -1192,6 +1338,7 @@ export type UserUncheckedUpdateWithoutKleingruppenkuerenInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenErsatzkueren?: Prisma.KleingruppenkuerErsatzfahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -1213,6 +1360,7 @@ export type UserCreateWithoutKleingruppenErsatzkuerenInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
@@ -1235,6 +1383,7 @@ export type UserUncheckedCreateWithoutKleingruppenErsatzkuerenInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
@@ -1272,6 +1421,7 @@ export type UserUpdateWithoutKleingruppenErsatzkuerenInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
@@ -1294,6 +1444,7 @@ export type UserUncheckedUpdateWithoutKleingruppenErsatzkuerenInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -1315,6 +1466,7 @@ export type UserCreateWithoutGrossgruppenkuerenInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
@@ -1337,6 +1489,7 @@ export type UserUncheckedCreateWithoutGrossgruppenkuerenInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
@@ -1374,6 +1527,7 @@ export type UserUpdateWithoutGrossgruppenkuerenInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
@@ -1396,6 +1550,7 @@ export type UserUncheckedUpdateWithoutGrossgruppenkuerenInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -1417,6 +1572,7 @@ export type UserCreateWithoutGrossgruppenErsatzkuerenInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
@@ -1439,6 +1595,7 @@ export type UserUncheckedCreateWithoutGrossgruppenErsatzkuerenInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
@@ -1476,6 +1633,7 @@ export type UserUpdateWithoutGrossgruppenErsatzkuerenInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
@@ -1498,6 +1656,7 @@ export type UserUncheckedUpdateWithoutGrossgruppenErsatzkuerenInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -1518,6 +1677,7 @@ export type UserCreateWithoutJurorInput = {
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
@@ -1540,6 +1700,7 @@ export type UserUncheckedCreateWithoutJurorInput = {
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
@@ -1577,6 +1738,7 @@ export type UserUpdateWithoutJurorInput = {
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
@@ -1599,6 +1761,7 @@ export type UserUncheckedUpdateWithoutJurorInput = {
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -1620,6 +1783,7 @@ export type UserCreateWithoutJuryleitungInput = {
   vereine?: Prisma.UserIsInVereinCreateNestedManyWithoutUserInput
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
@@ -1642,6 +1806,7 @@ export type UserUncheckedCreateWithoutJuryleitungInput = {
   vereine?: Prisma.UserIsInVereinUncheckedCreateNestedManyWithoutUserInput
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
@@ -1679,6 +1844,7 @@ export type UserUpdateWithoutJuryleitungInput = {
   vereine?: Prisma.UserIsInVereinUpdateManyWithoutUserNestedInput
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
@@ -1701,6 +1867,7 @@ export type UserUncheckedUpdateWithoutJuryleitungInput = {
   vereine?: Prisma.UserIsInVereinUncheckedUpdateManyWithoutUserNestedInput
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -1723,6 +1890,7 @@ export type UserCreateWithoutSessionsInput = {
   trainer?: Prisma.TrainerCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerCreateNestedManyWithoutUserInput
@@ -1745,6 +1913,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   trainer?: Prisma.TrainerUncheckedCreateNestedOneWithoutUserInput
   juror?: Prisma.JurorUncheckedCreateNestedOneWithoutUserInput
   juryleitung?: Prisma.JuryleitungUncheckedCreateNestedOneWithoutUserInput
+  roleApplications?: Prisma.RoleApplicationUncheckedCreateNestedManyWithoutUserInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedCreateNestedManyWithoutUserInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedCreateNestedManyWithoutUserInput
@@ -1782,6 +1951,7 @@ export type UserUpdateWithoutSessionsInput = {
   trainer?: Prisma.TrainerUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUpdateManyWithoutUserNestedInput
@@ -1804,6 +1974,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   trainer?: Prisma.TrainerUncheckedUpdateOneWithoutUserNestedInput
   juror?: Prisma.JurorUncheckedUpdateOneWithoutUserNestedInput
   juryleitung?: Prisma.JuryleitungUncheckedUpdateOneWithoutUserNestedInput
+  roleApplications?: Prisma.RoleApplicationUncheckedUpdateManyWithoutUserNestedInput
   einzelkueren?: Prisma.EinzelkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   paarkueren?: Prisma.PaarkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
   kleingruppenkueren?: Prisma.KleingruppenkuerFahrerUncheckedUpdateManyWithoutUserNestedInput
@@ -1819,6 +1990,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
 
 export type UserCountOutputType = {
   vereine: number
+  roleApplications: number
   einzelkueren: number
   paarkueren: number
   kleingruppenkueren: number
@@ -1830,6 +2002,7 @@ export type UserCountOutputType = {
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vereine?: boolean | UserCountOutputTypeCountVereineArgs
+  roleApplications?: boolean | UserCountOutputTypeCountRoleApplicationsArgs
   einzelkueren?: boolean | UserCountOutputTypeCountEinzelkuerenArgs
   paarkueren?: boolean | UserCountOutputTypeCountPaarkuerenArgs
   kleingruppenkueren?: boolean | UserCountOutputTypeCountKleingruppenkuerenArgs
@@ -1854,6 +2027,13 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
  */
 export type UserCountOutputTypeCountVereineArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.UserIsInVereinWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRoleApplicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RoleApplicationWhereInput
 }
 
 /**
@@ -1920,6 +2100,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   trainer?: boolean | Prisma.User$trainerArgs<ExtArgs>
   juror?: boolean | Prisma.User$jurorArgs<ExtArgs>
   juryleitung?: boolean | Prisma.User$juryleitungArgs<ExtArgs>
+  roleApplications?: boolean | Prisma.User$roleApplicationsArgs<ExtArgs>
   einzelkueren?: boolean | Prisma.User$einzelkuerenArgs<ExtArgs>
   paarkueren?: boolean | Prisma.User$paarkuerenArgs<ExtArgs>
   kleingruppenkueren?: boolean | Prisma.User$kleingruppenkuerenArgs<ExtArgs>
@@ -1972,6 +2153,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   trainer?: boolean | Prisma.User$trainerArgs<ExtArgs>
   juror?: boolean | Prisma.User$jurorArgs<ExtArgs>
   juryleitung?: boolean | Prisma.User$juryleitungArgs<ExtArgs>
+  roleApplications?: boolean | Prisma.User$roleApplicationsArgs<ExtArgs>
   einzelkueren?: boolean | Prisma.User$einzelkuerenArgs<ExtArgs>
   paarkueren?: boolean | Prisma.User$paarkuerenArgs<ExtArgs>
   kleingruppenkueren?: boolean | Prisma.User$kleingruppenkuerenArgs<ExtArgs>
@@ -1991,6 +2173,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     trainer: Prisma.$TrainerPayload<ExtArgs> | null
     juror: Prisma.$JurorPayload<ExtArgs> | null
     juryleitung: Prisma.$JuryleitungPayload<ExtArgs> | null
+    roleApplications: Prisma.$RoleApplicationPayload<ExtArgs>[]
     einzelkueren: Prisma.$EinzelkuerFahrerPayload<ExtArgs>[]
     paarkueren: Prisma.$PaarkuerFahrerPayload<ExtArgs>[]
     kleingruppenkueren: Prisma.$KleingruppenkuerFahrerPayload<ExtArgs>[]
@@ -2407,6 +2590,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   trainer<T extends Prisma.User$trainerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$trainerArgs<ExtArgs>>): Prisma.Prisma__TrainerClient<runtime.Types.Result.GetResult<Prisma.$TrainerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   juror<T extends Prisma.User$jurorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$jurorArgs<ExtArgs>>): Prisma.Prisma__JurorClient<runtime.Types.Result.GetResult<Prisma.$JurorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   juryleitung<T extends Prisma.User$juryleitungArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$juryleitungArgs<ExtArgs>>): Prisma.Prisma__JuryleitungClient<runtime.Types.Result.GetResult<Prisma.$JuryleitungPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  roleApplications<T extends Prisma.User$roleApplicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$roleApplicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RoleApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   einzelkueren<T extends Prisma.User$einzelkuerenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$einzelkuerenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EinzelkuerFahrerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   paarkueren<T extends Prisma.User$paarkuerenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$paarkuerenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaarkuerFahrerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   kleingruppenkueren<T extends Prisma.User$kleingruppenkuerenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$kleingruppenkuerenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$KleingruppenkuerFahrerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2923,6 +3107,30 @@ export type User$juryleitungArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   include?: Prisma.JuryleitungInclude<ExtArgs> | null
   where?: Prisma.JuryleitungWhereInput
+}
+
+/**
+ * User.roleApplications
+ */
+export type User$roleApplicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RoleApplication
+   */
+  select?: Prisma.RoleApplicationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RoleApplication
+   */
+  omit?: Prisma.RoleApplicationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RoleApplicationInclude<ExtArgs> | null
+  where?: Prisma.RoleApplicationWhereInput
+  orderBy?: Prisma.RoleApplicationOrderByWithRelationInput | Prisma.RoleApplicationOrderByWithRelationInput[]
+  cursor?: Prisma.RoleApplicationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RoleApplicationScalarFieldEnum | Prisma.RoleApplicationScalarFieldEnum[]
 }
 
 /**

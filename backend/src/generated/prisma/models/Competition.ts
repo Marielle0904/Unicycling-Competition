@@ -527,10 +527,6 @@ export type CompetitionUncheckedUpdateManyWithoutVereinNestedInput = {
   deleteMany?: Prisma.CompetitionScalarWhereInput | Prisma.CompetitionScalarWhereInput[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type CompetitionCreateNestedOneWithoutEinzelkuerenInput = {
   create?: Prisma.XOR<Prisma.CompetitionCreateWithoutEinzelkuerenInput, Prisma.CompetitionUncheckedCreateWithoutEinzelkuerenInput>
   connectOrCreate?: Prisma.CompetitionCreateOrConnectWithoutEinzelkuerenInput

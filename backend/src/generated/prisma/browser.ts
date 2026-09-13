@@ -38,6 +38,11 @@ export type UserIsInVerein = Prisma.UserIsInVereinModel
  */
 export type Trainer = Prisma.TrainerModel
 /**
+ * Model RoleApplication
+ * 
+ */
+export type RoleApplication = Prisma.RoleApplicationModel
+/**
  * Model Competition
  * 
  */
