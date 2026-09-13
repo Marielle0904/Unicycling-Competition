@@ -1,121 +1,171 @@
 <div class="competitions-page">
 
   <header class="page-header">
-    <h1>Wettkämpfe</h1>
-    <p>
-      Entdecke alle kommenden Einrad-Wettkämpfe.
-    </p>
+    <div>
+      <span class="eyebrow">Wettkampfkalender</span>
+
+```
+  <h1>Wettkämpfe</h1>
+
+  <p>
+    Entdecke kommende Einrad-Wettkämpfe und erhalte alle wichtigen
+    Informationen auf einen Blick.
+  </p>
+</div>
+
+<div class="header-icon">
+  🏆
+</div>
+```
+
   </header>
 
-  @if (errorMessage()) {
-  <p class="message error">
-    {{ errorMessage() }}
+@if (errorMessage()) {
+
+  <div class="message error">
+    <span class="message-icon">⚠️</span>
+
+```
+<div>
+  <strong>Wettkämpfe konnten nicht geladen werden.</strong>
+
+  <p>
+    Bitte versuche es später erneut.
   </p>
-  }
+</div>
+```
 
-  @if (competitions().length === 0 && !errorMessage()) {
-
-  <div class="empty-state">
-    <div class="empty-icon">🏆</div>
-
-    <h2>Noch keine Wettkämpfe</h2>
-
-    <p>
-      Momentan sind keine Wettkämpfe eingetragen.
-    </p>
   </div>
 
-  } @else {
+}
 
-  <section class="competition-feed">
+@if (competitions().length === 0 && !errorMessage()) {
 
-    @for (
-    competition of competitions();
-    track competition.id
-    ) {
+  <section class="empty-state">
 
-    <article class="competition-card">
+```
+<div class="empty-icon">
+  🏆
+</div>
 
-      <div class="card-header">
+<h2>Noch keine Wettkämpfe</h2>
 
-        <div>
-          <h2>{{ competition.name }}</h2>
-
-          <p class="organizer">
-            Ausrichter:
-            <strong>
-              {{ competition.verein.name }}
-            </strong>
-          </p>
-        </div>
-
-        <div class="competition-icon">
-          🏆
-        </div>
-
-      </div>
-
-
-      <div class="competition-details">
-
-        <div class="detail">
-
-          <span class="detail-icon">📅</span>
-
-          <div>
-            <span class="detail-label">
-              Zeitraum
-            </span>
-
-            <span class="detail-value">
-              {{ competition.startDate | date:'dd.MM.yyyy' }}
-              –
-              {{ competition.endDate | date:'dd.MM.yyyy' }}
-            </span>
-          </div>
-
-        </div>
-
-
-        <div class="detail">
-
-          <span class="detail-icon">📍</span>
-
-          <div>
-            <span class="detail-label">
-              Ort
-            </span>
-
-            <span class="detail-value">
-              {{ competition.location }}
-            </span>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      @if (competition.description) {
-
-      <div class="description">
-
-        <h3>Über den Wettkampf</h3>
-
-        <p>
-          {{ competition.description }}
-        </p>
-
-      </div>
-
-      }
-
-    </article>
-
-    }
+<p>
+  Momentan sind keine Wettkämpfe eingetragen.
+  Sobald neue Wettkämpfe verfügbar sind, erscheinen sie hier.
+</p>
+```
 
   </section>
 
+} @else {
+
+  <section class="competition-feed">
+
+```
+@for (
+  competition of competitions();
+  track competition.id
+) {
+
+<article class="competition-card">
+
+  <div class="card-top">
+
+    <div class="competition-title">
+
+      <span class="competition-badge">
+        Wettkampf
+      </span>
+
+      <h2>
+        {{ competition.name }}
+      </h2>
+
+      <p class="organizer">
+        Ausgerichtet von
+        <strong>{{ competition.verein.name }}</strong>
+      </p>
+
+    </div>
+
+    <div class="competition-icon">
+      🏆
+    </div>
+
+  </div>
+
+
+  <div class="competition-details">
+
+    <div class="detail">
+
+      <div class="detail-icon">
+        📅
+      </div>
+
+      <div class="detail-content">
+
+        <span class="detail-label">
+          Zeitraum
+        </span>
+
+        <span class="detail-value">
+          {{ competition.startDate | date:'dd.MM.yyyy' }}
+          –
+          {{ competition.endDate | date:'dd.MM.yyyy' }}
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="detail">
+
+      <div class="detail-icon">
+        📍
+      </div>
+
+      <div class="detail-content">
+
+        <span class="detail-label">
+          Veranstaltungsort
+        </span>
+
+        <span class="detail-value">
+          {{ competition.location }}
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  @if (competition.description) {
+
+  <div class="description">
+
+    <h3>Über den Wettkampf</h3>
+
+    <p>
+      {{ competition.description }}
+    </p>
+
+  </div>
+
   }
 
+</article>
+
+}
+```
+
+  </section>
+
+}
+
 </div>
+

@@ -20,6 +20,11 @@ export class CompetitionsController {
     return this.competitionsService.getAll();
   }
 
+  @Get('upcoming')
+  async getUpcoming() {
+    return this.competitionsService.getUpcoming();
+  }
+
   @Get(':id')
   async getOne(
     @Param('id', ParseIntPipe) id: number,
@@ -59,7 +64,7 @@ export class CompetitionsController {
       startDate: string;
       endDate: string;
       location: string;
-      vereinId: number;
+      vereinId: number,
     },
   ) {
     return this.competitionsService.update(

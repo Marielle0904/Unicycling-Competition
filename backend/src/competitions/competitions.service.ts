@@ -19,6 +19,23 @@ export class CompetitionsService {
     });
   }
 
+  async getUpcoming() {
+    return this.prisma.competition.findMany({
+      where: {
+        startDate: {
+          gte: new Date(),
+        },
+      },
+      include: {
+        verein: true,
+      },
+      orderBy: {
+        startDate: 'asc',
+      },
+      take: 3,
+    });
+  }
+
   async getOne(id: number) {
     const competition =
       await this.prisma.competition.findUnique({

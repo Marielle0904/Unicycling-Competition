@@ -1,38 +1,143 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
-  padding: 1rem 2rem;
+  min-height: 4.5rem;
+  padding: 0.75rem 2rem;
 
-  background-color: #1f2937;
+  background: var(--color-navbar);
   color: white;
+
+  box-shadow: var(--shadow-md);
+}
+
+
+/* ---------- Brand ---------- */
+
+.navbar-brand {
+  flex-shrink: 0;
 }
 
 .navbar-brand a {
   color: white;
   text-decoration: none;
+
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  transition: opacity 0.2s ease;
 }
+
+.navbar-brand a:hover {
+  opacity: 0.85;
+}
+
+
+/* ---------- Navigation ---------- */
 
 .navbar-links {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .navbar-links a {
-  color: #d1d5db;
+  position: relative;
+
+  padding: 0.6rem 0.75rem;
+
+  color: var(--color-navbar-text);
   text-decoration: none;
-  padding: 0.5rem 0;
-  transition: color 0.2s ease;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  border-radius: var(--radius-sm);
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .navbar-links a:hover {
   color: white;
+  background: rgb(255 255 255 / 0.08);
 }
+
+
+/* ---------- Active Link ---------- */
 
 .navbar-links a.active {
   color: white;
-  font-weight: 600;
+  background: rgb(255 255 255 / 0.12);
+}
+
+
+/* ---------- Logout ---------- */
+
+.navbar-logout {
+  margin-left: 0.5rem;
+
+  padding: 0.55rem 0.9rem;
+
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+  color: var(--color-navbar-text);
+
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.navbar-logout:hover {
+  color: white;
+  background: rgb(255 255 255 / 0.08);
+  border-color: rgb(255 255 255 / 0.35);
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 900px) {
+  .navbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    padding: 1rem;
+  }
+
+  .navbar-links {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .navbar-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+
+  .navbar-links a {
+    text-align: center;
+  }
+
+  .navbar-logout {
+    margin-left: 0;
+    width: 100%;
+  }
 }

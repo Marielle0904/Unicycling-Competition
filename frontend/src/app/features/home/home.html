@@ -1,19 +1,421 @@
-<h1>Home</h1>
+<section class="home">
 
-<p>Willkommen bei Unicycle Competition!</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
 
-@if (authService.currentUser()) {
-  <p>
-    Eingeloggt als:
-    {{ authService.currentUser()?.firstName }}
-    {{ authService.currentUser()?.lastName }}
-  </p>
+      @if (authService.currentUser(); as user) {
+        <p class="hero-eyebrow">UNICYCLING · WETTKAMPFPLATTFORM</p>
 
-  <p>
-    E-Mail: {{ authService.currentUser()?.email }}
-  </p>
+        <h1>
+          Willkommen zurück,
+          <span>{{ user.firstName }}!</span>
+        </h1>
 
-  <button type="button" (click)="logout()">
-    Ausloggen
-  </button>
-}
+        <p class="hero-text">
+          Behalte deine Wettkämpfe, Anmeldungen und Aktivitäten
+          jederzeit im Blick.
+        </p>
+
+        <div class="hero-actions">
+          <a routerLink="/competitions" class="btn btn-primary">
+            Wettkämpfe ansehen
+          </a>
+
+          <a routerLink="/profile" class="btn btn-secondary">
+            Mein Profil
+          </a>
+        </div>
+
+      } @else {
+        <p class="hero-eyebrow">UNICYCLING · WETTKAMPFPLATTFORM</p>
+
+        <h1>
+          Willkommen bei
+          <span>Unicycle Competition</span>
+        </h1>
+
+        <p class="hero-text">
+          Die Plattform für Einrad-Wettkämpfe, Vereinsanmeldungen,
+          Juryplanung und Auswertung.
+        </p>
+
+        <div class="hero-actions">
+          <a routerLink="/register" class="btn btn-primary">
+            Jetzt registrieren
+          </a>
+
+          <a routerLink="/login" class="btn btn-secondary">
+            Einloggen
+          </a>
+        </div>
+      }
+
+    </div>
+
+    <div class="hero-decoration">
+      <div class="hero-circle">
+        <span>🏆</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kommende Wettkämpfe -->
+<section class="section">
+
+  <div class="section-heading section-heading-with-link">
+    <div>
+      <p class="section-eyebrow">TERMINE</p>
+      <h2>Kommende Wettkämpfe</h2>
+    </div>
+
+    <a routerLink="/competitions" class="section-link">
+      Alle Wettkämpfe →
+    </a>
+  </div>
+
+
+  @if (competitionsLoading()) {
+
+    <div class="competition-list">
+
+      <article class="competition-card competition-loading">
+        <div class="loading-placeholder loading-date"></div>
+
+        <div>
+          <div class="loading-placeholder loading-small"></div>
+          <div class="loading-placeholder loading-title"></div>
+          <div class="loading-placeholder loading-text"></div>
+        </div>
+      </article>
+
+      <article class="competition-card competition-loading">
+        <div class="loading-placeholder loading-date"></div>
+
+        <div>
+          <div class="loading-placeholder loading-small"></div>
+          <div class="loading-placeholder loading-title"></div>
+          <div class="loading-placeholder loading-text"></div>
+        </div>
+      </article>
+
+    </div>
+
+  } @else if (competitionsError()) {
+
+    <div class="empty-state error-state">
+      <div class="empty-icon">⚠️</div>
+
+      <h3>Wettkämpfe konnten nicht geladen werden</h3>
+
+      <p>
+        Beim Laden der kommenden Wettkämpfe ist ein Fehler
+        aufgetreten.
+      </p>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="loadUpcomingCompetitions()">
+        Erneut versuchen
+      </button>
+    </div>
+
+  } @else if (competitions().length === 0) {
+
+    <div class="empty-state">
+      <div class="empty-icon">📅</div>
+
+      <h3>Keine kommenden Wettkämpfe</h3>
+
+      <p>
+        Aktuell sind keine zukünftigen Wettkämpfe eingetragen.
+      </p>
+    </div>
+
+  } @else {
+
+    <div class="competition-list">
+
+      @for (competition of competitions(); track competition.id) {
+
+        <article class="competition-card">
+
+          <div class="competition-date">
+            <span class="date-day">
+              {{ competition.startDate | date:'dd' }}
+            </span>
+
+            <span class="date-month">
+              {{ competition.startDate | date:'MMM' }}
+            </span>
+          </div>
+
+
+          <div class="competition-content">
+
+            <span class="competition-status">
+              Anmeldung geöffnet
+            </span>
+
+            <h3>
+              {{ competition.name }}
+            </h3>
+
+            <p>
+              📍 {{ competition.location }}
+            </p>
+
+            @if (competition.description) {
+              <p class="competition-description">
+                {{ competition.description }}
+              </p>
+            }
+
+            <div class="competition-organizer">
+              Veranstalter:
+              <strong>{{ competition.verein.name }}</strong>
+            </div>
+
+          </div>
+
+
+          <a
+            [routerLink]="['/competitions', competition.id]"
+            class="competition-action">
+            Details
+          </a>
+
+        </article>
+
+      }
+
+    </div>
+
+  }
+
+</section>
+  <!-- Persönlicher Bereich -->
+  @if (authService.currentUser(); as user) {
+
+    <section class="section">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">PERSÖNLICH</p>
+          <h2>Dein Bereich</h2>
+        </div>
+      </div>
+
+
+      <div class="personal-grid">
+
+        <!-- Profil -->
+        <article class="personal-card">
+
+          <div class="personal-card-header">
+            <div class="personal-icon">👤</div>
+
+            <div>
+              <h3>Mein Profil</h3>
+              <p>
+                {{ user.firstName }} {{ user.lastName }}
+              </p>
+            </div>
+          </div>
+
+          <p class="personal-description">
+            Verwalte deine persönlichen Daten und
+            Einstellungen.
+          </p>
+
+          <a routerLink="/profile" class="text-link">
+            Profil öffnen →
+          </a>
+
+        </article>
+
+
+        <!-- Verein -->
+        <article class="personal-card">
+
+          <div class="personal-card-header">
+            <div class="personal-icon">👥</div>
+
+            <div>
+              <h3>Mein Verein</h3>
+              <p>Vereinsbereich</p>
+            </div>
+          </div>
+
+          <p class="personal-description">
+            Informationen zu deinem Verein und deinen
+            Vereinsmitgliedschaften.
+          </p>
+
+          <a routerLink="/verein" class="text-link">
+            Verein öffnen →
+          </a>
+
+        </article>
+
+
+        <!-- Rollen -->
+        <article class="personal-card">
+
+          <div class="personal-card-header">
+            <div class="personal-icon">⭐</div>
+
+            <div>
+              <h3>Meine Rollen</h3>
+              <p>Deine Berechtigungen</p>
+            </div>
+          </div>
+
+          <div class="role-list">
+
+            @if (user.roles.trainer) {
+              <span class="role-badge">Trainer</span>
+            }
+
+            @if (user.roles.juror) {
+              <span class="role-badge">Juror</span>
+            }
+
+            @if (user.roles.juryleitung) {
+              <span class="role-badge">Juryleitung</span>
+            }
+
+            @if (user.roles.admin) {
+              <span class="role-badge role-admin">Admin</span>
+            }
+
+            @if (
+              !user.roles.trainer &&
+              !user.roles.juror &&
+              !user.roles.juryleitung &&
+              !user.roles.admin
+            ) {
+              <span class="role-badge">Fahrer</span>
+            }
+
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- Schnellzugriff -->
+    <section class="section">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">SCHNELLZUGRIFF</p>
+          <h2>Was möchtest du tun?</h2>
+        </div>
+      </div>
+
+
+      <div class="quick-actions">
+
+        <a routerLink="/competitions" class="quick-action">
+          <span>🏆</span>
+          <div>
+            <strong>Wettkämpfe</strong>
+            <small>Wettkämpfe entdecken</small>
+          </div>
+        </a>
+
+
+        @if (user.roles.trainer || user.roles.admin) {
+          <a routerLink="/members" class="quick-action">
+            <span>👥</span>
+            <div>
+              <strong>Mitglieder</strong>
+              <small>Vereinsmitglieder verwalten</small>
+            </div>
+          </a>
+        }
+
+
+        @if (user.roles.trainer || user.roles.admin) {
+          <a routerLink="/registrations" class="quick-action">
+            <span>📝</span>
+            <div>
+              <strong>Anmeldungen</strong>
+              <small>Wettkampfanmeldungen verwalten</small>
+            </div>
+          </a>
+        }
+
+
+        @if (user.roles.juror) {
+          <a routerLink="/jury" class="quick-action">
+            <span>⚖️</span>
+            <div>
+              <strong>Jury</strong>
+              <small>Meine Jury-Einsätze</small>
+            </div>
+          </a>
+        }
+
+
+        @if (user.roles.juryleitung) {
+          <a routerLink="/auswertung" class="quick-action">
+            <span>📊</span>
+            <div>
+              <strong>Auswertung</strong>
+              <small>Wertungen und Ergebnisse</small>
+            </div>
+          </a>
+        }
+
+
+        @if (user.roles.admin) {
+          <a routerLink="/management" class="quick-action">
+            <span>⚙️</span>
+            <div>
+              <strong>Verwaltung</strong>
+              <small>Wettkämpfe verwalten</small>
+            </div>
+          </a>
+        }
+
+      </div>
+    </section>
+
+  }
+
+
+  <!-- Über die Plattform -->
+  <section class="about-section">
+
+    <div class="about-content">
+
+      <p class="section-eyebrow">UNICYCLING COMPETITION</p>
+
+      <h2>
+        Alles für deinen
+        <span>Wettkampf.</span>
+      </h2>
+
+      <p>
+        Von der ersten Anmeldung bis zur finalen Auswertung:
+        Unicycle Competition bringt Fahrer, Vereine, Trainer
+        und Jury an einem Ort zusammen.
+      </p>
+
+      <div class="about-features">
+        <span>🏆 Wettkämpfe</span>
+        <span>👥 Vereine</span>
+        <span>⚖️ Jury</span>
+        <span>📊 Auswertung</span>
+      </div>
+
+    </div>
+
+  </section>
+
+</section>

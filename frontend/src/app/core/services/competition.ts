@@ -42,6 +42,15 @@ export class CompetitionService {
     });
   }
 
+  getUpcoming(): Observable<Competition[]> {
+    return this.http.get<Competition[]>(
+      `${this.apiUrl}/upcoming`,
+      {
+        withCredentials: true,
+      },
+    );
+  }
+
   getOne(id: number): Observable<Competition> {
     return this.http.get<Competition>(
       `${this.apiUrl}/${id}`,

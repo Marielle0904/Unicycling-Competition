@@ -1,1 +1,183 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   Unicycle Competition – Global Styles
+   ========================================================= */
+
+/* ---------- Design Tokens ---------- */
+
+:root {
+  /* Farben */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-light: #dbeafe;
+
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+
+  --color-border: #e2e8f0;
+
+  --color-danger: #dc2626;
+  --color-success: #16a34a;
+
+  /* Navbar */
+  --color-navbar: #0f172a;
+  --color-navbar-text: #cbd5e1;
+
+  /* Layout */
+  --content-width: 1200px;
+
+  /* Rundungen */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Schatten */
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 0.08);
+
+  /* Abstände */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+}
+
+
+/* ---------- Reset ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: var(--color-text);
+  background: var(--color-background);
+
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+
+/* ---------- Links ---------- */
+
+a {
+  color: inherit;
+}
+
+
+/* ---------- Main Layout ---------- */
+
+main {
+  width: min(100% - 2rem, var(--content-width));
+  margin: 0 auto;
+  padding: var(--space-8) 0;
+}
+
+
+/* ---------- Buttons ---------- */
+
+button {
+  font: inherit;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: var(--radius-sm);
+
+  padding: 0.65rem 1rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+}
+
+
+/* ---------- Cards ---------- */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* ---------- Form Elements ---------- */
+
+input,
+select,
+textarea {
+  width: 100%;
+
+  padding: 0.7rem 0.8rem;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-surface);
+  color: var(--color-text);
+
+  font: inherit;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+
+  border-color: var(--color-primary);
+
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+  main {
+    width: min(100% - 1rem, var(--content-width));
+    padding: var(--space-6) 0;
+  }
+}
