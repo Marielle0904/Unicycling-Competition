@@ -1,118 +1,378 @@
 <div class="verein-page">
 
-  <h1>Verein</h1>
+  <header class="page-header">
 
-  @if (errorMessage()) {
-  <p class="message error">{{ errorMessage() }}</p>
-  }
+<div>
+  <span class="eyebrow">Vereinsverwaltung</span>
 
-  @if (successMessage()) {
-  <p class="message success">{{ successMessage() }}</p>
-  }
+  <h1>Mein Verein</h1>
 
-  <section>
+  <p>
+    Verwalte deine Vereinsmitgliedschaften und tritt weiteren
+    Vereinen bei.
+  </p>
+</div>
+
+<div class="header-icon">
+  🏠
+</div>
+
+  </header>
+
+@if (errorMessage()) {
+
+  <div class="message error">
+
+<span class="message-icon">⚠️</span>
+
+<span>{{ errorMessage() }}</span>
+
+  </div>
+
+}
+
+@if (successMessage()) {
+
+  <div class="message success">
+
+<span class="message-icon">✓</span>
+
+<span>{{ successMessage() }}</span>
+
+  </div>
+
+}
+
+  <section class="vereine-section">
+
+<div class="section-header">
+
+  <div>
+    <span class="section-eyebrow">Mitgliedschaften</span>
+
     <h2>Meine Vereine</h2>
-
-    @if (meineVereine().length === 0) {
-    <p>Du bist momentan keinem Verein beigetreten.</p>
-    } @else {
-    <div class="vereine-list">
-      @for (verein of meineVereine(); track verein.id) {
-      <div class="verein-card">
-        <h3>{{ verein.name }}</h3>
-        <p>{{ verein.email }}</p>
-      </div>
-      }
-    </div>
-    }
-  </section>
-
-  <section class="actions">
-
-    <button type="button" (click)="openJoin()">
-      Weiterem Verein beitreten
-    </button>
-
-    <button type="button" (click)="openCreate()">
-      Verein erstellen
-    </button>
-
-  </section>
-
-  @if (showJoin()) {
-  <div class="modal-backdrop">
-    <div class="modal">
-
-      <h2>Verein beitreten</h2>
-
-      <label for="verein">
-        Verein auswählen
-      </label>
-
-      <select id="verein" [(ngModel)]="selectedVereinId">
-        <option [ngValue]="null">
-          -- Verein auswählen --
-        </option>
-
-        @for (verein of alleVereine(); track verein.id) {
-        <option [ngValue]="verein.id">
-          {{ verein.name }}
-        </option>
-        }
-      </select>
-
-      <div class="modal-actions">
-        <button type="button" (click)="closeJoin()">
-          Abbrechen
-        </button>
-
-        <button type="button" (click)="joinVerein()">
-          Beitreten
-        </button>
-      </div>
-
-    </div>
   </div>
-  }
 
-  @if (showCreate()) {
-  <div class="modal-backdrop">
-    <div class="modal">
+  <span class="verein-count">
+    {{ meineVereine().length }}
+  </span>
 
-      <h2>Verein erstellen</h2>
+</div>
 
-      <form (ngSubmit)="createVerein()">
 
-        <div>
-          <label for="name">
-            Vereinsname
-          </label>
+@if (meineVereine().length === 0) {
 
-          <input id="name" type="text" name="name" [(ngModel)]="neuerVereinName" required />
-        </div>
+<div class="empty-state">
 
-        <div>
-          <label for="email">
-            Vereins-E-Mail
-          </label>
+  <div class="empty-icon">
+    🏠
+  </div>
 
-          <input id="email" type="email" name="email" [(ngModel)]="neuerVereinEmail" required />
-        </div>
+  <h3>Noch kein Verein</h3>
 
-        <div class="modal-actions">
-          <button type="button" (click)="closeCreate()">
-            Abbrechen
-          </button>
+  <p>
+    Du bist momentan keinem Verein beigetreten.
+    Du kannst einem bestehenden Verein beitreten oder einen
+    neuen Verein erstellen.
+  </p>
 
-          <button type="submit">
-            Erstellen
-          </button>
-        </div>
+</div>
 
-      </form>
+} @else {
+
+<div class="vereine-list">
+
+  @for (verein of meineVereine(); track verein.id) {
+
+  <article class="verein-card">
+
+    <div class="verein-icon">
+      🏠
+    </div>
+
+    <div class="verein-info">
+
+      <h3>{{ verein.name }}</h3>
+
+      <p>
+        {{ verein.email }}
+      </p>
 
     </div>
-  </div>
+
+    <span class="member-badge">
+      Mitglied
+    </span>
+
+  </article>
+
   }
 
 </div>
+
+}
+
+  </section>
+
+  <section class="actions-section">
+
+<div class="section-header">
+
+  <div>
+    <span class="section-eyebrow">Aktionen</span>
+
+    <h2>Verein verwalten</h2>
+  </div>
+
+</div>
+
+
+<div class="actions">
+
+  <button
+    type="button"
+    class="action-card"
+    (click)="openJoin()"
+  >
+
+    <span class="action-icon">
+      ➕
+    </span>
+
+    <span class="action-content">
+
+      <strong>Verein beitreten</strong>
+
+      <span>
+        Tritt einem bestehenden Verein bei.
+      </span>
+
+    </span>
+
+    <span class="action-arrow">
+      →
+    </span>
+
+  </button>
+
+
+  <button
+    type="button"
+    class="action-card"
+    (click)="openCreate()"
+  >
+
+    <span class="action-icon">
+      🏗️
+    </span>
+
+    <span class="action-content">
+
+      <strong>Verein erstellen</strong>
+
+      <span>
+        Erstelle einen neuen Verein.
+      </span>
+
+    </span>
+
+    <span class="action-arrow">
+      →
+    </span>
+
+  </button>
+
+</div>
+
+  </section>
+
+@if (showJoin()) {
+
+  <div class="modal-backdrop">
+
+<div
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="join-title"
+>
+
+  <div class="modal-header">
+
+    <div>
+      <span class="modal-eyebrow">Mitgliedschaft</span>
+
+      <h2 id="join-title">
+        Verein beitreten
+      </h2>
+    </div>
+
+    <button
+      type="button"
+      class="modal-close"
+      (click)="closeJoin()"
+      aria-label="Dialog schließen"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="modal-body">
+
+    <label for="verein">
+      Verein auswählen
+    </label>
+
+    <select
+      id="verein"
+      [(ngModel)]="selectedVereinId"
+    >
+
+      <option [ngValue]="null">
+        -- Verein auswählen --
+      </option>
+
+      @for (verein of alleVereine(); track verein.id) {
+
+      <option [ngValue]="verein.id">
+        {{ verein.name }}
+      </option>
+
+      }
+
+    </select>
+
+  </div>
+
+
+  <div class="modal-actions">
+
+    <button
+      type="button"
+      class="btn-secondary"
+      (click)="closeJoin()"
+    >
+      Abbrechen
+    </button>
+
+    <button
+      type="button"
+      class="btn-primary"
+      (click)="joinVerein()"
+    >
+      Beitreten
+    </button>
+
+  </div>
+
+</div>
+
+  </div>
+
+}
+
+@if (showCreate()) {
+
+  <div class="modal-backdrop">
+
+<div
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="create-title"
+>
+
+  <div class="modal-header">
+
+    <div>
+      <span class="modal-eyebrow">Neuer Verein</span>
+
+      <h2 id="create-title">
+        Verein erstellen
+      </h2>
+    </div>
+
+    <button
+      type="button"
+      class="modal-close"
+      (click)="closeCreate()"
+      aria-label="Dialog schließen"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <form
+    class="modal-form"
+    (ngSubmit)="createVerein()"
+  >
+
+    <div class="form-group">
+
+      <label for="name">
+        Vereinsname
+      </label>
+
+      <input
+        id="name"
+        type="text"
+        name="name"
+        [(ngModel)]="neuerVereinName"
+        placeholder="z. B. TSV Miedelsbach"
+        required
+      />
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="email">
+        Vereins-E-Mail
+      </label>
+
+      <input
+        id="email"
+        type="email"
+        name="email"
+        [(ngModel)]="neuerVereinEmail"
+        placeholder="verein@example.de"
+        required
+      />
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="btn-secondary"
+        (click)="closeCreate()"
+      >
+        Abbrechen
+      </button>
+
+      <button
+        type="submit"
+        class="btn-primary"
+      >
+        Verein erstellen
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
+
+  </div>
+
+}
+
+</div>
+

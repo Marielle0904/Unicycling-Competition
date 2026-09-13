@@ -1,5 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 import {
   Competition,
   CompetitionData,
@@ -12,7 +13,7 @@ import {
 
 @Component({
   selector: 'app-management',
-  imports: [FormsModule],
+  imports: [FormsModule, DatePipe],
   templateUrl: './management.html',
   styleUrl: './management.css',
 })

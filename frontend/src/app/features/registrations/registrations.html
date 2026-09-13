@@ -1,375 +1,717 @@
-<h1>Anmeldungen</h1>
+<div class="registrations-page">
 
-@if (errorMessage()) {
-<p class="message error">{{ errorMessage() }}</p>
-}
+  <!-- Page Header -->
 
-@if (successMessage()) {
-<p class="message success">{{ successMessage() }}</p>
-}
+  <header class="page-header">
 
-<div class="selection-card">
-  <div class="selection-group">
-    <label for="competition">Wettkampf</label>
-
-    <select
-      id="competition"
-      [(ngModel)]="selectedCompetitionId"
-      (ngModelChange)="loadRegistrations()"
-    >
-      <option [ngValue]="null">Wettkampf auswählen</option>
-
-      @for (competition of competitions(); track competition.id) {
-      <option [ngValue]="competition.id">
-        {{ competition.name }}
-      </option>
-      }
-    </select>
-  </div>
-
-  <div class="selection-group">
-    <label for="verein">Verein</label>
-
-    <select
-      id="verein"
-      [(ngModel)]="selectedVereinId"
-      (ngModelChange)="selectVerein()"
-    >
-      <option [ngValue]="null">Verein auswählen</option>
-
-      @for (verein of vereine(); track verein.id) {
-      <option [ngValue]="verein.id">
-        {{ verein.name }}
-      </option>
-      }
-    </select>
-  </div>
-</div>
-
-@if (selectedCompetitionId !== null && selectedVereinId !== null) {
-
-<div class="tabs">
-  <button
-    type="button"
-    [class.active]="activeDiscipline() === 'einzel'"
-    (click)="setDiscipline('einzel')"
-  >
-    Einzelkür
-  </button>
-
-  <button
-    type="button"
-    [class.active]="activeDiscipline() === 'paar'"
-    (click)="setDiscipline('paar')"
-  >
-    Paarkür
-  </button>
-
-  <button
-    type="button"
-    [class.active]="activeDiscipline() === 'kleingruppe'"
-    (click)="setDiscipline('kleingruppe')"
-  >
-    Kleingruppe
-  </button>
-
-  <button
-    type="button"
-    [class.active]="activeDiscipline() === 'grossgruppe'"
-    (click)="setDiscipline('grossgruppe')"
-  >
-    Großgruppe
-  </button>
-</div>
-
-<div class="discipline-content">
-
-  @if (activeDiscipline() === 'einzel') {
-
-  <div class="discipline-header">
     <div>
-      <h2>Einzelküren</h2>
+      <span class="eyebrow">Wettkampfverwaltung</span>
+
+      <h1>Anmeldungen</h1>
+
       <p>
-        Einzelne Fahrer können hier für eine Kür angemeldet werden.
+        Verwalte die Küranmeldungen deines Vereins für die
+        ausgewählten Wettkämpfe.
       </p>
     </div>
 
-    <button
-      type="button"
-      class="add-button"
-      (click)="openForm()"
-    >
-      + Kür hinzufügen
-    </button>
-  </div>
-
-  @if (registrations().einzel.length === 0) {
-
-  <div class="empty-state">
-    <p>Noch keine Einzelkür hinzugefügt.</p>
-  </div>
-
-  } @else {
-
-  <div class="registration-list">
-
-    @for (kuer of registrations().einzel; track kuer.id) {
-
-    <div class="registration-card">
-
-      <div class="registration-card-header">
-        <h3>{{ kuer.titel }}</h3>
-      </div>
-
-      <div class="registration-drivers">
-
-        @for (fahrer of kuer.fahrer; track fahrer.user.id) {
-
-        <div class="driver">
-          {{ fahrer.user.firstName }}
-          {{ fahrer.user.lastName }}
-        </div>
-
-        }
-
-      </div>
-
+    <div class="header-icon">
+      📝
     </div>
 
-    }
+  </header>
+
+
+  <!-- Messages -->
+
+  @if (errorMessage()) {
+
+  <div class="message error">
+
+    <span class="message-icon">⚠️</span>
+
+    <span>{{ errorMessage() }}</span>
 
   </div>
 
   }
 
+
+  @if (successMessage()) {
+
+  <div class="message success">
+
+    <span class="message-icon">✓</span>
+
+    <span>{{ successMessage() }}</span>
+
+  </div>
+
   }
 
-  @if (activeDiscipline() === 'paar') {
 
-  <div class="discipline-header">
-    <div>
-      <h2>Paarküren</h2>
+  <!-- Selection -->
+
+  <section class="selection-card">
+
+    <div class="selection-heading">
+
+      <span class="section-eyebrow">
+        Vorbereitung
+      </span>
+
+      <h2>Wettkampf auswählen</h2>
+
       <p>
-        Zwei Fahrer bilden gemeinsam eine Paarkür.
+        Wähle zunächst den Wettkampf und den Verein aus,
+        für den du Anmeldungen verwalten möchtest.
       </p>
+
     </div>
 
-    <button
-      type="button"
-      class="add-button"
-      (click)="openForm()"
-    >
-      + Kür hinzufügen
-    </button>
-  </div>
 
-  @if (registrations().paar.length === 0) {
+    <div class="selection-fields">
 
-  <div class="empty-state">
-    <p>Noch keine Paarkür hinzugefügt.</p>
-  </div>
+      <div class="selection-group">
 
-  } @else {
+        <label for="competition">
+          Wettkampf
+        </label>
 
-  <div class="registration-list">
+        <select
+          id="competition"
+          [(ngModel)]="selectedCompetitionId"
+          (ngModelChange)="loadRegistrations()"
+        >
 
-    @for (kuer of registrations().paar; track kuer.id) {
+          <option [ngValue]="null">
+            Wettkampf auswählen
+          </option>
 
-    <div class="registration-card">
+          @for (
+            competition of competitions();
+            track competition.id
+          ) {
 
-      <div class="registration-card-header">
-        <h3>{{ kuer.titel }}</h3>
+          <option [ngValue]="competition.id">
+            {{ competition.name }}
+          </option>
+
+          }
+
+        </select>
+
       </div>
 
-      <div class="registration-drivers">
 
-        @for (fahrer of kuer.fahrer; track fahrer.user.id) {
+      <div class="selection-group">
 
-        <div class="driver">
-          {{ fahrer.user.firstName }}
-          {{ fahrer.user.lastName }}
+        <label for="verein">
+          Verein
+        </label>
+
+        <select
+          id="verein"
+          [(ngModel)]="selectedVereinId"
+          (ngModelChange)="selectVerein()"
+        >
+
+          <option [ngValue]="null">
+            Verein auswählen
+          </option>
+
+          @for (
+            verein of vereine();
+            track verein.id
+          ) {
+
+          <option [ngValue]="verein.id">
+            {{ verein.name }}
+          </option>
+
+          }
+
+        </select>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Disciplines -->
+
+  @if (
+    selectedCompetitionId !== null &&
+    selectedVereinId !== null
+  ) {
+
+  <section class="registration-section">
+
+    <div class="section-heading">
+
+      <div>
+        <span class="section-eyebrow">
+          Küranmeldungen
+        </span>
+
+        <h2>Disziplinen</h2>
+      </div>
+
+      <span class="member-count">
+        {{ members().length }} Mitglieder
+      </span>
+
+    </div>
+
+
+    <!-- Tabs -->
+
+    <div class="tabs">
+
+      <button
+        type="button"
+        [class.active]="activeDiscipline() === 'einzel'"
+        (click)="setDiscipline('einzel')"
+      >
+        <span class="tab-icon">👤</span>
+        <span>Einzelkür</span>
+      </button>
+
+
+      <button
+        type="button"
+        [class.active]="activeDiscipline() === 'paar'"
+        (click)="setDiscipline('paar')"
+      >
+        <span class="tab-icon">👥</span>
+        <span>Paarkür</span>
+      </button>
+
+
+      <button
+        type="button"
+        [class.active]="activeDiscipline() === 'kleingruppe'"
+        (click)="setDiscipline('kleingruppe')"
+      >
+        <span class="tab-icon">👨‍👩‍👧</span>
+        <span>Kleingruppe</span>
+      </button>
+
+
+      <button
+        type="button"
+        [class.active]="activeDiscipline() === 'grossgruppe'"
+        (click)="setDiscipline('grossgruppe')"
+      >
+        <span class="tab-icon">👨‍👩‍👧‍👦</span>
+        <span>Großgruppe</span>
+      </button>
+
+    </div>
+
+
+    <!-- Discipline Content -->
+
+    <div class="discipline-content">
+
+
+      <!-- Einzel -->
+
+      @if (activeDiscipline() === 'einzel') {
+
+      <div class="discipline-header">
+
+        <div>
+          <h2>Einzelküren</h2>
+
+          <p>
+            Einzelne Fahrer können hier für eine Kür angemeldet werden.
+          </p>
         </div>
 
-        }
+        <button
+          type="button"
+          class="add-button"
+          (click)="openForm()"
+        >
+          <span>＋</span>
+          Kür hinzufügen
+        </button>
 
       </div>
 
-    </div>
 
-    }
+      @if (registrations().einzel.length === 0) {
 
-  </div>
+      <div class="empty-state">
 
-  }
-
-  }
-
-  @if (activeDiscipline() === 'kleingruppe') {
-
-  <div class="discipline-header">
-    <div>
-      <h2>Kleingruppenküren</h2>
-      <p>
-        3 bis 8 Fahrer, zusätzlich bis zu 2 Ersatzfahrer.
-      </p>
-    </div>
-
-    <button
-      type="button"
-      class="add-button"
-      (click)="openForm()"
-    >
-      + Kür hinzufügen
-    </button>
-  </div>
-
-  @if (registrations().kleingruppe.length === 0) {
-
-  <div class="empty-state">
-    <p>Noch keine Kleingruppe hinzugefügt.</p>
-  </div>
-
-  } @else {
-
-  <div class="registration-list">
-
-    @for (kuer of registrations().kleingruppe; track kuer.id) {
-
-    <div class="registration-card">
-
-      <div class="registration-card-header">
-        <h3>{{ kuer.titel }}</h3>
-      </div>
-
-      <div class="registration-drivers">
-
-        <strong>Fahrer</strong>
-
-        @for (fahrer of kuer.fahrer; track fahrer.user.id) {
-
-        <div class="driver">
-          {{ fahrer.user.firstName }}
-          {{ fahrer.user.lastName }}
+        <div class="empty-icon">
+          👤
         </div>
 
-        }
+        <h3>Noch keine Einzelkür</h3>
 
-        @if (kuer.ersatzfahrer.length > 0) {
+        <p>
+          Für diesen Wettkampf wurde noch keine Einzelkür
+          angemeldet.
+        </p>
 
-        <strong>Ersatzfahrer</strong>
+      </div>
+
+      } @else {
+
+      <div class="registration-list">
 
         @for (
-          ersatzfahrer of kuer.ersatzfahrer;
-          track ersatzfahrer.user.id
+          kuer of registrations().einzel;
+          track kuer.id
         ) {
 
-        <div class="driver replacement">
-          {{ ersatzfahrer.user.firstName }}
-          {{ ersatzfahrer.user.lastName }}
-        </div>
+        <article class="registration-card">
 
-        }
+          <div class="registration-card-header">
+
+            <div class="registration-icon">
+              👤
+            </div>
+
+            <div>
+              <span class="registration-type">
+                Einzelkür
+              </span>
+
+              <h3>{{ kuer.titel }}</h3>
+            </div>
+
+          </div>
+
+
+          <div class="registration-drivers">
+
+            @for (
+              fahrer of kuer.fahrer;
+              track fahrer.user.id
+            ) {
+
+            <div class="driver">
+
+              <span class="driver-icon">
+                👤
+              </span>
+
+              <span>
+                {{ fahrer.user.firstName }}
+                {{ fahrer.user.lastName }}
+              </span>
+
+            </div>
+
+            }
+
+          </div>
+
+        </article>
 
         }
 
       </div>
 
-    </div>
+      }
 
-    }
+      }
 
-  </div>
 
-  }
+      <!-- Paar -->
 
-  }
+      @if (activeDiscipline() === 'paar') {
 
-  @if (activeDiscipline() === 'grossgruppe') {
+      <div class="discipline-header">
 
-  <div class="discipline-header">
-    <div>
-      <h2>Großgruppenküren</h2>
-      <p>
-        Mindestens 9 Fahrer, zusätzlich bis zu 2 Ersatzfahrer.
-      </p>
-    </div>
+        <div>
+          <h2>Paarküren</h2>
 
-    <button
-      type="button"
-      class="add-button"
-      (click)="openForm()"
-    >
-      + Kür hinzufügen
-    </button>
-  </div>
-
-  @if (registrations().grossgruppe.length === 0) {
-
-  <div class="empty-state">
-    <p>Noch keine Großgruppe hinzugefügt.</p>
-  </div>
-
-  } @else {
-
-  <div class="registration-list">
-
-    @for (
-      kuer of registrations().grossgruppe;
-      track kuer.id
-    ) {
-
-    <div class="registration-card">
-
-      <div class="registration-card-header">
-        <h3>{{ kuer.titel }}</h3>
-      </div>
-
-      <div class="registration-drivers">
-
-        <strong>Fahrer</strong>
-
-        @for (fahrer of kuer.fahrer; track fahrer.user.id) {
-
-        <div class="driver">
-          {{ fahrer.user.firstName }}
-          {{ fahrer.user.lastName }}
+          <p>
+            Zwei Fahrer bilden gemeinsam eine Paarkür.
+          </p>
         </div>
 
-        }
+        <button
+          type="button"
+          class="add-button"
+          (click)="openForm()"
+        >
+          <span>＋</span>
+          Kür hinzufügen
+        </button>
 
-        @if (kuer.ersatzfahrer.length > 0) {
+      </div>
 
-        <strong>Ersatzfahrer</strong>
+
+      @if (registrations().paar.length === 0) {
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          👥
+        </div>
+
+        <h3>Noch keine Paarkür</h3>
+
+        <p>
+          Für diesen Wettkampf wurde noch keine Paarkür
+          angemeldet.
+        </p>
+
+      </div>
+
+      } @else {
+
+      <div class="registration-list">
 
         @for (
-          ersatzfahrer of kuer.ersatzfahrer;
-          track ersatzfahrer.user.id
+          kuer of registrations().paar;
+          track kuer.id
         ) {
 
-        <div class="driver replacement">
-          {{ ersatzfahrer.user.firstName }}
-          {{ ersatzfahrer.user.lastName }}
-        </div>
+        <article class="registration-card">
 
-        }
+          <div class="registration-card-header">
+
+            <div class="registration-icon">
+              👥
+            </div>
+
+            <div>
+              <span class="registration-type">
+                Paarkür
+              </span>
+
+              <h3>{{ kuer.titel }}</h3>
+            </div>
+
+          </div>
+
+
+          <div class="registration-drivers">
+
+            @for (
+              fahrer of kuer.fahrer;
+              track fahrer.user.id
+            ) {
+
+            <div class="driver">
+
+              <span class="driver-icon">
+                👤
+              </span>
+
+              <span>
+                {{ fahrer.user.firstName }}
+                {{ fahrer.user.lastName }}
+              </span>
+
+            </div>
+
+            }
+
+          </div>
+
+        </article>
 
         }
 
       </div>
 
+      }
+
+      }
+
+
+      <!-- Kleingruppe -->
+
+      @if (activeDiscipline() === 'kleingruppe') {
+
+      <div class="discipline-header">
+
+        <div>
+          <h2>Kleingruppenküren</h2>
+
+          <p>
+            3 bis 8 Fahrer, zusätzlich bis zu 2 Ersatzfahrer.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="add-button"
+          (click)="openForm()"
+        >
+          <span>＋</span>
+          Kür hinzufügen
+        </button>
+
+      </div>
+
+
+      @if (registrations().kleingruppe.length === 0) {
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          👨‍👩‍👧
+        </div>
+
+        <h3>Noch keine Kleingruppe</h3>
+
+        <p>
+          Für diesen Wettkampf wurde noch keine Kleingruppe
+          angemeldet.
+        </p>
+
+      </div>
+
+      } @else {
+
+      <div class="registration-list">
+
+        @for (
+          kuer of registrations().kleingruppe;
+          track kuer.id
+        ) {
+
+        <article class="registration-card">
+
+          <div class="registration-card-header">
+
+            <div class="registration-icon">
+              👨‍👩‍👧
+            </div>
+
+            <div>
+              <span class="registration-type">
+                Kleingruppe
+              </span>
+
+              <h3>{{ kuer.titel }}</h3>
+            </div>
+
+          </div>
+
+
+          <div class="registration-drivers">
+
+            <strong>Fahrer</strong>
+
+            @for (
+              fahrer of kuer.fahrer;
+              track fahrer.user.id
+            ) {
+
+            <div class="driver">
+
+              <span class="driver-icon">
+                👤
+              </span>
+
+              <span>
+                {{ fahrer.user.firstName }}
+                {{ fahrer.user.lastName }}
+              </span>
+
+            </div>
+
+            }
+
+
+            @if (kuer.ersatzfahrer.length > 0) {
+
+            <div class="driver-group-title">
+              Ersatzfahrer
+            </div>
+
+            @for (
+              ersatzfahrer of kuer.ersatzfahrer;
+              track ersatzfahrer.user.id
+            ) {
+
+            <div class="driver replacement">
+
+              <span class="driver-icon">
+                ↪
+              </span>
+
+              <span>
+                {{ ersatzfahrer.user.firstName }}
+                {{ ersatzfahrer.user.lastName }}
+              </span>
+
+            </div>
+
+            }
+
+            }
+
+          </div>
+
+        </article>
+
+        }
+
+      </div>
+
+      }
+
+      }
+
+
+      <!-- Großgruppe -->
+
+      @if (activeDiscipline() === 'grossgruppe') {
+
+      <div class="discipline-header">
+
+        <div>
+          <h2>Großgruppenküren</h2>
+
+          <p>
+            Mindestens 9 Fahrer, zusätzlich bis zu 2 Ersatzfahrer.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="add-button"
+          (click)="openForm()"
+        >
+          <span>＋</span>
+          Kür hinzufügen
+        </button>
+
+      </div>
+
+
+      @if (registrations().grossgruppe.length === 0) {
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          👨‍👩‍👧‍👦
+        </div>
+
+        <h3>Noch keine Großgruppe</h3>
+
+        <p>
+          Für diesen Wettkampf wurde noch keine Großgruppe
+          angemeldet.
+        </p>
+
+      </div>
+
+      } @else {
+
+      <div class="registration-list">
+
+        @for (
+          kuer of registrations().grossgruppe;
+          track kuer.id
+        ) {
+
+        <article class="registration-card">
+
+          <div class="registration-card-header">
+
+            <div class="registration-icon">
+              👨‍👩‍👧‍👦
+            </div>
+
+            <div>
+              <span class="registration-type">
+                Großgruppe
+              </span>
+
+              <h3>{{ kuer.titel }}</h3>
+            </div>
+
+          </div>
+
+
+          <div class="registration-drivers">
+
+            <strong>Fahrer</strong>
+
+            @for (
+              fahrer of kuer.fahrer;
+              track fahrer.user.id
+            ) {
+
+            <div class="driver">
+
+              <span class="driver-icon">
+                👤
+              </span>
+
+              <span>
+                {{ fahrer.user.firstName }}
+                {{ fahrer.user.lastName }}
+              </span>
+
+            </div>
+
+            }
+
+
+            @if (kuer.ersatzfahrer.length > 0) {
+
+            <div class="driver-group-title">
+              Ersatzfahrer
+            </div>
+
+            @for (
+              ersatzfahrer of kuer.ersatzfahrer;
+              track ersatzfahrer.user.id
+            ) {
+
+            <div class="driver replacement">
+
+              <span class="driver-icon">
+                ↪
+              </span>
+
+              <span>
+                {{ ersatzfahrer.user.firstName }}
+                {{ ersatzfahrer.user.lastName }}
+              </span>
+
+            </div>
+
+            }
+
+            }
+
+          </div>
+
+        </article>
+
+        }
+
+      </div>
+
+      }
+
+      }
+
     </div>
 
-    }
-
-  </div>
-
-  }
+  </section>
 
   }
 
 </div>
 
-}
+
+<!-- Add Registration Modal -->
 
 @if (showForm()) {
 
@@ -386,6 +728,10 @@
     <div class="modal-header">
 
       <div>
+
+        <span class="modal-eyebrow">
+          Neue Anmeldung
+        </span>
 
         <h2>
 
@@ -417,17 +763,21 @@
         type="button"
         class="close-button"
         (click)="closeForm()"
+        aria-label="Dialog schließen"
       >
         ×
       </button>
 
     </div>
 
+
     <div class="modal-body">
 
       <div class="form-group">
 
-        <label for="titel">Kürtitel</label>
+        <label for="titel">
+          Kürtitel
+        </label>
 
         <input
           id="titel"
@@ -438,13 +788,21 @@
 
       </div>
 
+
       <div class="member-section">
 
         <div class="section-title">
 
-          <h3>Fahrer</h3>
+          <div>
+            <h3>Fahrer auswählen</h3>
 
-          <span>
+            <p>
+              Wähle die Teilnehmer für diese Kür aus.
+            </p>
+          </div>
+
+          <span class="selection-count">
+
             {{ selectedFahrerIds.length }}
 
             @if (activeDiscipline() === 'einzel') {
@@ -467,9 +825,13 @@
 
         </div>
 
+
         <div class="member-list">
 
-          @for (member of members(); track member.id) {
+          @for (
+            member of members();
+            track member.id
+          ) {
 
           <label
             class="member-item"
@@ -493,7 +855,11 @@
               (change)="toggleFahrer(member.id)"
             />
 
-            <span>
+            <span class="member-avatar">
+              {{ member.firstName.charAt(0) }}
+            </span>
+
+            <span class="member-name">
               {{ member.firstName }}
               {{ member.lastName }}
             </span>
@@ -506,6 +872,7 @@
 
       </div>
 
+
       @if (
         activeDiscipline() === 'kleingruppe' ||
         activeDiscipline() === 'grossgruppe'
@@ -515,23 +882,31 @@
 
         <div class="section-title">
 
-          <h3>Ersatzfahrer</h3>
+          <div>
+            <h3>Ersatzfahrer</h3>
 
-          <span>
+            <p>
+              Optional, maximal zwei Personen.
+            </p>
+          </div>
+
+          <span class="selection-count">
             {{ selectedErsatzfahrerIds.length }} / 2
           </span>
 
         </div>
 
+
         <div class="member-list">
 
-          @for (member of members(); track member.id) {
+          @for (
+            member of members();
+            track member.id
+          ) {
 
           <label
             class="member-item"
-            [class.selected]="
-              isErsatzfahrerSelected(member.id)
-            "
+            [class.selected]="isErsatzfahrerSelected(member.id)"
             [class.disabled]="
               isFahrerSelected(member.id) ||
               (
@@ -543,9 +918,7 @@
 
             <input
               type="checkbox"
-              [checked]="
-                isErsatzfahrerSelected(member.id)
-              "
+              [checked]="isErsatzfahrerSelected(member.id)"
               [disabled]="
                 isFahrerSelected(member.id) ||
                 (
@@ -556,7 +929,11 @@
               (change)="toggleErsatzfahrer(member.id)"
             />
 
-            <span>
+            <span class="member-avatar">
+              {{ member.firstName.charAt(0) }}
+            </span>
+
+            <span class="member-name">
               {{ member.firstName }}
               {{ member.lastName }}
             </span>
@@ -572,6 +949,7 @@
       }
 
     </div>
+
 
     <div class="modal-footer">
 

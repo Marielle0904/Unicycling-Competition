@@ -1,193 +1,350 @@
 <div class="management-page">
 
   <header class="page-header">
-    <h1>Wettkampfverwaltung</h1>
-    <p>Verwalte die Wettkämpfe und deren Ausrichter.</p>
-  </header>
-
-  @if (errorMessage()) {
-  <p class="message error">{{ errorMessage() }}</p>
-  }
-
-  @if (successMessage()) {
-  <p class="message success">{{ successMessage() }}</p>
-  }
-
-  <section class="competition-feed">
-
-    @if (competitions().length === 0) {
-
-    <div class="empty-state">
-      <h2>Noch keine Wettkämpfe</h2>
+    <div>
+      <span class="eyebrow">Administration</span>
+      <h1>Wettkampfverwaltung</h1>
       <p>
-        Es wurden bisher keine Wettkämpfe angelegt.
+        Verwalte die Wettkämpfe und deren Ausrichter.
       </p>
     </div>
 
-    } @else {
+    <div class="header-icon">⚙️</div>
+  </header>
 
-    @for (competition of competitions(); track competition.id) {
 
-    <article class="competition-card">
+  @if (errorMessage()) {
+    <div class="message error">
+      <span class="message-icon">⚠️</span>
 
-      <div class="competition-content">
+      <div>
+        <strong>Ein Fehler ist aufgetreten.</strong>
+        <p>{{ errorMessage() }}</p>
+      </div>
+    </div>
+  }
 
-        <h2>{{ competition.name }}</h2>
 
-        <p class="organizer">
-          Ausrichter:
-          <strong>{{ competition.verein.name }}</strong>
-        </p>
+  @if (successMessage()) {
+    <div class="message success">
+      <span class="message-icon">✓</span>
 
+      <div>
+        <strong>Erfolgreich</strong>
+        <p>{{ successMessage() }}</p>
+      </div>
+    </div>
+  }
+
+
+  <section class="competitions-section">
+
+    <div class="section-header">
+      <div>
+        <span class="section-eyebrow">Veranstaltungen</span>
+        <h2>Wettkämpfe</h2>
       </div>
 
-      <button type="button" class="edit-button" (click)="openEdit(competition)">
-        Bearbeiten
-      </button>
+      <span class="competition-count">
+        {{ competitions().length }}
+      </span>
+    </div>
 
-    </article>
 
-    }
+    @if (competitions().length === 0) {
+
+      <div class="empty-state">
+        <div class="empty-icon">🏆</div>
+
+        <h3>Noch keine Wettkämpfe</h3>
+
+        <p>
+          Es wurden bisher keine Wettkämpfe angelegt.
+          Erstelle den ersten Wettkampf, um ihn hier zu verwalten.
+        </p>
+      </div>
+
+    } @else {
+
+      <div class="competition-list">
+
+        @for (competition of competitions(); track competition.id) {
+
+          <article class="competition-card">
+
+            <div class="competition-main">
+
+              <div class="competition-icon">
+                🏆
+              </div>
+
+              <div class="competition-content">
+
+                <div class="competition-heading">
+                  <span class="competition-badge">
+                    Wettkampf
+                  </span>
+
+                  <h3>
+                    {{ competition.name }}
+                  </h3>
+                </div>
+
+                <p class="organizer">
+                  Ausgerichtet von
+                  <strong>{{ competition.verein.name }}</strong>
+                </p>
+
+                <div class="competition-meta">
+
+                  <span>
+                    📅
+                    {{ competition.startDate | date:'dd.MM.yyyy' }}
+                    –
+                    {{ competition.endDate | date:'dd.MM.yyyy' }}
+                  </span>
+
+                  <span>
+                    📍
+                    {{ competition.location }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="edit-button"
+              (click)="openEdit(competition)"
+            >
+              <span>✏️</span>
+              Bearbeiten
+            </button>
+
+          </article>
+
+        }
+
+      </div>
 
     }
 
   </section>
 
-  <button type="button" class="create-button" (click)="openCreate()">
-    + Wettkampf hinzufügen
-  </button>
+
+  <section class="create-section">
+
+    <button
+      type="button"
+      class="create-button"
+      (click)="openCreate()"
+    >
+      <span class="create-icon">＋</span>
+
+      <span class="create-content">
+        <strong>Wettkampf hinzufügen</strong>
+        <span>Erstelle eine neue Veranstaltung.</span>
+      </span>
+
+      <span class="create-arrow">→</span>
+    </button>
+
+  </section>
 
 
   @if (showForm()) {
 
-  <div class="modal-backdrop">
+    <div class="modal-backdrop">
 
-    <div class="modal">
+      <div class="modal">
 
-      <div class="modal-header">
+        <div class="modal-header">
 
-        <h2>
-          @if (editingCompetition()) {
-          Wettkampf bearbeiten
-          } @else {
-          Wettkampf hinzufügen
-          }
-        </h2>
+          <div>
+            <span class="modal-eyebrow">
+              @if (editingCompetition()) {
+                Veranstaltung bearbeiten
+              } @else {
+                Neue Veranstaltung
+              }
+            </span>
 
-        <button type="button" class="close-button" (click)="closeForm()">
-          ×
-        </button>
+            <h2>
+              @if (editingCompetition()) {
+                Wettkampf bearbeiten
+              } @else {
+                Wettkampf hinzufügen
+              }
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            class="close-button"
+            (click)="closeForm()"
+            aria-label="Dialog schließen"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <form (ngSubmit)="saveCompetition()">
+
+          <div class="form-group">
+
+            <label for="name">
+              Name *
+            </label>
+
+            <input
+              id="name"
+              type="text"
+              name="name"
+              [(ngModel)]="name"
+              placeholder="z. B. Süddeutsche Meisterschaft"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="description">
+              Beschreibung
+            </label>
+
+            <textarea
+              id="description"
+              name="description"
+              [(ngModel)]="description"
+              rows="4"
+              placeholder="Weitere Informationen zum Wettkampf ..."
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label for="startDate">
+                Beginn *
+              </label>
+
+              <input
+                id="startDate"
+                type="datetime-local"
+                name="startDate"
+                [(ngModel)]="startDate"
+                required
+              />
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="endDate">
+                Ende *
+              </label>
+
+              <input
+                id="endDate"
+                type="datetime-local"
+                name="endDate"
+                [(ngModel)]="endDate"
+                required
+              />
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="location">
+              Ort *
+            </label>
+
+            <input
+              id="location"
+              type="text"
+              name="location"
+              [(ngModel)]="location"
+              placeholder="z. B. Gliching"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="verein">
+              Ausrichter *
+            </label>
+
+            <select
+              id="verein"
+              name="verein"
+              [(ngModel)]="vereinId"
+              required
+            >
+
+              <option [ngValue]="null">
+                -- Verein auswählen --
+              </option>
+
+              @for (verein of vereine(); track verein.id) {
+
+                <option [ngValue]="verein.id">
+                  {{ verein.name }}
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+
+          <div class="modal-actions">
+
+            <button
+              type="button"
+              class="cancel-button"
+              (click)="closeForm()"
+            >
+              Abbrechen
+            </button>
+
+            <button
+              type="submit"
+              class="save-button"
+            >
+              @if (editingCompetition()) {
+                Änderungen speichern
+              } @else {
+                Wettkampf erstellen
+              }
+            </button>
+
+          </div>
+
+        </form>
 
       </div>
 
-
-      <form (ngSubmit)="saveCompetition()">
-
-        <div class="form-group">
-
-          <label for="name">
-            Name *
-          </label>
-
-          <input id="name" type="text" name="name" [(ngModel)]="name" required />
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="description">
-            Beschreibung
-          </label>
-
-          <textarea id="description" name="description" [(ngModel)]="description" rows="4"></textarea>
-
-        </div>
-
-
-        <div class="form-row">
-
-          <div class="form-group">
-
-            <label for="startDate">
-              Beginn *
-            </label>
-
-            <input id="startDate" type="datetime-local" name="startDate" [(ngModel)]="startDate" required />
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="endDate">
-              Ende *
-            </label>
-
-            <input id="endDate" type="datetime-local" name="endDate" [(ngModel)]="endDate" required />
-
-          </div>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="location">
-            Ort *
-          </label>
-
-          <input id="location" type="text" name="location" [(ngModel)]="location" required />
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="verein">
-            Ausrichter *
-          </label>
-
-          <select id="verein" name="verein" [(ngModel)]="vereinId" required>
-
-            <option [ngValue]="null">
-              -- Verein auswählen --
-            </option>
-
-            @for (verein of vereine(); track verein.id) {
-
-            <option [ngValue]="verein.id">
-              {{ verein.name }}
-            </option>
-
-            }
-
-          </select>
-
-        </div>
-
-
-        <div class="modal-actions">
-
-          <button type="button" class="cancel-button" (click)="closeForm()">
-            Abbrechen
-          </button>
-
-          <button type="submit" class="save-button">
-            @if (editingCompetition()) {
-            Änderungen speichern
-            } @else {
-            Wettkampf erstellen
-            }
-          </button>
-
-        </div>
-
-      </form>
-
     </div>
-
-  </div>
 
   }
 
